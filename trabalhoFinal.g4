@@ -60,6 +60,10 @@ decVarConst: tipo listaIds ';'
     | 'const' listaAtrib ';'
     ;
 
+decVariaveis: tipo listaIds ';'
+    | listaAtrib ';'
+    ;
+
 tipo: 'int'
     | 'real'
     | 'bool'
@@ -75,55 +79,82 @@ listaAtrib: 'int' ID '=' INT (',' ID '=' INT)*
     | 'real' ID '=' REAL (',' ID '=' REAL)*
     ;
 
-decFunc: tipo ID '(' listaIds? ')' '{' comandos retornoFuncao ';' '}'
-	| 'void' ID '(' listaIds? ')' '{' comandos ';' '}'
+decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis? comandos | retornoFuncao) '}'
+	| ID '(' parametros? ')' '{' decVariaveis? comandos '}'
     ;
 
-retornoFuncao: expressao
-	| ID
+chamaFunc: ID '(' listaIds? ')'
+    ;
+
+parametros: tipo ID (',' tipo ID)*
+    ;
+
+retornoFuncao: 'return' impressao ';'
 	;
 
 main: 'main' '(' ')' '{' comandos '}'
     ;
 
-comandos: decVarConst comandos
-    | forLoop comandos
+comandos: forLoop comandos
     | ifElse comandos
-    | imprime comandos
+    | printe comandos
     | entrada comandos
+    | retornoFuncao comandos
     | vazio
     ;
 
-imprime: 'print' '(' dado=impressao {print($dado.text.replace('"', ''), end='')} (',' dado2=impressao {print($dado2.text.replace('"', ''), end='')})* ')' ';' {print()}
+comandosLoop: forLoop comandosLoop
+    | ifElse comandosLoop
+    | printe comandosLoop
+    | entrada comandosLoop
+    | retornoFuncao comandosLoop
+    | 'break' ';'
+    | vazio
+    ;
+
+printe: 'print' '(' dado=impressao {print($dado.text.replace('"', ''), end='')} (',' dado2=impressao {print($dado2.text.replace('"', ''), end='')})* ')' ';' {print()}
 	;
 
 entrada: 'input' '(' texto=STRING? ')' ';' {input($texto.text.replace('"', ''))}
+    | 'input' '(' listaIds ')' ';'
     ;
 
 impressao: STRING | INT | BOOL | REAL
+    | chamaFunc
 	| expressao
 	| ID
 	;
 
-forLoop: 'for' '(' listaAtrib? ';' verificacao ';' expressao ')' '{' comandos ('break')? '}'
+forLoop: 'for' '(' listaAtrib? ';' verificacao ';' expressao ')' '{' comandosLoop '}'
+    ;
+
+whileLoop: 'while' '(' verificacao ')' '{' comandosLoop '}'
     ;
 
 ifElse: 'if' '(' verificacao ')' '{' comandos '}'
     | 'if' '(' verificacao ')' '{' comandos '}' 'else' '{' comandos '}'
     ;
 
-verificacao: (ID | INT | REAL) (MAIOR_Q | MENOR_Q | MAIOR_IGUAL | MENOR_IGUAL | IGUAL | DIFERENTE) (ID | INT | REAL)
+verificacao: (ID | INT | REAL) comparacao (ID | INT | REAL)
 	| ID (IGUAL | DIFERENTE) (ID | BOOL)
 	| NEG (ID | BOOL)
-	| ID   // precisa vrificar se é bool
+	| ID   // precisa verificar se é bool
 	| BOOL
 	;
 
-expressao returns [int v]: a=expressao op=('*'|'/') b=expressao
+comparacao: MAIOR_Q
+    | MENOR_Q
+    | MAIOR_IGUAL
+    | MENOR_IGUAL
+    | IGUAL
+    | DIFERENTE
+    ;
+
+expressao: a=expressao op=('*'|'/') b=expressao
     | a=expressao op=('+'|'-') b=expressao
-    | INT  {$v=$INT.int}    
-    | ID   {$v=$ID.text}											// concluir depois
-    | '(' expressao ')'             {$v=$expressao.v}
+    | INT    
+    | ID											// concluir depois
+    | '(' expressao ')'
     ;
 
 
