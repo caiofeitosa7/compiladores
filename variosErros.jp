@@ -1,0 +1,41 @@
+int max=100; // Erro: nao eh permitido atribuir valor na definicao de variaveis
+real n1, n2, m;
+const real PI=3.14;
+String ies;
+int 1, 2, 4; // Erro: numeros nao podem ser definidos como ids
+
+main(){
+    int i, j;
+	int x = y = 0; // Erro: definicao nao permitida
+
+	print("Programa media de dois numeros: ");
+	input(n1, n2,); // Erro: falta id apos a virgula
+	m = (n1+n2)/2;
+	print("Media: "+media); // Erro: valores devem ser separados por virgula
+
+    int i; // Erro: variavel declarada apos comandos
+	for (i=0; i<max; i=i+1) {
+	   for (int j=0; j<max; j++) { 
+	   /* Erros: variavel j definida no for. nao temos a atribuicao j++, 
+	   			 mas se quiserem podem implementar */
+
+	      if (i=j=0) { // Erro no operador de igualdade
+	         print("Diagonal principal");
+	      } else if (i>j) {
+	      			print("Acima da diagonal");
+	      		 else
+	      		 	print("Abaixo da diagonal");	
+	      } // Erro: alinhamento do fecha chaves. O else nao eh um comando
+	   }
+	}
+
+    // validacao de mes no intervalo: 1..12 
+    input (mez);  // Isto nao eh um erro sintatico
+	while (mes <= 0 and mes > 12) { // Erro: o operador and eh: &&
+	   print("Mes invalido"); 
+       input(mes)); // Erro: balanceamento de parenteses
+       if (0 =< mes <= 12) // Erro: op. relacionais nao podem ser encadeados
+       	  print("mes valido");
+  	}
+}
+print("eof"); // Erro: comando apos o ultimo fecha chaves

@@ -35,6 +35,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#decVariaveis.
+    def enterDecVariaveis(self, ctx:trabalhoFinalParser.DecVariaveisContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#decVariaveis.
+    def exitDecVariaveis(self, ctx:trabalhoFinalParser.DecVariaveisContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#tipo.
     def enterTipo(self, ctx:trabalhoFinalParser.TipoContext):
         pass
@@ -71,6 +80,24 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#chamaFunc.
+    def enterChamaFunc(self, ctx:trabalhoFinalParser.ChamaFuncContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#chamaFunc.
+    def exitChamaFunc(self, ctx:trabalhoFinalParser.ChamaFuncContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#parametros.
+    def enterParametros(self, ctx:trabalhoFinalParser.ParametrosContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#parametros.
+    def exitParametros(self, ctx:trabalhoFinalParser.ParametrosContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#retornoFuncao.
     def enterRetornoFuncao(self, ctx:trabalhoFinalParser.RetornoFuncaoContext):
         pass
@@ -98,12 +125,21 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#imprime.
-    def enterImprime(self, ctx:trabalhoFinalParser.ImprimeContext):
+    # Enter a parse tree produced by trabalhoFinalParser#comandosLoop.
+    def enterComandosLoop(self, ctx:trabalhoFinalParser.ComandosLoopContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#imprime.
-    def exitImprime(self, ctx:trabalhoFinalParser.ImprimeContext):
+    # Exit a parse tree produced by trabalhoFinalParser#comandosLoop.
+    def exitComandosLoop(self, ctx:trabalhoFinalParser.ComandosLoopContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#printe.
+    def enterPrinte(self, ctx:trabalhoFinalParser.PrinteContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#printe.
+    def exitPrinte(self, ctx:trabalhoFinalParser.PrinteContext):
         pass
 
 
@@ -134,6 +170,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#whileLoop.
+    def enterWhileLoop(self, ctx:trabalhoFinalParser.WhileLoopContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#whileLoop.
+    def exitWhileLoop(self, ctx:trabalhoFinalParser.WhileLoopContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#ifElse.
     def enterIfElse(self, ctx:trabalhoFinalParser.IfElseContext):
         pass
@@ -149,6 +194,15 @@ class trabalhoFinalListener(ParseTreeListener):
 
     # Exit a parse tree produced by trabalhoFinalParser#verificacao.
     def exitVerificacao(self, ctx:trabalhoFinalParser.VerificacaoContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#comparacao.
+    def enterComparacao(self, ctx:trabalhoFinalParser.ComparacaoContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#comparacao.
+    def exitComparacao(self, ctx:trabalhoFinalParser.ComparacaoContext):
         pass
 
 

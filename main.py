@@ -1,12 +1,17 @@
 import sys
 from antlr4 import *
+from sty import fg, bg, ef, rs
 
 from arquivos_antlr.trabalhoFinalLexer import trabalhoFinalLexer
 from arquivos_antlr.trabalhoFinalParser import trabalhoFinalParser
 
 if __name__ == '__main__':
-    print('AntLR com Python:\n')
-    
+    if not sys.argv[1].endswith('.py'):
+        print(fg.red + 'ERRO: A extensão do arquivo deve ser .py' + fg.rs)
+        sys.exit()
+
+    print('\n', '-'*15, 'Trabalho Final', '-'*15, '\n')
+
     with open(sys.argv[1]) as file:
         exp = ''.join(file.readlines())
         
