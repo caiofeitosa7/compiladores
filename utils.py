@@ -36,8 +36,17 @@ def busca_funcao_por_nome(nome_funcao):
 
 
 def verifica_existencia_id(ID):
-	if ID in visivel_no_escopo():		# da forma como está, não aceita variavel local com mesmo nome de uma global
-		lanca_excecao(f'O ID {ID} já está sendo usado.')
+	if funcao_executando:
+		funcao_atual = busca_funcao_por_nome(funcao_executando)
+		variaveis_escopo = list(funcao_atual.variaveis.keys())
+		
+		for v in variaveis_escopo:
+			if v == ID:
+				lanca_excecao(f'A variável "{ID}" já existe em {funcao_executando}.')
+	
+	elif ID in visivel_no_escopo():
+		lanca_excecao(f'O ID "{ID}" já está sendo usado.')
+
 	elif ID in palavras_reservadas:
 		lanca_excecao(f'{ID} é uma palavra reservada, não pode ser utilizada.')
 
