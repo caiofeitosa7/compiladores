@@ -7,7 +7,7 @@ palavras_reservadas = ('if', 'else', 'return', 'print', 'input', 'for', 'while',
                             'True', 'False', 'int', 'real', 'bool', 'String', 'main')
 memoria_global = {
     'contantes': [],
-    'variaveis': [],
+    'variaveis': {},
     'funcoes': []
 }
 
@@ -28,19 +28,22 @@ def salva_variavel(tipo, variavel, valor):
     	except Exception as e:
     		lanca_excecao(f'O valor {valor} não corresponde ao tipo int.')
     else:
-    	valor = True if valor == 'True' else False
+    	try:
+    		valor = bool(valor)
+    	except Exception as e:
+    		lanca_excecao(f'O valor {valor} não corresponde ao tipo bool.')
 
     if funcao_executando:
         funcao = busca_funcao_por_nome(funcao_executando)
-        funcao.variaveis.append({variavel: valor})
+        funcao.variaveis[variavel] = valor
     else:
-    	memoria_global['variaveis'].append({variavel: valor})
+    	memoria_global['variaveis'][variavel] = valor
 
 
 class Funcao():
     tipos = ('int', 'real', 'bool', 'String')
 
-    def __init__(self, nome, tipo_retorno, parametros:list):
+    def __init__(self, nome, tipo_retorno, parametros:dict):
         self.nome = nome
         self.variaveis = parametros
         self.tipo_retorno = tipo_retorno
