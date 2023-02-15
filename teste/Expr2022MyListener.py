@@ -1,11 +1,7 @@
 from antlr4 import *
 
 from gen.Expr2022Listener import Expr2022Listener
-
-if __name__ is not None and "." in __name__:
-    from gen.Expr2022Parser import Expr2022Parser
-else:
-    from gen.Expr2022Parser import Expr2022Parser
+from arquivos_antlr.Expr2022Parser import Expr2022Parser
 
 # Definicao da classe MyListener para evitar sobreposicao durante a geracao do ANTLR
 class Expr2022MyListener(Expr2022Listener):

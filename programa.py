@@ -1,5 +1,5 @@
 int numero, n1, n2;
-real m;
+const real m = 23.4;
 
 int fatorial (int fat){
 	if (fat > 1){
@@ -11,12 +11,10 @@ int fatorial (int fat){
 }
 
 main(){
-	print ("Programa Fatorial. Digite o valor?");
+	print("Programa Fatorial. Digite o valor?");
 	input("numero: ");
 	print(fatorial(numero));
-	print ("Programa Media. Digite o valores?");
-	input(n1, n2);
 	print(mostrarMedia(n1, n2, m));
 }
 
-print("caio")
+print("fim")

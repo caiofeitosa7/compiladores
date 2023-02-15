@@ -5,9 +5,6 @@ from typing.io import TextIO
 import sys
 
 
-from sty import fg, bg, ef, rs
-
-
 
 def serializedATN():
     with StringIO() as buf:

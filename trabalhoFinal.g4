@@ -1,9 +1,5 @@
 grammar trabalhoFinal;
 
-@lexer::header{
-from sty import fg, bg, ef, rs
-}
-
 @parser::members {
 
 # "memoria" para guardar os pares variavel/valor
@@ -73,10 +69,11 @@ tipo: 'int'
 listaIds: ID (',' ID)*
     ;
 
-listaAtrib: 'int' ID '=' INT (',' ID '=' INT)*
-    | 'String' ID '=' STRING (',' ID '=' STRING)*
-    | 'bool' ID '=' BOOL (',' ID '=' BOOL)*
-    | 'real' ID '=' REAL (',' ID '=' REAL)*
+listaAtrib: atribuicao ',' listaAtrib
+    | atribuicao
+    ;
+
+atribuicao: tipo ID '=' (STRING | INT | BOOL | REAL)
     ;
 
 decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis? comandos | retornoFuncao) '}'
@@ -153,7 +150,7 @@ comparacao: MAIOR_Q
 expressao: a=expressao op=('*'|'/') b=expressao
     | a=expressao op=('+'|'-') b=expressao
     | INT    
-    | ID											// concluir depois
+    | ID
     | '(' expressao ')'
     ;
 
@@ -172,10 +169,9 @@ MENOR_Q: '<' ;
 MAIOR_IGUAL: '>=' ;
 MENOR_IGUAL: '<=' ;
 
-
 ID: [a-zA-Z_]([a-zA-Z_0-9]*) ;
 WS: [ \t\n\r]+ -> skip ;
-BOOL: 'True' | 'False' ;
+BOOL returns[]: 'True' | 'False' ;
 REAL: INT+ '.' INT+ ;
 STRING: '"' .*? '"' ;
 INT: [0-9]+ ;

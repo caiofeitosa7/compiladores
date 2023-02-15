@@ -2,6 +2,7 @@ import sys
 from antlr4 import *
 from sty import fg, bg, ef, rs
 
+from trabalhoFinalMyListener import MyListener
 from arquivos_antlr.trabalhoFinalLexer import trabalhoFinalLexer
 from arquivos_antlr.trabalhoFinalParser import trabalhoFinalParser
 
@@ -15,24 +16,20 @@ if __name__ == '__main__':
     with open(sys.argv[1]) as file:
         exp = ''.join(file.readlines())
         
-    print(exp, '\n')
+    #print(exp, '\n')
     
     data = InputStream(exp)
     
     # Lexer
-    
     lexer = trabalhoFinalLexer(data)
     tokens = CommonTokenStream(lexer)
     
-    # print(tokens)
-    
-    # for i in lexer.getAllTokens():
-    #     print(i, i.text)
-    # lexer.reset()
-
     # Parser
     parser = trabalhoFinalParser(tokens)
     tree = parser.prog()
-    
-    
+
+    #
+    l = MyListener()
+    walker = ParseTreeWalker()
+    walker.walk(l, tree)
     
