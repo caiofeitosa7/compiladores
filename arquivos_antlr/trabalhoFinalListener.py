@@ -44,15 +44,6 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#tipo.
-    def enterTipo(self, ctx:trabalhoFinalParser.TipoContext):
-        pass
-
-    # Exit a parse tree produced by trabalhoFinalParser#tipo.
-    def exitTipo(self, ctx:trabalhoFinalParser.TipoContext):
-        pass
-
-
     # Enter a parse tree produced by trabalhoFinalParser#listaIds.
     def enterListaIds(self, ctx:trabalhoFinalParser.ListaIdsContext):
         pass
@@ -80,6 +71,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#tipo.
+    def enterTipo(self, ctx:trabalhoFinalParser.TipoContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#tipo.
+    def exitTipo(self, ctx:trabalhoFinalParser.TipoContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#decFunc.
     def enterDecFunc(self, ctx:trabalhoFinalParser.DecFuncContext):
         pass
@@ -95,6 +95,15 @@ class trabalhoFinalListener(ParseTreeListener):
 
     # Exit a parse tree produced by trabalhoFinalParser#chamaFunc.
     def exitChamaFunc(self, ctx:trabalhoFinalParser.ChamaFuncContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#passagemParametros.
+    def enterPassagemParametros(self, ctx:trabalhoFinalParser.PassagemParametrosContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#passagemParametros.
+    def exitPassagemParametros(self, ctx:trabalhoFinalParser.PassagemParametrosContext):
         pass
 
 
@@ -221,6 +230,24 @@ class trabalhoFinalListener(ParseTreeListener):
 
     # Exit a parse tree produced by trabalhoFinalParser#expressao.
     def exitExpressao(self, ctx:trabalhoFinalParser.ExpressaoContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#chamaID.
+    def enterChamaID(self, ctx:trabalhoFinalParser.ChamaIDContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#chamaID.
+    def exitChamaID(self, ctx:trabalhoFinalParser.ChamaIDContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#salvaID.
+    def enterSalvaID(self, ctx:trabalhoFinalParser.SalvaIDContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#salvaID.
+    def exitSalvaID(self, ctx:trabalhoFinalParser.SalvaIDContext):
         pass
 
 

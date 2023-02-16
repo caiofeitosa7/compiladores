@@ -52,35 +52,42 @@ vazio:
 prog: decVarConst* decFunc* main
     ;
 
-decVarConst: tipo listaIds ';'
-    | 'const' listaAtrib ';'
+decVarConst: t=tipo listaIds[$t.text] ';'
+    | 'const' t=tipo listaAtrib[$t.text] ';'
     ;
 
-decVariaveis: tipo listaIds ';'
-    | listaAtrib ';'
+decVariaveis: t=tipo listaIds[$t.text] ';'
+    | t=tipo listaAtrib[$t.text] ';'
     ;
 
-tipo: 'int'
-    | 'real'
-    | 'bool'
-    | 'String'
+listaIds [str type]
+    : salvaID[type] ',' listaIds[type]
+    | salvaID[type]
     ;
 
-listaIds: ID (',' ID)*
+listaAtrib [str type]
+    : atribuicao[type] ',' listaAtrib[type]
+    | atribuicao[type]
     ;
 
-listaAtrib: atribuicao ',' listaAtrib
-    | atribuicao
+atribuicao[str type]: ID '=' (STRING | INT | BOOL | REAL)
     ;
 
-atribuicao: tipo ID '=' (STRING | INT | BOOL | REAL)
+tipo: inteiro='int'
+    | real='real'
+    | boolean='bool'
+    | string='String'
     ;
 
 decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis? comandos | retornoFuncao) '}'
 	| ID '(' parametros? ')' '{' decVariaveis? comandos '}'
     ;
 
-chamaFunc: ID '(' listaIds? ')'
+chamaFunc: ID '(' passagemParametros? ')'
+    ;
+
+passagemParametros: chamaID (',' chamaID)
+    | chamaID
     ;
 
 parametros: tipo ID (',' tipo ID)*
@@ -113,7 +120,7 @@ printe: 'print' '(' dado=impressao {print($dado.text.replace('"', ''), end='')} 
 	;
 
 entrada: 'input' '(' texto=STRING? ')' ';' {input($texto.text.replace('"', ''))}
-    | 'input' '(' listaIds ')' ';'
+    | 'input' '(' passagemParametros ')' ';'
     ;
 
 impressao: STRING | INT | BOOL | REAL
@@ -122,7 +129,7 @@ impressao: STRING | INT | BOOL | REAL
 	| ID
 	;
 
-forLoop: 'for' '(' listaAtrib? ';' verificacao ';' expressao ')' '{' comandosLoop '}'
+forLoop: 'for' '(' t=tipo listaAtrib[$t.text]? ';' verificacao ';' expressao ')' '{' comandosLoop '}'
     ;
 
 whileLoop: 'while' '(' verificacao ')' '{' comandosLoop '}'
@@ -150,9 +157,18 @@ comparacao: MAIOR_Q
 expressao: a=expressao op=('*'|'/') b=expressao
     | a=expressao op=('+'|'-') b=expressao
     | INT    
-    | ID
+    | chamaID
     | '(' expressao ')'
     ;
+
+chamaID returns [str nome]
+    : ID
+    ;
+
+salvaID [str type]
+    : ID
+    ;
+
 
 
 // Regras lexicas
@@ -171,7 +187,7 @@ MENOR_IGUAL: '<=' ;
 
 ID: [a-zA-Z_]([a-zA-Z_0-9]*) ;
 WS: [ \t\n\r]+ -> skip ;
-BOOL returns[]: 'True' | 'False' ;
+BOOL: 'True' | 'False' ;
 REAL: INT+ '.' INT+ ;
 STRING: '"' .*? '"' ;
 INT: [0-9]+ ;
