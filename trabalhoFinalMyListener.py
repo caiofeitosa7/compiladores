@@ -57,27 +57,34 @@ class MyListener(ParseTreeListener):
         salva_variavel(tipo, variavel, valor)
 
     def exitTipo(self, ctx):
-        if ctx.real:
-            ctx.type = 'real'
-        elif ctx.inteiro:
-            ctx.type = 'int'
-        elif ctx.boolean:
-            ctx.type = 'bool'
-        elif ctx.string:
-            ctx.type = 'String'
-        else:
+        if (not ctx.real) and (not ctx.inteiro) and (not ctx.boolean) and (not ctx.string):
             lanca_excecao('Tipo inválido.')
+
+    def exitPrinte(self, ctx):
+        print(ctx.dado, end='')
+
+#     def exitImprime(self, ctx):
+#         print(ctx.valor, end='')
+
+#     def exitImpressao(self, ctx):
+#         print(ctx.valor, end='')
+
 
     def exitSalvaID(self, ctx):
         salva_variavel(ctx.type, ctx.ID().getText())
 
     def exitChamaID(self, ctx):
         elem = ctx.ID().getText()
+        
+        print(elem)
 
         if not elem in visivel_no_escopo():
             lanca_excecao(f'{elem} não foi definido.')
         else:
-            ctx.nome = elem
+            if funcao_executando:
+                funcao = busca_funcao_por_nome(funcao_executando)
+                ctx.valor = funcao.variaveis[str(elem)]
+
 
 
 
@@ -116,7 +123,6 @@ def salva_variavel(tipo, variavel, valor=None):
             funcao.variaveis[variavel] = valor
         else:
             memoria_global['variaveis'][variavel] = valor
-
 
     print(memoria_global['variaveis'])
 

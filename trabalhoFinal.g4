@@ -70,7 +70,7 @@ listaAtrib [str type]
     | atribuicao[type]
     ;
 
-atribuicao[str type]: ID '=' (STRING | INT | BOOL | REAL)
+atribuicao[str type]: ID '=' val=(STRING | INT | BOOL | REAL)
     ;
 
 tipo: inteiro='int'
@@ -116,17 +116,23 @@ comandosLoop: forLoop comandosLoop
     | vazio
     ;
 
-printe: 'print' '(' dado=impressao {print($dado.text.replace('"', ''), end='')} (',' dado2=impressao {print($dado2.text.replace('"', ''), end='')})* ')' ';' {print()}
-	;
-
 entrada: 'input' '(' texto=STRING? ')' ';' {input($texto.text.replace('"', ''))}
     | 'input' '(' passagemParametros ')' ';'
     ;
 
-impressao: STRING | INT | BOOL | REAL
+printe: 'print' '(' dado=chamaID ')' ';' {print()}
+	;
+
+imprime returns [valor]
+    : impressao imprime
+    | impressao
+    ;
+
+impressao returns [valor]
+    : (STRING | INT | BOOL | REAL)
     | chamaFunc
 	| expressao
-	| ID
+	| chamaID
 	;
 
 forLoop: 'for' '(' t=tipo listaAtrib[$t.text]? ';' verificacao ';' expressao ')' '{' comandosLoop '}'
@@ -161,7 +167,7 @@ expressao: a=expressao op=('*'|'/') b=expressao
     | '(' expressao ')'
     ;
 
-chamaID returns [str nome]
+chamaID returns [float valor]
     : ID
     ;
 
