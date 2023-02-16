@@ -29,11 +29,6 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#tipo.
-    def visitTipo(self, ctx:trabalhoFinalParser.TipoContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by trabalhoFinalParser#listaIds.
     def visitListaIds(self, ctx:trabalhoFinalParser.ListaIdsContext):
         return self.visitChildren(ctx)
@@ -44,6 +39,16 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by trabalhoFinalParser#atribuicao.
+    def visitAtribuicao(self, ctx:trabalhoFinalParser.AtribuicaoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#tipo.
+    def visitTipo(self, ctx:trabalhoFinalParser.TipoContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by trabalhoFinalParser#decFunc.
     def visitDecFunc(self, ctx:trabalhoFinalParser.DecFuncContext):
         return self.visitChildren(ctx)
@@ -51,6 +56,11 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by trabalhoFinalParser#chamaFunc.
     def visitChamaFunc(self, ctx:trabalhoFinalParser.ChamaFuncContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#passagemParametros.
+    def visitPassagemParametros(self, ctx:trabalhoFinalParser.PassagemParametrosContext):
         return self.visitChildren(ctx)
 
 
@@ -121,6 +131,16 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by trabalhoFinalParser#expressao.
     def visitExpressao(self, ctx:trabalhoFinalParser.ExpressaoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#chamaID.
+    def visitChamaID(self, ctx:trabalhoFinalParser.ChamaIDContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#salvaID.
+    def visitSalvaID(self, ctx:trabalhoFinalParser.SalvaIDContext):
         return self.visitChildren(ctx)
 
 
