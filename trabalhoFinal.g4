@@ -167,7 +167,7 @@ expressao: a=expressao op=('*'|'/') b=expressao
     | '(' expressao ')'
     ;
 
-chamaID returns [float valor]
+chamaID returns [tipo, valor]
     : ID
     ;
 
