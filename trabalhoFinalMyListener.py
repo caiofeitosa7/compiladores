@@ -26,6 +26,7 @@ mapa_tipos = {
 '''
 funcao_executando = ''
 tipo_declaracao = ''
+salvando_variavel = False
 
 
 class Funcao():
@@ -58,20 +59,31 @@ class Funcao():
 
 class MyListener(ParseTreeListener):
     def enterDecVarConst(self, ctx):
-        global tipo_declaracao
+        global tipo_declaracao, salvando_variavel
         tipo_declaracao = ctx.t.getText()
+        salvando_variavel = True
+        
+    def exitDecVarConst(self, ctx):
+        global tipo_declaracao, salvando_variavel
+        salvando_variavel = False
 
     def enterDecVariaveis(self, ctx):
-        global tipo_declaracao
+        global tipo_declaracao, salvando_variavel
         tipo_declaracao = ctx.t.getText()
+        salvando_variavel = True
+        
+    def exitDecVariaveis(self, ctx):
+        global tipo_declaracao, salvando_variavel
+        salvando_variavel = False
 
     def exitSalvaID(self, ctx):
         salva_variavel(ctx.ID().getText())
 
     def exitAtribuicao(self, ctx):
-        variavel = ctx.ID().getText()
         valor = ctx.valor.text
+        variavel = ctx.ID().getText()
         salva_variavel(variavel, valor)
+            
         
 
     # def enterTipo(self, ctx):
@@ -144,17 +156,19 @@ def salva_variavel(variavel, valor=None):
         except Exception as e:
             lanca_excecao(f'O valor {valor} não corresponde ao tipo bool.')
 
-    if not verifica_existencia_id(variavel):
+    if not verifica_existencia_id(variavel) and not salvando_variavel:
+        lanca_excecao(f'A variavel {variavel} não foi instanciada.')
+    else:
         if funcao_executando:
             funcao = busca_funcao_por_nome(funcao_executando)
             funcao.variaveis[variavel] = valor
         else:
             memoria_global['variaveis'][variavel] = valor
 
-    print(memoria_global['variaveis'])
+#    print(memoria_global['variaveis'])
 
-    for key, val in memoria_global['variaveis'].items():
-        print(key, type(val))
+#    for key, val in memoria_global['variaveis'].items():
+#        print(key, type(val))
 
     
 def visivel_no_escopo():
