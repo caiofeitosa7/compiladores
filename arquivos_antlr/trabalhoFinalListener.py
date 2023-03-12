@@ -152,6 +152,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#entrada.
+    def enterEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#entrada.
+    def exitEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#printe.
     def enterPrinte(self, ctx:trabalhoFinalParser.PrinteContext):
         pass
@@ -161,12 +170,12 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#entrada.
-    def enterEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+    # Enter a parse tree produced by trabalhoFinalParser#imprime.
+    def enterImprime(self, ctx:trabalhoFinalParser.ImprimeContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#entrada.
-    def exitEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+    # Exit a parse tree produced by trabalhoFinalParser#imprime.
+    def exitImprime(self, ctx:trabalhoFinalParser.ImprimeContext):
         pass
 
 
