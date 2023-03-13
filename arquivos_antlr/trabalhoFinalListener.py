@@ -62,12 +62,21 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#atribuicao.
-    def enterAtribuicao(self, ctx:trabalhoFinalParser.AtribuicaoContext):
+    # Enter a parse tree produced by trabalhoFinalParser#AtribValor.
+    def enterAtribValor(self, ctx:trabalhoFinalParser.AtribValorContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#atribuicao.
-    def exitAtribuicao(self, ctx:trabalhoFinalParser.AtribuicaoContext):
+    # Exit a parse tree produced by trabalhoFinalParser#AtribValor.
+    def exitAtribValor(self, ctx:trabalhoFinalParser.AtribValorContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#AtribID.
+    def enterAtribID(self, ctx:trabalhoFinalParser.AtribIDContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#AtribID.
+    def exitAtribID(self, ctx:trabalhoFinalParser.AtribIDContext):
         pass
 
 

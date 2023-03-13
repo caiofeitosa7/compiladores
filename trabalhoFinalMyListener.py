@@ -79,10 +79,16 @@ class MyListener(ParseTreeListener):
     def exitSalvaID(self, ctx):
         salva_variavel(ctx.ID().getText())
 
-    def exitAtribuicao(self, ctx):
+    def exitAtribValor(self, ctx):
         valor = ctx.valor.text
         variavel = ctx.ID().getText()
         salva_variavel(variavel, valor)
+        
+    def exitAtribID(self, ctx):
+        variavel = ctx.ID().getText()
+        valor = ctx.chamaID().valor
+        salva_variavel(variavel, valor)
+        
             
         
 
@@ -109,63 +115,87 @@ class MyListener(ParseTreeListener):
     # def exitImpressao(self, ctx):
     #     print(ctx.valor, end='')
 
-    # def exitChamaID(self, ctx):
-    #     elem = ctx.ID().getText()
-        
-    #     print(elem)
+    def exitChamaID(self, ctx):
+        nome_variavel = ctx.ID().getText()
 
-    #     if not elem in visivel_no_escopo():
-    #         lanca_excecao(f'{elem} não foi definido.')
-    #     else:
-    #         if funcao_executando:
-    #             funcao = busca_funcao_por_nome(funcao_executando)
-    #             ctx.valor = funcao.variaveis[str(elem)]
+        if not nome_variavel in visivel_no_escopo():
+            lanca_excecao(f'{nome_variavel} não foi definido.')
+        else:
+            variavel = busca_variavel_por_nome(nome_variavel)
+            ctx.type = converte_tipo_variavel(type(variavel[1]))
+            ctx.valor = variavel[1]
 
 
-
-
-def salva_variavel(variavel, valor=None):
+def converte_tipo_variavel(tipo):
     '''
-        Salva uma variável de acordo com seu tipo e escopo em que foi instanciada.
+        Converte um tipo python em um tipo da nova linguagem criada
     '''
-    if tipo_declaracao == 'real':
+    
+    for tipo_real, tipo_python in mapa_tipos.items():
+        if tipo == tipo_python:
+            return tipo_real
+
+
+def verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor):
+    '''
+        Compara o tipo da variável com o tipo do valor que será atribuido a ela.
+        Se o valor for compatível com o tipo da variável, ele é retornado.
+    '''
+    
+    if tipo_variavel == 'real':
         try:
             valor = float(valor)
         except Exception as e:
             if not valor:
                 valor = float()
             else:
-                lanca_excecao(f'O valor {valor} não corresponde ao tipo real.')
+                lanca_excecao(f'O valor "{valor}"não pode ser atribuído à {nome_variavel}, pois não corresponde ao tipo real.')
 
-    elif tipo_declaracao == 'String':
+    elif tipo_variavel == 'String':
         valor = str(valor).replace('"', '')
         if not valor:
             valor = str()
 
-    elif tipo_declaracao == 'int':
+    elif tipo_variavel == 'int':
         try:
             valor = int(valor)
         except Exception as e:
             if not valor:
                 valor = int()
             else:
-                lanca_excecao(f'O valor {valor} não corresponde ao tipo int.')
+                lanca_excecao(f'O valor "{valor}" não pode ser atribuído à {nome_variavel}, pois não corresponde ao tipo int.')
     else:
         try:
             valor = bool(valor)
         except Exception as e:
-            lanca_excecao(f'O valor {valor} não corresponde ao tipo bool.')
-
-    if not verifica_existencia_id(variavel) and not salvando_variavel:
-        lanca_excecao(f'A variavel {variavel} não foi instanciada.')
+            lanca_excecao(f'O valor "{valor}" não pode ser atribuído à {nome_variavel}, pois não corresponde ao tipo bool.')
+            
+    return valor
+    
+    
+def salva_variavel(nome_variavel, valor=None):
+    '''
+        Salva uma variável de acordo com o escopo em que foi instanciada.
+    '''
+    
+    tipo_variavel = tipo_declaracao
+    variavel = busca_variavel_por_nome(nome_variavel)    # retorna (nome_variavel, valor_variavel)
+    
+    if not salvando_variavel and variavel:
+        tipo_variavel = converte_tipo_variavel(type(variavel[1]))
+    
+    if not verifica_existencia_id(nome_variavel) and not salvando_variavel:
+        lanca_excecao(f'A variavel "{nome_variavel}" não foi instanciada.')
     else:
+        valor = verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor)
+        
         if funcao_executando:
             funcao = busca_funcao_por_nome(funcao_executando)
-            funcao.variaveis[variavel] = valor
+            funcao.variaveis[nome_variavel] = valor
         else:
-            memoria_global['variaveis'][variavel] = valor
+            memoria_global['variaveis'][nome_variavel] = valor
 
-#    print(memoria_global['variaveis'])
+    print(memoria_global['variaveis'])
 
 #    for key, val in memoria_global['variaveis'].items():
 #        print(key, type(val))
@@ -175,6 +205,7 @@ def visivel_no_escopo():
     '''
         Lista todos os IDs que podem ser referenciados no escopo atual
     '''
+    
     uso_liberado = set()
 
     if funcao_executando:
@@ -190,10 +221,28 @@ def visivel_no_escopo():
     return uso_liberado
 
 
-def busca_funcao_por_nome(nome_funcao):
+def busca_variavel_por_nome(nome_variavel: str):
+    '''
+       Procura a variável pelo nome passado por parâmetro.
+       Retorna uma tupla onde a primeira posição é o nome da variável e a segunda é o valor.
+       
+       Returns: (nome_variavel, valor_variavel)
+    '''
+    
+    if nome_variavel not in visivel_no_escopo():
+        return False
+    
+    if funcao_executando:
+        funcao = busca_funcao_por_nome(funcao_executando)
+        return [v for v in funcao.variaveis.items() if v[0] == nome_variavel][0]
+    return [v for v in memoria_global['variaveis'].items() if v[0] == nome_variavel][0]
+
+
+def busca_funcao_por_nome(nome_funcao: str):
     '''
         Verifica se a função passada por parâmetro já foi instanciada.
     '''
+    
     return [f for f in memoria_global['funcoes'] if f.nome == nome_funcao][0]
 
 
@@ -203,15 +252,20 @@ def verifica_existencia_id(ID):
         Essa verificação é feita de acordo com o escopo: primeiro verifica dentro da função,
         se houver alguma executando; Depois verifica no escopo global e palavras reservadas.
     '''
+    
     if funcao_executando:
         funcao_atual = busca_funcao_por_nome(funcao_executando)
         variaveis_escopo = list(funcao_atual.variaveis.keys())
         
         for v in variaveis_escopo:
             if v == ID:
+                if not salvando_variavel:
+                    return True
                 lanca_excecao(f'A variável "{ID}" já existe em {funcao_executando}.')
 
     elif ID in visivel_no_escopo():
+        if not salvando_variavel:
+            return True
         lanca_excecao(f'O ID "{ID}" já está sendo usado.')
 
     elif ID in palavras_reservadas:

@@ -3,7 +3,9 @@ const String caio = "funcionou";
 const real m = 23.4, c = 12.1;
 
 main(){
-	real aaa = 1.1
+    real aaa = 2.2, bbb = aaa;
+    int ccc = aaa; 
+    caio = "asfjkdhf";
+    aaa = 223467.2;
+    aaa = ccc;
 }
-
-print("fim")

@@ -52,25 +52,26 @@ vazio:
 prog: decVarConst* decFunc* main
     ;
 
-decVarConst: t=tipo listaIds ';'
-    | 'const' t=tipo listaAtrib ';'
+decVarConst: t=tipo listaIds
+    | 'const' t=tipo listaAtrib
     ;
 
-decVariaveis: t=tipo listaIds ';'
-    | t=tipo listaAtrib ';'
+decVariaveis: t=tipo listaIds
+    | t=tipo listaAtrib
     ;
 
 listaIds
     : salvaID ',' listaIds
-    | salvaID
+    | salvaID ';'
     ;
 
 listaAtrib
     : atribuicao ',' listaAtrib
-    | atribuicao
+    | atribuicao ';'
     ;
 
-atribuicao: ID '=' valor=(STRING | INT | BOOL | REAL)
+atribuicao: ID '=' valor=(STRING | INT | BOOL | REAL)      #AtribValor
+    | ID '=' chamaID                                       #AtribID
     ;
 
 tipo: 'int'
@@ -79,8 +80,8 @@ tipo: 'int'
     | 'String'
     ;
 
-decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis? comandos | retornoFuncao) '}'
-	| ID '(' parametros? ')' '{' decVariaveis? comandos '}'
+decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis* comandos | retornoFuncao) '}'
+	| ID '(' parametros? ')' '{' decVariaveis* comandos '}'
     ;
 
 chamaFunc: ID '(' passagemParametros? ')'
@@ -96,7 +97,7 @@ parametros: tipo ID (',' tipo ID)*
 retornoFuncao: 'return' impressao ';'
 	;
 
-main: 'main' '(' ')' '{' comandos '}'
+main: 'main' '(' ')' '{' decVariaveis* comandos '}'
     ;
 
 comandos: forLoop comandos
@@ -104,6 +105,7 @@ comandos: forLoop comandos
     | printe comandos
     | entrada comandos
     | retornoFuncao comandos
+    | listaAtrib comandos
     | vazio
     ;
 
@@ -112,6 +114,7 @@ comandosLoop: forLoop comandosLoop
     | printe comandosLoop
     | entrada comandosLoop
     | retornoFuncao comandosLoop
+    | listaAtrib comandos
     | 'break' ';'
     | vazio
     ;
