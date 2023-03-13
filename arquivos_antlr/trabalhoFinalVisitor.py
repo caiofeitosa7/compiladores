@@ -39,8 +39,13 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#atribuicao.
-    def visitAtribuicao(self, ctx:trabalhoFinalParser.AtribuicaoContext):
+    # Visit a parse tree produced by trabalhoFinalParser#AtribValor.
+    def visitAtribValor(self, ctx:trabalhoFinalParser.AtribValorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#AtribID.
+    def visitAtribID(self, ctx:trabalhoFinalParser.AtribIDContext):
         return self.visitChildren(ctx)
 
 
@@ -89,13 +94,18 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by trabalhoFinalParser#entrada.
+    def visitEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by trabalhoFinalParser#printe.
     def visitPrinte(self, ctx:trabalhoFinalParser.PrinteContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#entrada.
-    def visitEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+    # Visit a parse tree produced by trabalhoFinalParser#imprime.
+    def visitImprime(self, ctx:trabalhoFinalParser.ImprimeContext):
         return self.visitChildren(ctx)
 
 

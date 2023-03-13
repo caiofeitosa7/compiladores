@@ -6,25 +6,43 @@ from arquivos_antlr.trabalhoFinalParser import trabalhoFinalParser
 palavras_reservadas = ('if', 'else', 'return', 'print', 'input', 'for', 'while', 'break',
                             'True', 'False', 'int', 'real', 'bool', 'String', 'main')
 memoria_global = {
-    'constantes': [],
+    'constantes': {},
     'variaveis': {},
     'funcoes': []
 }
 
 mapa_tipos = {
-    'real': float
+    'real': float,
+    'String': str,
+    'bool': bool,
+    'int': int
 }
 
+
+'''
+    A variável funcao_executando define qual escopo está ativo no momento.
+    Quando ela não está vazia (guardando o nome da função em execução), significa que uma função está executando, ao passo que o escopo é local.
+    Quando funcao_executando está vazia, nenhuma função está em execução, o escopo ativo é o global.
+'''
 funcao_executando = ''
+tipo_declaracao = ''
+salvando_variavel = False
 
 
 class Funcao():
+    ####### Tá faltando verificar a quantidade e o tipo dos parâmetros quando a função for chamada ########
+
     def __init__(self, nome, tipo_retorno, parametros:dict):
         self.nome = nome
-        self.variaveis = parametros
+        self.parametros = parametros
+        self.variaveis = self.parametros
         self.tipo_retorno = tipo_retorno
 
     def verifica_tipo_retorno(t):
+        '''
+            Verifica se o retorno utilizado é o tipo especificado quando a função foi instanciada.
+        '''
+
         tipo = type(t)
 
         if tipo_retorno == 'real' and tipo is float:
@@ -40,88 +58,154 @@ class Funcao():
 
 
 class MyListener(ParseTreeListener):
-    def exitAtribuicao(self, ctx):
-    #def exitAtribuicao(self, ctx:trabalhoFinalParser.AtribuicaoContext):
-        variavel = ctx.ID().getText()
-        tipo = ctx.type
+    def enterDecVarConst(self, ctx):
+        global tipo_declaracao, salvando_variavel
+        tipo_declaracao = ctx.t.getText()
+        salvando_variavel = True
+        
+    def exitDecVarConst(self, ctx):
+        global tipo_declaracao, salvando_variavel
+        salvando_variavel = False
 
-        if ctx.BOOL():
-            valor = ctx.BOOL().getText()
-        elif ctx.INT():
-            valor = ctx.INT().getText()
-        elif ctx.REAL():
-            valor = ctx.REAL().getText()
-        elif ctx.STRING():
-            valor = ctx.STRING().getText()
-
-        salva_variavel(tipo, variavel, valor)
-
-    def exitTipo(self, ctx):
-        if ctx.real:
-            ctx.type = 'real'
-        elif ctx.inteiro:
-            ctx.type = 'int'
-        elif ctx.boolean:
-            ctx.type = 'bool'
-        elif ctx.string:
-            ctx.type = 'String'
-        else:
-            lanca_excecao('Tipo inválido.')
+    def enterDecVariaveis(self, ctx):
+        global tipo_declaracao, salvando_variavel
+        tipo_declaracao = ctx.t.getText()
+        salvando_variavel = True
+        
+    def exitDecVariaveis(self, ctx):
+        global tipo_declaracao, salvando_variavel
+        salvando_variavel = False
 
     def exitSalvaID(self, ctx):
-        salva_variavel(ctx.type, ctx.ID().getText())
+        salva_variavel(ctx.ID().getText())
+
+    def exitAtribValor(self, ctx):
+        valor = ctx.valor.text
+        variavel = ctx.ID().getText()
+        salva_variavel(variavel, valor)
+        
+    def exitAtribID(self, ctx):
+        variavel = ctx.ID().getText()
+        valor = ctx.chamaID().valor
+        salva_variavel(variavel, valor)
+        
+            
+        
+
+    # def enterTipo(self, ctx):
+    # # if (not ctx.real) and (not ctx.inteiro) and (not ctx.boolean) and (not ctx.string):
+    #   if ctx.t.getText() not in mapa_tipos.keys():
+    #       lanca_excecao('Tipo inválido.')
+    #   type = ctx.t.getText()
+
+    #   print(ctx.t.getText())
+
+
+#     def exitPrinte(self, ctx):
+#         print(ctx.dado, end='')
+
+
+    # def exitID(self, ctx):
+    #     ctx.tipo = type()
+    #     ctx.ID().getText()
+
+    # def exitImprime(self, ctx):
+    #     print(ctx.valor, end='')
+
+    # def exitImpressao(self, ctx):
+    #     print(ctx.valor, end='')
 
     def exitChamaID(self, ctx):
-        elem = ctx.ID().getText()
+        nome_variavel = ctx.ID().getText()
 
-        if not elem in visivel_no_escopo():
-            lanca_excecao(f'{elem} não foi definido.')
+        if not nome_variavel in visivel_no_escopo():
+            lanca_excecao(f'{nome_variavel} não foi definido.')
         else:
-            ctx.nome = elem
+            variavel = busca_variavel_por_nome(nome_variavel)
+            ctx.type = converte_tipo_variavel(type(variavel[1]))
+            ctx.valor = variavel[1]
 
 
+def converte_tipo_variavel(tipo):
+    '''
+        Converte um tipo python em um tipo da nova linguagem criada
+    '''
+    
+    for tipo_real, tipo_python in mapa_tipos.items():
+        if tipo == tipo_python:
+            return tipo_real
 
-def salva_variavel(tipo, variavel, valor=None):
-    if tipo == 'real':
+
+def verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor):
+    '''
+        Compara o tipo da variável com o tipo do valor que será atribuido a ela.
+        Se o valor for compatível com o tipo da variável, ele é retornado.
+    '''
+    
+    if tipo_variavel == 'real':
         try:
             valor = float(valor)
         except Exception as e:
             if not valor:
                 valor = float()
             else:
-                lanca_excecao(f'O valor {valor} não corresponde ao tipo real.')
+                lanca_excecao(f'O valor "{valor}"não pode ser atribuído à {nome_variavel}, pois não corresponde ao tipo real.')
 
-    elif tipo == 'String':
-        valor = str(valor)
+    elif tipo_variavel == 'String':
+        valor = str(valor).replace('"', '')
         if not valor:
             valor = str()
 
-    elif tipo == 'int':
+    elif tipo_variavel == 'int':
         try:
             valor = int(valor)
         except Exception as e:
             if not valor:
                 valor = int()
             else:
-                lanca_excecao(f'O valor {valor} não corresponde ao tipo int.')
+                lanca_excecao(f'O valor "{valor}" não pode ser atribuído à {nome_variavel}, pois não corresponde ao tipo int.')
     else:
         try:
             valor = bool(valor)
         except Exception as e:
-            lanca_excecao(f'O valor {valor} não corresponde ao tipo bool.')
-
-    if not verifica_existencia_id(variavel):
+            lanca_excecao(f'O valor "{valor}" não pode ser atribuído à {nome_variavel}, pois não corresponde ao tipo bool.')
+            
+    return valor
+    
+    
+def salva_variavel(nome_variavel, valor=None):
+    '''
+        Salva uma variável de acordo com o escopo em que foi instanciada.
+    '''
+    
+    tipo_variavel = tipo_declaracao
+    variavel = busca_variavel_por_nome(nome_variavel)    # retorna (nome_variavel, valor_variavel)
+    
+    if not salvando_variavel and variavel:
+        tipo_variavel = converte_tipo_variavel(type(variavel[1]))
+    
+    if not verifica_existencia_id(nome_variavel) and not salvando_variavel:
+        lanca_excecao(f'A variavel "{nome_variavel}" não foi instanciada.')
+    else:
+        valor = verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor)
+        
         if funcao_executando:
             funcao = busca_funcao_por_nome(funcao_executando)
-            funcao.variaveis[variavel] = valor
+            funcao.variaveis[nome_variavel] = valor
         else:
-            memoria_global['variaveis'][variavel] = valor
-
+            memoria_global['variaveis'][nome_variavel] = valor
 
     print(memoria_global['variaveis'])
 
+#    for key, val in memoria_global['variaveis'].items():
+#        print(key, type(val))
+
     
 def visivel_no_escopo():
+    '''
+        Lista todos os IDs que podem ser referenciados no escopo atual
+    '''
+    
     uso_liberado = set()
 
     if funcao_executando:
@@ -129,7 +213,7 @@ def visivel_no_escopo():
         uso_liberado = set(list(funcao_atual.variaveis.keys()))
 
     nomes_funcoes = [funcao.nome for funcao in memoria_global['funcoes']]
-    escopo_global = memoria_global['constantes'] + list(memoria_global['variaveis'].keys()) + nomes_funcoes
+    escopo_global = list(memoria_global['constantes'].keys()) + list(memoria_global['variaveis'].keys()) + nomes_funcoes
 
     for identificador in escopo_global:
         uso_liberado.add(identificador)
@@ -137,20 +221,51 @@ def visivel_no_escopo():
     return uso_liberado
 
 
-def busca_funcao_por_nome(nome_funcao):
+def busca_variavel_por_nome(nome_variavel: str):
+    '''
+       Procura a variável pelo nome passado por parâmetro.
+       Retorna uma tupla onde a primeira posição é o nome da variável e a segunda é o valor.
+       
+       Returns: (nome_variavel, valor_variavel)
+    '''
+    
+    if nome_variavel not in visivel_no_escopo():
+        return False
+    
+    if funcao_executando:
+        funcao = busca_funcao_por_nome(funcao_executando)
+        return [v for v in funcao.variaveis.items() if v[0] == nome_variavel][0]
+    return [v for v in memoria_global['variaveis'].items() if v[0] == nome_variavel][0]
+
+
+def busca_funcao_por_nome(nome_funcao: str):
+    '''
+        Verifica se a função passada por parâmetro já foi instanciada.
+    '''
+    
     return [f for f in memoria_global['funcoes'] if f.nome == nome_funcao][0]
 
 
 def verifica_existencia_id(ID):
+    '''
+        Verifica se já existe o nome de uma variável ou funcão já instanciada com o ID do parâmetro.
+        Essa verificação é feita de acordo com o escopo: primeiro verifica dentro da função,
+        se houver alguma executando; Depois verifica no escopo global e palavras reservadas.
+    '''
+    
     if funcao_executando:
         funcao_atual = busca_funcao_por_nome(funcao_executando)
         variaveis_escopo = list(funcao_atual.variaveis.keys())
         
         for v in variaveis_escopo:
             if v == ID:
+                if not salvando_variavel:
+                    return True
                 lanca_excecao(f'A variável "{ID}" já existe em {funcao_executando}.')
 
     elif ID in visivel_no_escopo():
+        if not salvando_variavel:
+            return True
         lanca_excecao(f'O ID "{ID}" já está sendo usado.')
 
     elif ID in palavras_reservadas:

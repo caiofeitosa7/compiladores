@@ -62,12 +62,21 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#atribuicao.
-    def enterAtribuicao(self, ctx:trabalhoFinalParser.AtribuicaoContext):
+    # Enter a parse tree produced by trabalhoFinalParser#AtribValor.
+    def enterAtribValor(self, ctx:trabalhoFinalParser.AtribValorContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#atribuicao.
-    def exitAtribuicao(self, ctx:trabalhoFinalParser.AtribuicaoContext):
+    # Exit a parse tree produced by trabalhoFinalParser#AtribValor.
+    def exitAtribValor(self, ctx:trabalhoFinalParser.AtribValorContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#AtribID.
+    def enterAtribID(self, ctx:trabalhoFinalParser.AtribIDContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#AtribID.
+    def exitAtribID(self, ctx:trabalhoFinalParser.AtribIDContext):
         pass
 
 
@@ -152,6 +161,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#entrada.
+    def enterEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#entrada.
+    def exitEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#printe.
     def enterPrinte(self, ctx:trabalhoFinalParser.PrinteContext):
         pass
@@ -161,12 +179,12 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#entrada.
-    def enterEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+    # Enter a parse tree produced by trabalhoFinalParser#imprime.
+    def enterImprime(self, ctx:trabalhoFinalParser.ImprimeContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#entrada.
-    def exitEntrada(self, ctx:trabalhoFinalParser.EntradaContext):
+    # Exit a parse tree produced by trabalhoFinalParser#imprime.
+    def exitImprime(self, ctx:trabalhoFinalParser.ImprimeContext):
         pass
 
 
