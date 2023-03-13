@@ -52,31 +52,31 @@ vazio:
 prog: decVarConst* decFunc* main
     ;
 
-decVarConst: t=tipo listaIds[$t.text] ';'
-    | 'const' t=tipo listaAtrib[$t.text] ';'
+decVarConst: t=tipo listaIds ';'
+    | 'const' t=tipo listaAtrib ';'
     ;
 
-decVariaveis: t=tipo listaIds[$t.text] ';'
-    | t=tipo listaAtrib[$t.text] ';'
+decVariaveis: t=tipo listaIds ';'
+    | t=tipo listaAtrib ';'
     ;
 
-listaIds [str type]
-    : salvaID[type] ',' listaIds[type]
-    | salvaID[type]
+listaIds
+    : salvaID ',' listaIds
+    | salvaID
     ;
 
-listaAtrib [str type]
-    : atribuicao[type] ',' listaAtrib[type]
-    | atribuicao[type]
+listaAtrib
+    : atribuicao ',' listaAtrib
+    | atribuicao
     ;
 
-atribuicao[str type]: ID '=' (STRING | INT | BOOL | REAL)
+atribuicao: ID '=' valor=(STRING | INT | BOOL | REAL)
     ;
 
-tipo: inteiro='int'
-    | real='real'
-    | boolean='bool'
-    | string='String'
+tipo: 'int'
+    | 'real'
+    | 'bool'
+    | 'String'
     ;
 
 decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis? comandos | retornoFuncao) '}'
@@ -86,8 +86,8 @@ decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis? comandos | retornoFuncao
 chamaFunc: ID '(' passagemParametros? ')'
     ;
 
-passagemParametros: chamaID (',' chamaID)
-    | chamaID
+passagemParametros: ID (',' ID)
+    | ID
     ;
 
 parametros: tipo ID (',' tipo ID)*
@@ -116,20 +116,26 @@ comandosLoop: forLoop comandosLoop
     | vazio
     ;
 
-printe: 'print' '(' dado=impressao {print($dado.text.replace('"', ''), end='')} (',' dado2=impressao {print($dado2.text.replace('"', ''), end='')})* ')' ';' {print()}
-	;
-
 entrada: 'input' '(' texto=STRING? ')' ';' {input($texto.text.replace('"', ''))}
     | 'input' '(' passagemParametros ')' ';'
     ;
 
-impressao: STRING | INT | BOOL | REAL
+printe: 'print' '(' impressao ')' ';' {print()}
+	;
+
+imprime returns [valor]
+    : impressao imprime
+    | impressao
+    ;
+
+impressao returns [valor]
+    : (STRING | INT | BOOL | REAL)
     | chamaFunc
 	| expressao
 	| ID
 	;
 
-forLoop: 'for' '(' t=tipo listaAtrib[$t.text]? ';' verificacao ';' expressao ')' '{' comandosLoop '}'
+forLoop: 'for' '(' tipo listaAtrib? ';' verificacao ';' expressao ')' '{' comandosLoop '}'
     ;
 
 whileLoop: 'while' '(' verificacao ')' '{' comandosLoop '}'
@@ -157,16 +163,15 @@ comparacao: MAIOR_Q
 expressao: a=expressao op=('*'|'/') b=expressao
     | a=expressao op=('+'|'-') b=expressao
     | INT    
-    | chamaID
+    | ID
     | '(' expressao ')'
     ;
 
-chamaID returns [str nome]
+chamaID returns [type, valor]
     : ID
     ;
 
-salvaID [str type]
-    : ID
+salvaID: ID
     ;
 
 
