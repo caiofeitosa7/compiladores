@@ -52,7 +52,7 @@ vazio:
 prog: decVarConst* decFunc* main
     ;
 
-decVarConst: t=tipo decVariaveis
+decVarConst: t=tipo listaIds
     | 'const' t=tipo listaAtrib
     ;
 
@@ -163,8 +163,8 @@ comparacao: MAIOR_Q
 
 expressao: a=expressao op=('*'|'/') b=expressao
     | a=expressao op=('+'|'-') b=expressao
-    | INT
-    | chamaID
+    | INT    
+    | ID
     | '(' expressao ')'
     ;
 

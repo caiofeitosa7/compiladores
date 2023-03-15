@@ -36,7 +36,7 @@ class Funcao():
         self.variaveis = self.parametros
         self.tipo_retorno = tipo_retorno
 
-    def verifica_tipo_retorno(self, t: str):
+    def verifica_tipo_retorno(self, t):
         '''
             Verifica se o retorno utilizado é o tipo especificado quando a função foi instanciada.
         '''
@@ -112,7 +112,7 @@ class MyListener(ParseTreeListener):
         nome_variavel = ctx.ID().getText()
 
         if not nome_variavel in visivel_no_escopo():
-            lanca_excecao(f'{nome_variavel} não foi definido(a).')
+            lanca_excecao(f'{nome_variavel} não foi definido.')
         else:
             variavel = busca_variavel_por_nome(nome_variavel)
             ctx.type = converte_tipo_variavel(type(variavel[1]))
@@ -135,15 +135,21 @@ class MyListener(ParseTreeListener):
         global funcao_executando
         funcao_executando = ''
 
-    def exitRetornoFuncao(self, ctx):
-        funcao = busca_funcao_por_nome(funcao_executando)
-        
-        print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].variaveis)
 
-        if funcao.tipo_retorno == 'void':
-            lanca_excecao(f'A funcao {funcao_executando} não aceita return. É necessário definir um tipo de retorno.')
-        
-        
+
+    ####### CONTINUAR AQUI #######
+
+
+
+
+    # def exitRetornoFuncao(self, ctx):
+    #     funcao = busca_funcao_por_nome(funcao_executando)
+    #
+    #     if funcao.tipo_retorno == 'void':
+    #         lanca_excessao(f'A funcao {funcao_executando} não tem retorno.')
+
+
+
 def salva_funcao(nome_funcao, tipo_retorno='void', parametros=dict()):
     global funcao_executando
     funcao_executando = nome_funcao
@@ -273,7 +279,6 @@ def busca_variavel_por_nome(nome_variavel: str):
        Returns: (nome_variavel, valor_variavel)
     '''
     
-#     if not salvando_variavel:
     if nome_variavel not in visivel_no_escopo():
         return False
     
@@ -281,8 +286,6 @@ def busca_variavel_por_nome(nome_variavel: str):
         funcao = busca_funcao_por_nome(funcao_executando)
         return [v for v in funcao.variaveis.items() if v[0] == nome_variavel][0]
     return [v for v in memoria_global['variaveis'].items() if v[0] == nome_variavel][0]
-#     else:
-#         pass
 
 
 def busca_funcao_por_nome(nome_funcao: str):
@@ -290,8 +293,8 @@ def busca_funcao_por_nome(nome_funcao: str):
         Verifica se a função passada por parâmetro já foi instanciada.
     '''
 
-    if nome_funcao not in [f.nome for f in memoria_global['funcoes']]:
-        lanca_excecao(f'A função {nome_funcao} não foi definida.')
+    if nome_funcao not in visivel_no_escopo():
+        return False
 
     return [f for f in memoria_global['funcoes'] if f.nome == nome_funcao][0]
 
