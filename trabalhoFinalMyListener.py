@@ -257,7 +257,7 @@ def visivel_no_escopo(somente_escopo_local=False):
         uso_liberado = set(list(funcao_atual.variaveis.keys()))
         
         if somente_escopo_local:
-          return uso_liberado
+            return uso_liberado
 
     nomes_funcoes = [funcao.nome for funcao in memoria_global['funcoes']]
     escopo_global = list(memoria_global['constantes'].keys()) + list(memoria_global['variaveis'].keys()) + nomes_funcoes
