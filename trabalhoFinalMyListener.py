@@ -223,7 +223,11 @@ def salva_variavel(nome_variavel, valor=None):
     '''
     
     tipo_variavel = tipo_declaracao
-    variavel = busca_variavel_por_nome(nome_variavel)    # retorna (nome_variavel, valor_variavel)
+    
+    if not funcao_executando:
+        variavel = busca_variavel_por_nome(nome_variavel)    # retorna (nome_variavel, valor_variavel)
+    else:
+        variavel = busca_variavel_por_nome(nome_variavel, somente_escopo_local=True)
     
     if not salvando_variavel and variavel:
         tipo_variavel = converte_tipo_variavel(type(variavel[1]))
@@ -245,7 +249,7 @@ def salva_variavel(nome_variavel, valor=None):
 #        print(key, type(val))
 
     
-def visivel_no_escopo():
+def visivel_no_escopo(somente_escopo_local=False):
     '''
         Lista todos os IDs que podem ser referenciados no escopo atual
     '''
@@ -255,6 +259,9 @@ def visivel_no_escopo():
     if funcao_executando:
         funcao_atual = busca_funcao_por_nome(funcao_executando)
         uso_liberado = set(list(funcao_atual.variaveis.keys()))
+        
+        if somente_escopo_local:
+            return uso_liberado
 
     nomes_funcoes = [funcao.nome for funcao in memoria_global['funcoes']]
     escopo_global = list(memoria_global['constantes'].keys()) + list(memoria_global['variaveis'].keys()) + nomes_funcoes
@@ -265,7 +272,7 @@ def visivel_no_escopo():
     return uso_liberado
 
 
-def busca_variavel_por_nome(nome_variavel: str):
+def busca_variavel_por_nome(nome_variavel, somente_escopo_local=False):
     '''
        Procura a variável pelo nome passado por parâmetro.
        Retorna uma tupla onde a primeira posição é o nome da variável e a segunda é o valor.
@@ -273,16 +280,13 @@ def busca_variavel_por_nome(nome_variavel: str):
        Returns: (nome_variavel, valor_variavel)
     '''
     
-#     if not salvando_variavel:
-    if nome_variavel not in visivel_no_escopo():
+    if nome_variavel not in visivel_no_escopo(somente_escopo_local):
         return False
     
     if funcao_executando:
         funcao = busca_funcao_por_nome(funcao_executando)
         return [v for v in funcao.variaveis.items() if v[0] == nome_variavel][0]
     return [v for v in memoria_global['variaveis'].items() if v[0] == nome_variavel][0]
-#     else:
-#         pass
 
 
 def busca_funcao_por_nome(nome_funcao: str):

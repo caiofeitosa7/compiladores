@@ -1,9 +1,10 @@
 int numero, n1, n2;
 const String caio = "funcionou";
-const real a = 23.4, c = 12.1;
+const real ab = 23.4, c = 12.1;
 
 int soma(){
-    real ab = 3454.7;
+    real ab, aaa;
+    ab = 3454.7;
     return True;
 }
 
