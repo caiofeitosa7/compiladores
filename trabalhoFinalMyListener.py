@@ -320,7 +320,7 @@ def verifica_existencia_id(ID):
     elif ID in visivel_no_escopo():
         if not salvando_variavel:
             return True
-        lanca_excecao(f'O ID "{ID}" já está sendo usado.')
+        lanca_excecao(f'O "{ID}" já está sendo usado.')
 
     elif ID in palavras_reservadas:
         lanca_excecao(f'{ID} é uma palavra reservada, não pode ser utilizada.')
