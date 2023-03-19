@@ -80,13 +80,8 @@ tipo: 'int'
     | 'String'
     ;
 
-<<<<<<< HEAD
 decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis* comandos | retornoFuncao) '}'       #decFuncaoRetorno
     | ID '(' parametros? ')' '{' decVariaveis* comandos '}'                                 #decFuncaoVoid
-=======
-decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis* comandos | retornoFuncao) '}'
-	| ID '(' parametros? ')' '{' decVariaveis* comandos '}'
->>>>>>> 385047958ae98b316c22e04c3d7f465d1597a5b6
     ;
 
 chamaFunc: ID '(' passagemParametros? ')'

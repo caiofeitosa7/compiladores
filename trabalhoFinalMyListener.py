@@ -110,7 +110,6 @@ class MyListener(ParseTreeListener):
         valor = ctx.chamaID().valor
         salva_variavel(variavel, valor)
         
-<<<<<<< HEAD
     def exitChamaID(self, ctx):
         nome_variavel = ctx.ID().getText()
 
@@ -154,10 +153,6 @@ def salva_funcao(nome_funcao, tipo_retorno='void', parametros=dict()):
 
     print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].parametros, memoria_global['funcoes'][0].tipo_retorno)
 
-=======
-            
-        
->>>>>>> 385047958ae98b316c22e04c3d7f465d1597a5b6
 
     # def enterTipo(self, ctx):
     # # if (not ctx.real) and (not ctx.inteiro) and (not ctx.boolean) and (not ctx.string):
@@ -176,21 +171,6 @@ def salva_funcao(nome_funcao, tipo_retorno='void', parametros=dict()):
     # def exitImpressao(self, ctx):
     #     print(ctx.valor, end='')
 
-<<<<<<< HEAD
-
-=======
-    def exitChamaID(self, ctx):
-        nome_variavel = ctx.ID().getText()
-
-        if not nome_variavel in visivel_no_escopo():
-            lanca_excecao(f'{nome_variavel} não foi definido.')
-        else:
-            variavel = busca_variavel_por_nome(nome_variavel)
-            ctx.type = converte_tipo_variavel(type(variavel[1]))
-            ctx.valor = variavel[1]
-
-
->>>>>>> 385047958ae98b316c22e04c3d7f465d1597a5b6
 def converte_tipo_variavel(tipo):
     '''
         Converte um tipo python em um tipo da nova linguagem criada
@@ -242,7 +222,7 @@ def salva_variavel(nome_variavel, valor=None):
     '''
         Salva uma variável de acordo com o escopo em que foi instanciada.
     '''
-<<<<<<< HEAD
+    
     if nome_variavel[0] in string.digits:
         lanca_excecao('Nomes de variáveis não podem iniciar com números.')
     
@@ -252,12 +232,7 @@ def salva_variavel(nome_variavel, valor=None):
         variavel = busca_variavel_por_nome(nome_variavel)    # retorna (nome_variavel, valor_variavel)
     else:
         variavel = busca_variavel_por_nome(nome_variavel, somente_escopo_local=True)
-=======
-    
-    tipo_variavel = tipo_declaracao
-    variavel = busca_variavel_por_nome(nome_variavel)    # retorna (nome_variavel, valor_variavel)
->>>>>>> 385047958ae98b316c22e04c3d7f465d1597a5b6
-    
+
     if not salvando_variavel and variavel:
         tipo_variavel = converte_tipo_variavel(type(variavel[1]))
     
@@ -301,11 +276,7 @@ def visivel_no_escopo(somente_escopo_local=False):
     return uso_liberado
 
 
-<<<<<<< HEAD
 def busca_variavel_por_nome(nome_variavel, somente_escopo_local=False):
-=======
-def busca_variavel_por_nome(nome_variavel: str):
->>>>>>> 385047958ae98b316c22e04c3d7f465d1597a5b6
     '''
        Procura a variável pelo nome passado por parâmetro.
        Retorna uma tupla onde a primeira posição é o nome da variável e a segunda é o valor.
@@ -313,11 +284,7 @@ def busca_variavel_por_nome(nome_variavel: str):
        Returns: (nome_variavel, valor_variavel)
     '''
     
-<<<<<<< HEAD
     if nome_variavel not in visivel_no_escopo(somente_escopo_local):
-=======
-    if nome_variavel not in visivel_no_escopo():
->>>>>>> 385047958ae98b316c22e04c3d7f465d1597a5b6
         return False
     
     if funcao_executando:
@@ -330,14 +297,10 @@ def busca_funcao_por_nome(nome_funcao: str):
     '''
         Verifica se a função passada por parâmetro já foi instanciada.
     '''
-<<<<<<< HEAD
-
+    
     if nome_funcao not in [f.nome for f in memoria_global['funcoes']]:
         lanca_excecao(f'A função {nome_funcao} não foi definida.')
-
-=======
-    
->>>>>>> 385047958ae98b316c22e04c3d7f465d1597a5b6
+        
     return [f for f in memoria_global['funcoes'] if f.nome == nome_funcao][0]
 
 
@@ -361,11 +324,7 @@ def verifica_existencia_id(ID):
     elif ID in visivel_no_escopo():
         if not salvando_variavel:
             return True
-<<<<<<< HEAD
-        lanca_excecao(f'O "{ID}" já está sendo usado.')
-=======
         lanca_excecao(f'O ID "{ID}" já está sendo usado.')
->>>>>>> 385047958ae98b316c22e04c3d7f465d1597a5b6
 
     elif ID in palavras_reservadas:
         lanca_excecao(f'{ID} é uma palavra reservada, não pode ser utilizada.')
