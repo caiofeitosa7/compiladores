@@ -1,4 +1,5 @@
 import sys
+import utils
 from antlr4 import *
 from sty import fg, bg, ef, rs
 
@@ -8,7 +9,7 @@ from arquivos_antlr.trabalhoFinalParser import trabalhoFinalParser
 
 if __name__ == '__main__':
     if not sys.argv[1].endswith('.py'):
-        print(fg.red + 'ERRO: A extensão do arquivo deve ser .py' + fg.rs)
+        utils.lanca_excecao('A extensão do arquivo deve ser .py')
         sys.exit()
 
     print('\n', '-'*15, 'Trabalho Final', '-'*15, '\n')
