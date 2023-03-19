@@ -79,8 +79,8 @@ tipo: 'int'
     | 'String'
     ;
 
-decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis? comandos | retornoFuncao) '}'
-	| ID '(' parametros? ')' '{' decVariaveis? comandos '}'
+decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis* comandos | retornoFuncao) '}'       #decFuncaoRetorno
+    | ID '(' parametros? ')' '{' decVariaveis* comandos '}'                                 #decFuncaoVoid
     ;
 
 chamaFunc: ID '(' passagemParametros? ')'
@@ -93,8 +93,9 @@ passagemParametros: ID (',' ID)
 parametros: tipo ID (',' tipo ID)*
     ;
 
-retornoFuncao: 'return' impressao ';'
-	;
+retornoFuncao returns [retorno]
+    : 'return' expressao ';'
+    ;
 
 main: 'main' '(' ')' '{' comandos '}'
     ;
@@ -104,6 +105,7 @@ comandos: forLoop comandos
     | printe comandos
     | entrada comandos
     | retornoFuncao comandos
+    | listaAtrib comandos
     | vazio
     ;
 
@@ -112,6 +114,7 @@ comandosLoop: forLoop comandosLoop
     | printe comandosLoop
     | entrada comandosLoop
     | retornoFuncao comandosLoop
+    | listaAtrib comandos
     | 'break' ';'
     | vazio
     ;

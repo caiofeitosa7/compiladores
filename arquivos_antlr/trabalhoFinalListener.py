@@ -80,12 +80,21 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#decFunc.
-    def enterDecFunc(self, ctx:trabalhoFinalParser.DecFuncContext):
+    # Enter a parse tree produced by trabalhoFinalParser#decFuncaoRetorno.
+    def enterDecFuncaoRetorno(self, ctx:trabalhoFinalParser.DecFuncaoRetornoContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#decFunc.
-    def exitDecFunc(self, ctx:trabalhoFinalParser.DecFuncContext):
+    # Exit a parse tree produced by trabalhoFinalParser#decFuncaoRetorno.
+    def exitDecFuncaoRetorno(self, ctx:trabalhoFinalParser.DecFuncaoRetornoContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#decFuncaoVoid.
+    def enterDecFuncaoVoid(self, ctx:trabalhoFinalParser.DecFuncaoVoidContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#decFuncaoVoid.
+    def exitDecFuncaoVoid(self, ctx:trabalhoFinalParser.DecFuncaoVoidContext):
         pass
 
 

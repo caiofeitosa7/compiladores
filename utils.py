@@ -11,5 +11,5 @@ from sty import fg, bg, ef, rs
 
 
 def lanca_excecao(texto):
-	print(fg.red + '\nERRO: ' + texto + fg.rs)
-	sys.exit()
+    print(fg.red + '\nERRO: ' + texto + fg.rs)
+    sys.exit()

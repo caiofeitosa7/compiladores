@@ -1,5 +1,5 @@
 Comando para gerar os arquivos antlr via terminal:
 java -jar antlr-4.9-complete.jar -Dlanguage=Python3 trabalhoFinal.g4 -visitor -o arquivos_antlr
 
-
-Comando para execucao: python main.py programa.py
+Comando para execucao:
+python main.py programa.py
