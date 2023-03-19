@@ -144,8 +144,63 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#expressao.
-    def visitExpressao(self, ctx:trabalhoFinalParser.ExpressaoContext):
+    # Visit a parse tree produced by trabalhoFinalParser#OperacaoMenosUn.
+    def visitOperacaoMenosUn(self, ctx:trabalhoFinalParser.OperacaoMenosUnContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#OperacaoNegacao.
+    def visitOperacaoNegacao(self, ctx:trabalhoFinalParser.OperacaoNegacaoContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#OperacaoMaiorMenor.
+    def visitOperacaoMaiorMenor(self, ctx:trabalhoFinalParser.OperacaoMaiorMenorContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#OperacaoAddSub.
+    def visitOperacaoAddSub(self, ctx:trabalhoFinalParser.OperacaoAddSubContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#OperacaoMulDiv.
+    def visitOperacaoMulDiv(self, ctx:trabalhoFinalParser.OperacaoMulDivContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#OperacaoAND.
+    def visitOperacaoAND(self, ctx:trabalhoFinalParser.OperacaoANDContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#ExprParenteses.
+    def visitExprParenteses(self, ctx:trabalhoFinalParser.ExprParentesesContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#Terminal.
+    def visitTerminal(self, ctx:trabalhoFinalParser.TerminalContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#OperacaoIgualDif.
+    def visitOperacaoIgualDif(self, ctx:trabalhoFinalParser.OperacaoIgualDifContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#OperacaoOR.
+    def visitOperacaoOR(self, ctx:trabalhoFinalParser.OperacaoORContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#ValorTerminal.
+    def visitValorTerminal(self, ctx:trabalhoFinalParser.ValorTerminalContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#ValorVariavel.
+    def visitValorVariavel(self, ctx:trabalhoFinalParser.ValorVariavelContext):
         return self.visitChildren(ctx)
 
 

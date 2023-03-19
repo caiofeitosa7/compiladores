@@ -15,8 +15,6 @@ if __name__ == '__main__':
 
     with open(sys.argv[1]) as file:
         exp = ''.join(file.readlines())
-        
-    #print(exp, '\n')
     
     data = InputStream(exp)
     
@@ -28,7 +26,7 @@ if __name__ == '__main__':
     parser = trabalhoFinalParser(tokens)
     tree = parser.prog()
 
-    #
+    # Listener
     l = MyListener()
     walker = ParseTreeWalker()
     walker.walk(l, tree)

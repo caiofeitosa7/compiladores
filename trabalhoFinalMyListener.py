@@ -1,6 +1,7 @@
 import string
 from utils import *
 from antlr4 import *
+from antlr4.error.ErrorListener import ErrorListener
 from arquivos_antlr.trabalhoFinalParser import trabalhoFinalParser
 
 

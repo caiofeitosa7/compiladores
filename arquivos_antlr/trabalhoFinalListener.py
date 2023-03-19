@@ -251,12 +251,111 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#expressao.
-    def enterExpressao(self, ctx:trabalhoFinalParser.ExpressaoContext):
+    # Enter a parse tree produced by trabalhoFinalParser#OperacaoMenosUn.
+    def enterOperacaoMenosUn(self, ctx:trabalhoFinalParser.OperacaoMenosUnContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#expressao.
-    def exitExpressao(self, ctx:trabalhoFinalParser.ExpressaoContext):
+    # Exit a parse tree produced by trabalhoFinalParser#OperacaoMenosUn.
+    def exitOperacaoMenosUn(self, ctx:trabalhoFinalParser.OperacaoMenosUnContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#OperacaoNegacao.
+    def enterOperacaoNegacao(self, ctx:trabalhoFinalParser.OperacaoNegacaoContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#OperacaoNegacao.
+    def exitOperacaoNegacao(self, ctx:trabalhoFinalParser.OperacaoNegacaoContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#OperacaoMaiorMenor.
+    def enterOperacaoMaiorMenor(self, ctx:trabalhoFinalParser.OperacaoMaiorMenorContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#OperacaoMaiorMenor.
+    def exitOperacaoMaiorMenor(self, ctx:trabalhoFinalParser.OperacaoMaiorMenorContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#OperacaoAddSub.
+    def enterOperacaoAddSub(self, ctx:trabalhoFinalParser.OperacaoAddSubContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#OperacaoAddSub.
+    def exitOperacaoAddSub(self, ctx:trabalhoFinalParser.OperacaoAddSubContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#OperacaoMulDiv.
+    def enterOperacaoMulDiv(self, ctx:trabalhoFinalParser.OperacaoMulDivContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#OperacaoMulDiv.
+    def exitOperacaoMulDiv(self, ctx:trabalhoFinalParser.OperacaoMulDivContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#OperacaoAND.
+    def enterOperacaoAND(self, ctx:trabalhoFinalParser.OperacaoANDContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#OperacaoAND.
+    def exitOperacaoAND(self, ctx:trabalhoFinalParser.OperacaoANDContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#ExprParenteses.
+    def enterExprParenteses(self, ctx:trabalhoFinalParser.ExprParentesesContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#ExprParenteses.
+    def exitExprParenteses(self, ctx:trabalhoFinalParser.ExprParentesesContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#Terminal.
+    def enterTerminal(self, ctx:trabalhoFinalParser.TerminalContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#Terminal.
+    def exitTerminal(self, ctx:trabalhoFinalParser.TerminalContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#OperacaoIgualDif.
+    def enterOperacaoIgualDif(self, ctx:trabalhoFinalParser.OperacaoIgualDifContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#OperacaoIgualDif.
+    def exitOperacaoIgualDif(self, ctx:trabalhoFinalParser.OperacaoIgualDifContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#OperacaoOR.
+    def enterOperacaoOR(self, ctx:trabalhoFinalParser.OperacaoORContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#OperacaoOR.
+    def exitOperacaoOR(self, ctx:trabalhoFinalParser.OperacaoORContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#ValorTerminal.
+    def enterValorTerminal(self, ctx:trabalhoFinalParser.ValorTerminalContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#ValorTerminal.
+    def exitValorTerminal(self, ctx:trabalhoFinalParser.ValorTerminalContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#ValorVariavel.
+    def enterValorVariavel(self, ctx:trabalhoFinalParser.ValorVariavelContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#ValorVariavel.
+    def exitValorVariavel(self, ctx:trabalhoFinalParser.ValorVariavelContext):
         pass
 
 

@@ -149,10 +149,10 @@ ifElse: 'if' '(' verificacao ')' '{' comandos '}'
     | 'if' '(' verificacao ')' '{' comandos '}' 'else' '{' comandos '}'
     ;
 
-verificacao: (ID | INT | REAL) comparacao (ID | INT | REAL)
-	| ID (IGUAL | DIFERENTE) (ID | BOOL)
-	| NEG (ID | BOOL)
-	| ID   // precisa verificar se é bool
+verificacao: (chamaID | INT | REAL) op=comparacao (chamaID | INT | REAL)
+	| chamaID (IGUAL | DIFERENTE) (chamaID | BOOL)
+	| NEG (chamaID | BOOL)
+	| chamaID   // precisa verificar se é bool
 	| BOOL
 	;
 
@@ -164,11 +164,22 @@ comparacao: MAIOR_Q
     | DIFERENTE
     ;
 
-expressao: a=expressao op=('*'|'/') b=expressao
-    | a=expressao op=('+'|'-') b=expressao
-    | INT    
-    | ID
-    | '(' expressao ')'
+expressao returns [type, valor]
+    : op_esq=expressao  op=OR                    op_dir=expressao                                   #OperacaoOR
+    | op_esq=expressao  op=AND                   op_dir=expressao                                   #OperacaoAND
+    | op_esq=expressao  op=( MAIOR_IGUAL | MENOR_IGUAL | MAIOR_Q | MENOR_Q ) op_dir=expressao       #OperacaoMaiorMenor
+    | op_esq=expressao  op=( IGUAL | DIFERENTE ) op_dir=expressao                                   #OperacaoIgualDif
+    | op_esq=expressao  op=( ADD | SUB )         op_dir=expressao                                   #OperacaoAddSub
+    | op_esq=expressao  op=( MUL | DIV )         op_dir=expressao                                   #OperacaoMulDiv
+    |                   op=SUB                   op_dir=expressao                                   #OperacaoMenosUn
+    |                   op=NEG                   op_dir=expressao                                   #OperacaoNegacao
+    | '(' expressao ')'                                                                             #ExprParenteses
+    | chamaTerminal                                                                                 #Terminal
+    ;
+
+chamaTerminal returns [type, valor]
+    : terminal=(STRING | INT | BOOL | REAL)    #ValorTerminal
+    | chamaID                                  #ValorVariavel
     ;
 
 chamaID returns [type, valor]
@@ -193,6 +204,8 @@ MAIOR_Q: '>' ;
 MENOR_Q: '<' ;
 MAIOR_IGUAL: '>=' ;
 MENOR_IGUAL: '<=' ;
+OR: '||';
+AND: '&&';
 
 ID: [a-zA-Z_]([a-zA-Z_0-9]*) ;
 WS: [ \t\n\r]+ -> skip ;
