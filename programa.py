@@ -1,7 +1,6 @@
 int numero, n1, n2;
 const String caio = "funcionou";
 const real ab = 23.4, c = 12.1;
-const real 23;
 
 int soma(){
     real ab, aaa;

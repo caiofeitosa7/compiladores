@@ -52,25 +52,26 @@ vazio:
 prog: decVarConst* decFunc* main
     ;
 
-decVarConst: t=tipo listaIds ';'
-    | 'const' t=tipo listaAtrib ';'
+decVarConst: t=tipo listaIds
+    | 'const' t=tipo listaAtrib
     ;
 
-decVariaveis: t=tipo listaIds ';'
-    | t=tipo listaAtrib ';'
+decVariaveis: t=tipo listaIds
+    | t=tipo listaAtrib
     ;
 
 listaIds
     : salvaID ',' listaIds
-    | salvaID
+    | salvaID ';'
     ;
 
 listaAtrib
     : atribuicao ',' listaAtrib
-    | atribuicao
+    | atribuicao ';'
     ;
 
-atribuicao: ID '=' valor=(STRING | INT | BOOL | REAL)
+atribuicao: ID '=' valor=(STRING | INT | BOOL | REAL)      #AtribValor
+    | ID '=' chamaID                                       #AtribID
     ;
 
 tipo: 'int'
@@ -97,7 +98,7 @@ retornoFuncao returns [retorno]
     : 'return' expressao ';'
     ;
 
-main: 'main' '(' ')' '{' comandos '}'
+main: 'main' '(' ')' '{' decVariaveis* comandos '}'
     ;
 
 comandos: forLoop comandos
