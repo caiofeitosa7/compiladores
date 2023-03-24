@@ -1355,7 +1355,8 @@ class trabalhoFinalParser ( Parser ):
         def __init__(self, parser, parent:ParserRuleContext=None, invokingState:int=-1):
             super().__init__(parent, invokingState)
             self.parser = parser
-            self.retorno = None
+            self.type = None
+            self.valor = None
 
         def expressao(self):
             return self.getTypedRuleContext(trabalhoFinalParser.ExpressaoContext,0)
@@ -3099,7 +3100,6 @@ class trabalhoFinalParser ( Parser ):
 
         def __init__(self, parser, ctx:ParserRuleContext): # actually a trabalhoFinalParser.ChamaTerminalContext
             super().__init__(parser)
-            self.terminal = None # Token
             self.copyFrom(ctx)
 
         def STRING(self):
@@ -3165,10 +3165,9 @@ class trabalhoFinalParser ( Parser ):
                 localctx = trabalhoFinalParser.ValorTerminalContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
                 self.state = 385
-                localctx.terminal = self._input.LT(1)
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << trabalhoFinalParser.BOOL) | (1 << trabalhoFinalParser.REAL) | (1 << trabalhoFinalParser.STRING) | (1 << trabalhoFinalParser.INT))) != 0)):
-                    localctx.terminal = self._errHandler.recoverInline(self)
+                    self._errHandler.recoverInline(self)
                 else:
                     self._errHandler.reportMatch(self)
                     self.consume()

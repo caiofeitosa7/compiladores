@@ -3,6 +3,7 @@ from utils import *
 from antlr4 import *
 from antlr4.error.ErrorListener import ErrorListener
 from arquivos_antlr.trabalhoFinalParser import trabalhoFinalParser
+from arquivos_antlr.trabalhoFinalListener import trabalhoFinalListener
 
 
 palavras_reservadas = ('if', 'else', 'return', 'print', 'input', 'for', 'while', 'break',
@@ -119,6 +120,25 @@ class MyListener(ParseTreeListener):
             variavel = busca_variavel_por_nome(nome_variavel)
             ctx.type = converte_tipo_variavel(type(variavel[1]))
             ctx.valor = variavel[1]
+    
+    def exitValorTerminal(self, ctx):
+        if ctx.BOOL():
+             ctx.valor = True if ctx.BOOL().getText() == 'True' else False
+        elif ctx.INT():
+            ctx.valor = int(ctx.INT().getText())
+        elif ctx.REAL():
+            ctx.valor = float(ctx.REAL().getText())
+        elif ctx.STRING():
+            ctx.valor = str(ctx.STRING().getText())
+        ctx.type = type(ctx.valor)
+            
+    def exitValorVariavel(self, ctx):
+        ctx.type = ctx.chamaID().type
+        ctx.valor = ctx.chamaID().valor
+        
+    def exitTerminal(self, ctx):
+        ctx.type = ctx.chamaTerminal().type
+        ctx.valor = ctx.chamaTerminal().valor
 
     def enterDecFuncaoRetorno(self, ctx):
         nome_funcao = ctx.ID().getText()
@@ -140,12 +160,34 @@ class MyListener(ParseTreeListener):
     def exitRetornoFuncao(self, ctx):
         funcao = busca_funcao_por_nome(funcao_executando)
         
+        # Depois que as expressoes estiverem prontas, tem que tratar o retorno
+        
         print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].variaveis)
+        
+        print(ctx.expressao().type)
+        print(ctx.expressao().valor)
 
         if funcao.tipo_retorno == 'void':
             lanca_excecao(f'A funcao {funcao_executando} não aceita return. É necessário definir um tipo de retorno.')
         
         
+        
+        
+        
+    
+        
+    
+        
+        
+        
+        def exitOperacaoAddSub(self, ctx):
+            pass
+        
+        ### continuar aqui ###
+            
+        
+    
+    
 def salva_funcao(nome_funcao, tipo_retorno='void', parametros=dict()):
     global funcao_executando
     funcao_executando = nome_funcao
@@ -153,23 +195,6 @@ def salva_funcao(nome_funcao, tipo_retorno='void', parametros=dict()):
 
     print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].parametros, memoria_global['funcoes'][0].tipo_retorno)
 
-
-    # def enterTipo(self, ctx):
-    # # if (not ctx.real) and (not ctx.inteiro) and (not ctx.boolean) and (not ctx.string):
-    #   if ctx.t.getText() not in mapa_tipos.keys():
-    #       lanca_excecao('Tipo inválido.')
-    #   type = ctx.t.getText()
-
-    #   print(ctx.t.getText())
-
-    # def exitPrinte(self, ctx):
-    #     print(ctx.dado, end='')
-
-    # def exitImprime(self, ctx):
-    #     print(ctx.valor, end='')
-
-    # def exitImpressao(self, ctx):
-    #     print(ctx.valor, end='')
 
 def converte_tipo_variavel(tipo):
     '''
