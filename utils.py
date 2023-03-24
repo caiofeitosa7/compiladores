@@ -1,15 +1,15 @@
 import sys
-from sty import fg, bg, ef, rs
+from colorama import init, Fore, Style
 
-# excessoes = list()
-
-
-# def fecha_programa():
-# 	for e in excessoes:
-# 		print(fg.red + '\nERRO: ' + texto + fg.rs)
-# 	sys.exit()
+init()
+excessoes = list()
 
 
-def lanca_excecao(texto):
-    print(fg.red + '\nERRO: ' + texto + fg.rs)
+def lanca_excecao(texto, fecha_programa=True):
+    excessoes.append('ERRO: ' + texto)
+
+
+def fecha_programa():
+    for excessao in excessoes:
+        print(Fore.RED + excessao + Style.RESET_ALL)
     sys.exit()

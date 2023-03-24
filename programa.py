@@ -11,7 +11,7 @@ int soma(){
 
 main(){
     real aaa = 2.2, bbb = aaa;
-    int ccc = aaa;
+    int ccc = aab;
     caio = "asfjkdhf";
     aaa = 223467.2;
     aaa = ccc;
