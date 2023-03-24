@@ -69,12 +69,12 @@ class MyListener(ParseTreeListener):
         nome_variavel = ctx.ID().getText()
 
         if not nome_variavel in visivel_no_escopo():
-            lanca_excecao(f'{nome_variavel} não foi definido(a).')
+            lanca_excecao(f'{nome_variavel} não foi definida no escopo.')
         else:
             variavel = busca_variavel_por_nome(nome_variavel)
-            ctx.type = converte_tipo_variavel(type(variavel[1]))
+            ctx.type = type(variavel[1])
             ctx.valor = variavel[1]
-    
+            
     def exitValorTerminal(self, ctx):
         if ctx.BOOL():
              ctx.valor = True if ctx.BOOL().getText() == 'True' else False
@@ -122,11 +122,20 @@ class MyListener(ParseTreeListener):
         elif funcao.tipo_retorno != tipo_retorno_passado:
             lanca_excecao(f'A funcao {funcao_executando} deveria retornar um valor do tipo `{funcao.tipo_retorno}` e não `{tipo_retorno_passado}`')
         
-        def exitOperacaoAddSub(self, ctx):
-            pass
+    def exitOperacaoAddSub(self, ctx):
+        pass
         
-        ### continuar aqui ###
-            
+        
+        
+        
+        
+        
+        ##### continuar aqui ####
+        
+        
+        
+        
+        
         
     
     
