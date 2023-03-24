@@ -94,7 +94,7 @@ passagemParametros: ID (',' ID)
 parametros: tipo ID (',' tipo ID)*
     ;
 
-retornoFuncao returns [retorno]
+retornoFuncao returns [type, valor]
     : 'return' expressao ';'
     ;
 
@@ -178,7 +178,7 @@ expressao returns [type, valor]
     ;
 
 chamaTerminal returns [type, valor]
-    : terminal=(STRING | INT | BOOL | REAL)    #ValorTerminal
+    : (STRING | INT | BOOL | REAL)             #ValorTerminal
     | chamaID                                  #ValorVariavel
     ;
 

@@ -1,8 +1,10 @@
 import string
 from utils import *
 from antlr4 import *
+from funcao import Funcao
 from antlr4.error.ErrorListener import ErrorListener
 from arquivos_antlr.trabalhoFinalParser import trabalhoFinalParser
+from arquivos_antlr.trabalhoFinalListener import trabalhoFinalListener
 
 
 palavras_reservadas = ('if', 'else', 'return', 'print', 'input', 'for', 'while', 'break',
@@ -29,53 +31,6 @@ mapa_tipos = {
 funcao_executando = ''
 tipo_declaracao = ''
 salvando_variavel = False
-
-
-class Funcao():
-    def __init__(self, nome, tipo_retorno, parametros):
-        self.nome = nome
-        self.parametros = parametros
-        self.variaveis = self.parametros
-        self.tipo_retorno = tipo_retorno
-
-    def verifica_tipo_retorno(self, t: str):
-        '''
-            Verifica se o retorno utilizado é o tipo especificado quando a função foi instanciada.
-        '''
-
-        tipo = type(t)
-
-        if self.tipo_retorno == 'real' and tipo is float:
-            return True
-        elif self.tipo_retorno == 'int' and tipo is int:
-            return True
-        elif self.tipo_retorno == 'bool' and tipo is bool:
-            return True
-        elif self.tipo_retorno == 'String' and tipo is str:
-            return True
-
-        return False
-
-    def verifica_numero_e_tipo_parametros(self, parametros: dict):
-        """
-            Verifica se a função recebeu o número e o tipo correto de parâmetros
-        """
-
-        """ Verificando a quantidade dos parâmetros """
-        return True if len(self.parametros) == len(parametros) else False
-
-        """
-            Tipo dos parâmetros
-            Necessário transformar o dicionário em uma lista temporariamente para que os itens possam ser indexados
-        """
-        lista_parametros_passados = list(parametros.values())
-        lista_parametros = list(self.parametros.values())
-
-        for i in range(len(lista_parametros)):
-            if type(lista_parametros[i]) is not type(lista_parametros_passados[i]):
-                return False
-
-        return True
 
 
 class MyListener(ParseTreeListener):
@@ -119,6 +74,25 @@ class MyListener(ParseTreeListener):
             variavel = busca_variavel_por_nome(nome_variavel)
             ctx.type = converte_tipo_variavel(type(variavel[1]))
             ctx.valor = variavel[1]
+    
+    def exitValorTerminal(self, ctx):
+        if ctx.BOOL():
+             ctx.valor = True if ctx.BOOL().getText() == 'True' else False
+        elif ctx.INT():
+            ctx.valor = int(ctx.INT().getText())
+        elif ctx.REAL():
+            ctx.valor = float(ctx.REAL().getText())
+        elif ctx.STRING():
+            ctx.valor = str(ctx.STRING().getText())
+        ctx.type = type(ctx.valor)
+            
+    def exitValorVariavel(self, ctx):
+        ctx.type = ctx.chamaID().type
+        ctx.valor = ctx.chamaID().valor
+        
+    def exitTerminal(self, ctx):
+        ctx.type = ctx.chamaTerminal().type
+        ctx.valor = ctx.chamaTerminal().valor
 
     def enterDecFuncaoRetorno(self, ctx):
         nome_funcao = ctx.ID().getText()
@@ -139,37 +113,30 @@ class MyListener(ParseTreeListener):
 
     def exitRetornoFuncao(self, ctx):
         funcao = busca_funcao_por_nome(funcao_executando)
+        tipo_retorno_passado = converte_tipo_variavel(ctx.expressao().type)
         
-        print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].variaveis)
-
+#         print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].variaveis)
+        
         if funcao.tipo_retorno == 'void':
-            lanca_excecao(f'A funcao {funcao_executando} não aceita return. É necessário definir um tipo de retorno.')
+            lanca_excecao(f'A funcao {funcao_executando} não aceita return. É necessário definir um tipo de retorno no cabeçalho da função.')
+        elif funcao.tipo_retorno != tipo_retorno_passado:
+            lanca_excecao(f'A funcao {funcao_executando} deveria retornar um valor do tipo `{funcao.tipo_retorno}` e não `{tipo_retorno_passado}`')
         
+        def exitOperacaoAddSub(self, ctx):
+            pass
         
+        ### continuar aqui ###
+            
+        
+    
+    
 def salva_funcao(nome_funcao, tipo_retorno='void', parametros=dict()):
     global funcao_executando
     funcao_executando = nome_funcao
     memoria_global['funcoes'].append(Funcao(nome_funcao, tipo_retorno, parametros))
 
-    print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].parametros, memoria_global['funcoes'][0].tipo_retorno)
+#     print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].parametros, memoria_global['funcoes'][0].tipo_retorno)
 
-
-    # def enterTipo(self, ctx):
-    # # if (not ctx.real) and (not ctx.inteiro) and (not ctx.boolean) and (not ctx.string):
-    #   if ctx.t.getText() not in mapa_tipos.keys():
-    #       lanca_excecao('Tipo inválido.')
-    #   type = ctx.t.getText()
-
-    #   print(ctx.t.getText())
-
-    # def exitPrinte(self, ctx):
-    #     print(ctx.dado, end='')
-
-    # def exitImprime(self, ctx):
-    #     print(ctx.valor, end='')
-
-    # def exitImpressao(self, ctx):
-    #     print(ctx.valor, end='')
 
 def converte_tipo_variavel(tipo):
     '''
@@ -247,10 +214,7 @@ def salva_variavel(nome_variavel, valor=None):
         else:
             memoria_global['variaveis'][nome_variavel] = valor
 
-    print(memoria_global['variaveis'])
-
-#    for key, val in memoria_global['variaveis'].items():
-#        print(key, type(val))
+#     print(memoria_global['variaveis'])
 
     
 def visivel_no_escopo(somente_escopo_local=False):
@@ -320,13 +284,17 @@ def verifica_existencia_id(ID):
                 if not salvando_variavel:
                     return True
                 lanca_excecao(f'A variável "{ID}" já existe em {funcao_executando}.')
+                return False
 
     elif ID in visivel_no_escopo():
         if not salvando_variavel:
             return True
+        
         lanca_excecao(f'O ID "{ID}" já está sendo usado.')
+        return False
 
     elif ID in palavras_reservadas:
         lanca_excecao(f'{ID} é uma palavra reservada, não pode ser utilizada.')
+        return False
 
     return False
