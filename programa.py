@@ -2,11 +2,13 @@ int numero, n1, n2;
 const String caio = "funcionou";
 const real ab = 23.4, c = 12.1;
 
-String soma(){
+bool soma(){
     String a = "teste";
+    bool caio = True;
+    
     real ab, aaa;
     ab = 2222, aaa = 3454.7;
-    return aaa;
+    return (-ab) < 23.0 == True;
 }
 
 

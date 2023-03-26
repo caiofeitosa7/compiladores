@@ -70,8 +70,9 @@ listaAtrib
     | atribuicao ';'
     ;
 
-atribuicao: ID '=' valor=(STRING | INT | BOOL | REAL)      #AtribValor
+atribuicao: ID '=' valor=(BOOL | INT | STRING | REAL)      #AtribValor
     | ID '=' chamaID                                       #AtribID
+    | ID '=' expressao                                     #AtribExpressao
     ;
 
 tipo: 'int'
@@ -165,6 +166,14 @@ comparacao: MAIOR_Q
     ;
 
 expressao returns [type, valor]
+    :
+
+
+
+
+
+
+expressao returns [type, valor]
     : op_esq=expressao  op=OR                    op_dir=expressao                                   #OperacaoOR
     | op_esq=expressao  op=AND                   op_dir=expressao                                   #OperacaoAND
     | op_esq=expressao  op=( MAIOR_IGUAL | MENOR_IGUAL | MAIOR_Q | MENOR_Q ) op_dir=expressao       #OperacaoMaiorMenor
@@ -198,7 +207,7 @@ DIV : '/' ;
 ADD : '+' ;
 SUB : '-' ;
 NEG : '!' ;
-IGUAL: '=';
+IGUAL: '==';
 DIFERENTE: '!=';
 MAIOR_Q: '>' ;
 MENOR_Q: '<' ;
