@@ -49,6 +49,11 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by trabalhoFinalParser#AtribExpressao.
+    def visitAtribExpressao(self, ctx:trabalhoFinalParser.AtribExpressaoContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by trabalhoFinalParser#tipo.
     def visitTipo(self, ctx:trabalhoFinalParser.TipoContext):
         return self.visitChildren(ctx)

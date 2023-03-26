@@ -80,6 +80,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#AtribExpressao.
+    def enterAtribExpressao(self, ctx:trabalhoFinalParser.AtribExpressaoContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#AtribExpressao.
+    def exitAtribExpressao(self, ctx:trabalhoFinalParser.AtribExpressaoContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#tipo.
     def enterTipo(self, ctx:trabalhoFinalParser.TipoContext):
         pass

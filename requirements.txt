@@ -1,4 +1,8 @@
 antlr4-python3-runtime==4.9.1
 antlr4-tools==0.1
+colorama==0.4.6
+distlib==0.3.6
+filelock==3.9.0
 install-jdk==0.3.0
-sty==1.0.4
+platformdirs==3.1.1
+virtualenv==20.21.0
