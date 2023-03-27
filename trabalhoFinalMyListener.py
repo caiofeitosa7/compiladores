@@ -5,6 +5,7 @@ from funcao import Funcao
 from antlr4.error.ErrorListener import ErrorListener
 from arquivos_antlr.trabalhoFinalParser import trabalhoFinalParser
 
+my_error_text_object = None
 
 palavras_reservadas = ('if', 'else', 'return', 'print', 'input', 'for', 'while', 'break',
                             'True', 'False', 'int', 'real', 'bool', 'String', 'main')

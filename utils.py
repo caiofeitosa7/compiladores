@@ -6,7 +6,7 @@ excessoes = list()
 
 
 def lanca_excecao(texto, ctx, fecha_programa=True):
-    excessoes.append("ERRO na linha " + str(ctx.start.line) + ": ");
+    excessoes.append("ERRO Linha " + str(ctx.start.line) + ": ");
     excessoes.append(texto)
 
 def fecha_programa():
