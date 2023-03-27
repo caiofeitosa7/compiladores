@@ -9,11 +9,6 @@ else:
 
 class trabalhoFinalVisitor(ParseTreeVisitor):
 
-    # Visit a parse tree produced by trabalhoFinalParser#vazio.
-    def visitVazio(self, ctx:trabalhoFinalParser.VazioContext):
-        return self.visitChildren(ctx)
-
-
     # Visit a parse tree produced by trabalhoFinalParser#prog.
     def visitProg(self, ctx:trabalhoFinalParser.ProgContext):
         return self.visitChildren(ctx)
@@ -69,8 +64,8 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#chamaFunc.
-    def visitChamaFunc(self, ctx:trabalhoFinalParser.ChamaFuncContext):
+    # Visit a parse tree produced by trabalhoFinalParser#chamaFuncao.
+    def visitChamaFuncao(self, ctx:trabalhoFinalParser.ChamaFuncaoContext):
         return self.visitChildren(ctx)
 
 
@@ -124,6 +119,11 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by trabalhoFinalParser#listaAtribFor.
+    def visitListaAtribFor(self, ctx:trabalhoFinalParser.ListaAtribForContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by trabalhoFinalParser#forLoop.
     def visitForLoop(self, ctx:trabalhoFinalParser.ForLoopContext):
         return self.visitChildren(ctx)
@@ -134,18 +134,23 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#ifElse.
-    def visitIfElse(self, ctx:trabalhoFinalParser.IfElseContext):
+    # Visit a parse tree produced by trabalhoFinalParser#IF.
+    def visitIF(self, ctx:trabalhoFinalParser.IFContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#verificacao.
-    def visitVerificacao(self, ctx:trabalhoFinalParser.VerificacaoContext):
+    # Visit a parse tree produced by trabalhoFinalParser#IFElse.
+    def visitIFElse(self, ctx:trabalhoFinalParser.IFElseContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#comparacao.
-    def visitComparacao(self, ctx:trabalhoFinalParser.ComparacaoContext):
+    # Visit a parse tree produced by trabalhoFinalParser#IFLoop.
+    def visitIFLoop(self, ctx:trabalhoFinalParser.IFLoopContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#IFElseLoop.
+    def visitIFElseLoop(self, ctx:trabalhoFinalParser.IFElseLoopContext):
         return self.visitChildren(ctx)
 
 
