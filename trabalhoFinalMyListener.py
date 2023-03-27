@@ -29,6 +29,7 @@ mapa_tipos = {
 '''
 funcao_executando = ''
 tipo_declaracao = ''
+controla_comparacoes = 0
 salvando_variavel = False
 
 
@@ -96,7 +97,7 @@ class MyListener(ParseTreeListener):
         elif ctx.REAL():
             ctx.valor = float(ctx.REAL().getText())
         elif ctx.STRING():
-            ctx.valor = str(ctx.STRING().getText())
+            ctx.valor = str(ctx.STRING().getText()).replace('"','')
         ctx.type = type(ctx.valor)
             
     def exitValorVariavel(self, ctx):
@@ -128,8 +129,7 @@ class MyListener(ParseTreeListener):
         funcao = busca_funcao_por_nome(funcao_executando)
         tipo_retorno_passado = converte_tipo_variavel(ctx.expressao().type)
         
-        print(ctx.expressao().valor)
-        
+#         print(ctx.expressao().valor)
 #         print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].variaveis)
         
         if funcao.tipo_retorno == 'void':
@@ -137,9 +137,38 @@ class MyListener(ParseTreeListener):
         elif funcao.tipo_retorno != tipo_retorno_passado:
             lanca_excecao(f'A funcao `{funcao_executando}` deveria retornar um valor do tipo `{funcao.tipo_retorno}` e não `{tipo_retorno_passado}`')
     
+    def exitWhileLoop(self, ctx):
+        tipo_verificacao('while', ctx)
+            
+    def exitForLoop(self, ctx):
+        tipo_verificacao('for', ctx)
+        
+    def exitIF(self, ctx):
+        tipo_verificacao('if', ctx)
+        
+    def exitIFElse(self, ctx):
+        tipo_verificacao('if', ctx)
+    
+    def exitIFLoop(self, ctx):
+        tipo_verificacao('if', ctx)
+        
+    def exitIFElseLoop(self, ctx):
+        tipo_verificacao('if', ctx)
+        
+        
+            
+        
+    
+    
+
+    
+    
     
     # ------------------------------- EXPRESSOES ----------------------------- #
     
+#     def gerenciador_comparacoes():
+#         global controla_comparacoes
+
     def exitOperacaoOR(self, ctx):
         expr_dual(ctx.op_esq.valor, ctx.op.text, ctx.op_dir.valor, contexto=ctx)
         
@@ -183,6 +212,16 @@ class MyListener(ParseTreeListener):
     # ------------------------------------------------------------------------ #
 
 
+def tipo_verificacao(nome_verificacao, ctx):
+    """
+        Verifica se o retorno da expressao é do tipo bool
+    """
+    if ctx.expressao().type != bool:
+        lanca_excecao(f'A verificação do {nome_verificacao} precisa resultar em um valor booleano.')
+        return False
+    return True
+        
+        
 def expr_dual(left, op, right, contexto):
     if not operandos_mesmo_tipo(left, right):
         lanca_excecao(f'Na operação "{left} {contexto.op.text} {right}", os operandos precisam ser do mesmo tipo!')
@@ -211,12 +250,12 @@ def expr_dual(left, op, right, contexto):
             contexto.valor = bool(left and right)
         else:
             contexto.valor = bool(left or right)
-            
+
         contexto.type = type(contexto.valor)
         if contexto.type == float:
             contexto.valor =  round(contexto.valor, 5)
         
-        print(f"{left} {contexto.op.text} {right}")
+#         print(f"{left} {contexto.op.text} {right}")
 
 
 def operandos_mesmo_tipo(op1, op2):

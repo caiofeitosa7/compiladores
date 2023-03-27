@@ -8,15 +8,6 @@ else:
 # This class defines a complete listener for a parse tree produced by trabalhoFinalParser.
 class trabalhoFinalListener(ParseTreeListener):
 
-    # Enter a parse tree produced by trabalhoFinalParser#vazio.
-    def enterVazio(self, ctx:trabalhoFinalParser.VazioContext):
-        pass
-
-    # Exit a parse tree produced by trabalhoFinalParser#vazio.
-    def exitVazio(self, ctx:trabalhoFinalParser.VazioContext):
-        pass
-
-
     # Enter a parse tree produced by trabalhoFinalParser#prog.
     def enterProg(self, ctx:trabalhoFinalParser.ProgContext):
         pass
@@ -116,12 +107,12 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#chamaFunc.
-    def enterChamaFunc(self, ctx:trabalhoFinalParser.ChamaFuncContext):
+    # Enter a parse tree produced by trabalhoFinalParser#chamaFuncao.
+    def enterChamaFuncao(self, ctx:trabalhoFinalParser.ChamaFuncaoContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#chamaFunc.
-    def exitChamaFunc(self, ctx:trabalhoFinalParser.ChamaFuncContext):
+    # Exit a parse tree produced by trabalhoFinalParser#chamaFuncao.
+    def exitChamaFuncao(self, ctx:trabalhoFinalParser.ChamaFuncaoContext):
         pass
 
 
@@ -215,6 +206,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#listaAtribFor.
+    def enterListaAtribFor(self, ctx:trabalhoFinalParser.ListaAtribForContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#listaAtribFor.
+    def exitListaAtribFor(self, ctx:trabalhoFinalParser.ListaAtribForContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#forLoop.
     def enterForLoop(self, ctx:trabalhoFinalParser.ForLoopContext):
         pass
@@ -233,30 +233,39 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#ifElse.
-    def enterIfElse(self, ctx:trabalhoFinalParser.IfElseContext):
+    # Enter a parse tree produced by trabalhoFinalParser#IF.
+    def enterIF(self, ctx:trabalhoFinalParser.IFContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#ifElse.
-    def exitIfElse(self, ctx:trabalhoFinalParser.IfElseContext):
-        pass
-
-
-    # Enter a parse tree produced by trabalhoFinalParser#verificacao.
-    def enterVerificacao(self, ctx:trabalhoFinalParser.VerificacaoContext):
-        pass
-
-    # Exit a parse tree produced by trabalhoFinalParser#verificacao.
-    def exitVerificacao(self, ctx:trabalhoFinalParser.VerificacaoContext):
+    # Exit a parse tree produced by trabalhoFinalParser#IF.
+    def exitIF(self, ctx:trabalhoFinalParser.IFContext):
         pass
 
 
-    # Enter a parse tree produced by trabalhoFinalParser#comparacao.
-    def enterComparacao(self, ctx:trabalhoFinalParser.ComparacaoContext):
+    # Enter a parse tree produced by trabalhoFinalParser#IFElse.
+    def enterIFElse(self, ctx:trabalhoFinalParser.IFElseContext):
         pass
 
-    # Exit a parse tree produced by trabalhoFinalParser#comparacao.
-    def exitComparacao(self, ctx:trabalhoFinalParser.ComparacaoContext):
+    # Exit a parse tree produced by trabalhoFinalParser#IFElse.
+    def exitIFElse(self, ctx:trabalhoFinalParser.IFElseContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#IFLoop.
+    def enterIFLoop(self, ctx:trabalhoFinalParser.IFLoopContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#IFLoop.
+    def exitIFLoop(self, ctx:trabalhoFinalParser.IFLoopContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#IFElseLoop.
+    def enterIFElseLoop(self, ctx:trabalhoFinalParser.IFElseLoopContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#IFElseLoop.
+    def exitIFElseLoop(self, ctx:trabalhoFinalParser.IFElseLoopContext):
         pass
 
 
