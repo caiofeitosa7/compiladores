@@ -16,6 +16,7 @@ main(){
     int ccc = aaa;
     caio = "lbksld";
     ccc = 2 * 25;
+    aaa = 223467.2;
     aaa = ccc;
     
     print("Hello world", aaa, 100 + 25);
@@ -43,7 +44,7 @@ main(){
         aaa = 343.5;
         
         if (True){
-            print(soma(24, aaa));
+            print(soma());
             break;
         }
     }

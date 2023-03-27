@@ -1,4 +1,6 @@
 import sys
+
+import trabalhoFinalMyListener
 import utils
 from antlr4 import *
 
@@ -12,13 +14,13 @@ if __name__ == '__main__':
     else:
         with open(sys.argv[1]) as file:
             exp = ''.join(file.readlines())
-        
+
         data = InputStream(exp)
-        
+
         # Lexer
         lexer = trabalhoFinalLexer(data)
         tokens = CommonTokenStream(lexer)
-        
+
         # Parser
         parser = trabalhoFinalParser(tokens)
         tree = parser.prog()
@@ -27,6 +29,6 @@ if __name__ == '__main__':
         l = MyListener()
         walker = ParseTreeWalker()
         walker.walk(l, tree)
-    
+
     utils.fecha_programa()
     
