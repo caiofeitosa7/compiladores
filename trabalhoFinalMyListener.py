@@ -77,10 +77,10 @@ class MyListener(ParseTreeListener):
             ctx.type = bool
             return
         
-        if not nome_variavel in visivel_no_escopo():
-            lanca_excecao(f'`{nome_variavel}` não foi definida no escopo.')
+        if not nome_variavel in visivel_no_escopo(ctx=ctx):
+            lanca_excecao(f'`{nome_variavel}` não foi definida no escopo.', ctx)
         else:
-            variavel = busca_variavel_por_nome(nome_variavel)
+            variavel = busca_variavel_por_nome(nome_variavel, ctx=ctx)
             ctx.type = type(variavel[1])
             ctx.valor = variavel[1]
             
@@ -125,7 +125,7 @@ class MyListener(ParseTreeListener):
         funcao_executando = ''
 
     def exitRetornoFuncao(self, ctx):
-        funcao = busca_funcao_por_nome(funcao_executando)
+        funcao = busca_funcao_por_nome(funcao_executando, ctx=ctx)
         tipo_retorno_passado = converte_tipo_variavel(ctx.expressao().type)
         
         print(ctx.expressao().valor)
@@ -133,9 +133,9 @@ class MyListener(ParseTreeListener):
 #         print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].variaveis)
         
         if funcao.tipo_retorno == 'void':
-            lanca_excecao(f'A funcao `{funcao_executando}` não aceita return. É necessário definir um tipo de retorno no cabeçalho da função.')
+            lanca_excecao(f'A funcao `{funcao_executando}` não aceita return. É necessário definir um tipo de retorno no cabeçalho da função.', ctx=ctx)
         elif funcao.tipo_retorno != tipo_retorno_passado:
-            lanca_excecao(f'A funcao `{funcao_executando}` deveria retornar um valor do tipo `{funcao.tipo_retorno}` e não `{tipo_retorno_passado}`')
+            lanca_excecao(f'A funcao `{funcao_executando}` deveria retornar um valor do tipo `{funcao.tipo_retorno}` e não `{tipo_retorno_passado}`', ctx=ctx)
     
     
     # ------------------------------- EXPRESSOES ----------------------------- #
@@ -165,7 +165,7 @@ class MyListener(ParseTreeListener):
             ctx.valor = ctx.op_dir.valor * (-1)
             ctx.type = type(ctx.valor)
         else:
-            lanca_excecao('Para inverter `{valor}`, este deve ser do tipo `int` ou `real`.')
+            lanca_excecao('Para inverter `{valor}`, este deve ser do tipo `int` ou `real`.', ctx=ctx)
     
     def exitOperacaoNegacao(self, ctx):
         tipo = type(ctx.op_dir.valor)
@@ -174,7 +174,7 @@ class MyListener(ParseTreeListener):
             ctx.valor = not ctx.op_dir.valor
             ctx.type = bool
         else:
-            lanca_excecao(f'A operação `!` só pode ser aplicada em valores do tipo `bool`.')
+            lanca_excecao(f'A operação `!` só pode ser aplicada em valores do tipo `bool`.', ctx=ctx)
         
     def exitExprParenteses(self, ctx):
         ctx.type = ctx.expressao().type
@@ -184,8 +184,8 @@ class MyListener(ParseTreeListener):
 
 
 def expr_dual(left, op, right, contexto):
-    if not operandos_mesmo_tipo(left, right):
-        lanca_excecao(f'Na operação "{left} {contexto.op.text} {right}", os operandos precisam ser do mesmo tipo!')
+    if not operandos_mesmo_tipo(left, right, ctx=contexto):
+        lanca_excecao(f'Na operação "{left} {contexto.op.text} {right}", os operandos precisam ser do mesmo tipo!', ctx=contexto)
     else:
         if op == '*':
             contexto.valor = left * right
@@ -219,7 +219,7 @@ def expr_dual(left, op, right, contexto):
         print(f"{left} {contexto.op.text} {right}")
 
 
-def operandos_mesmo_tipo(op1, op2):
+def operandos_mesmo_tipo(op1, op2, ctx):
     return type(op1) == type(op2)
 
 
@@ -241,7 +241,7 @@ def converte_tipo_variavel(tipo):
             return tipo_real
 
 
-def verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor):
+def verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor, ctx):
     '''
         Compara o tipo da variável com o tipo do valor que será atribuido a ela.
         Se o valor for compatível com o tipo da variável, ele é retornado.
@@ -254,7 +254,7 @@ def verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor):
             if not valor:
                 valor = float()
             else:
-                lanca_excecao(f'O valor "{valor}" não pode ser atribuído à `{nome_variavel}`, pois não corresponde ao tipo `real`.')
+                lanca_excecao(f'O valor "{valor}" não pode ser atribuído à `{nome_variavel}`, pois não corresponde ao tipo `real`.', ctx=ctx)
 
     elif tipo_variavel == 'String':
         valor = str(valor).replace('"', '')
@@ -268,23 +268,23 @@ def verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor):
             if not valor:
                 valor = int()
             else:
-                lanca_excecao(f'O valor "{valor}" não pode ser atribuído à `{nome_variavel}`, pois não corresponde ao tipo `int`.')
+                lanca_excecao(f'O valor "{valor}" não pode ser atribuído à `{nome_variavel}`, pois não corresponde ao tipo `int`.', ctx=ctx)
     else:
         try:
             valor = bool(valor)
         except Exception as e:
-            lanca_excecao(f'O valor "{valor}" não pode ser atribuído à `{nome_variavel}`, pois não corresponde ao tipo `bool`.')
+            lanca_excecao(f'O valor "{valor}" não pode ser atribuído à `{nome_variavel}`, pois não corresponde ao tipo `bool`.', ctx=ctx)
             
     return valor
     
     
-def salva_variavel(nome_variavel, valor=None):
+def salva_variavel(nome_variavel, valor=None, ctx=None):
     '''
         Salva uma variável de acordo com o escopo em que foi instanciada.
     '''
     
     if nome_variavel[0] in string.digits:
-        lanca_excecao('Nomes de variáveis não podem iniciar com números: ', nome_variavel)
+        lanca_excecao('Nomes de variáveis não podem iniciar com números: ' + str(nome_variavel), ctx=ctx)
     
     tipo_variavel = tipo_declaracao
     
@@ -296,13 +296,13 @@ def salva_variavel(nome_variavel, valor=None):
     if not salvando_variavel and variavel:
         tipo_variavel = converte_tipo_variavel(type(variavel[1]))
     
-    if not verifica_existencia_id(nome_variavel) and not salvando_variavel:
-        lanca_excecao(f'A variavel "{nome_variavel}" não foi instanciada.')
+    if not verifica_existencia_id(nome_variavel, ctx=ctx) and not salvando_variavel:
+        lanca_excecao(f'A variavel "{nome_variavel}" não foi instanciada.', ctx=ctx)
     else:
-        valor = verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor)
+        valor = verifica_tipo_atribuicao(nome_variavel, tipo_variavel, valor, ctx)
         
         if funcao_executando:
-            funcao = busca_funcao_por_nome(funcao_executando)
+            funcao = busca_funcao_por_nome(funcao_executando, ctx=ctx)
             funcao.variaveis[nome_variavel] = valor
         else:
             memoria_global['variaveis'][nome_variavel] = valor
@@ -310,7 +310,7 @@ def salva_variavel(nome_variavel, valor=None):
 #     print(memoria_global['variaveis'])
 
     
-def visivel_no_escopo(somente_escopo_local=False):
+def visivel_no_escopo(somente_escopo_local=False, ctx=None):
     '''
         Lista todos os IDs que podem ser referenciados no escopo atual
     '''
@@ -318,7 +318,7 @@ def visivel_no_escopo(somente_escopo_local=False):
     uso_liberado = set()
 
     if funcao_executando:
-        funcao_atual = busca_funcao_por_nome(funcao_executando)
+        funcao_atual = busca_funcao_por_nome(funcao_executando, ctx=ctx)
         uso_liberado = set(list(funcao_atual.variaveis.keys()))
         
         if somente_escopo_local:
@@ -333,7 +333,7 @@ def visivel_no_escopo(somente_escopo_local=False):
     return uso_liberado
 
 
-def busca_variavel_por_nome(nome_variavel, somente_escopo_local=False):
+def busca_variavel_por_nome(nome_variavel, somente_escopo_local=False, ctx=None):
     '''
        Procura a variável pelo nome passado por parâmetro.
        Retorna uma tupla onde a primeira posição é o nome da variável e a segunda é o valor.
@@ -341,27 +341,27 @@ def busca_variavel_por_nome(nome_variavel, somente_escopo_local=False):
        Returns: (nome_variavel, valor_variavel)
     '''
     
-    if nome_variavel not in visivel_no_escopo(somente_escopo_local):
+    if nome_variavel not in visivel_no_escopo(somente_escopo_local, ctx=ctx):
         return False
     
     if funcao_executando:
-        funcao = busca_funcao_por_nome(funcao_executando)
+        funcao = busca_funcao_por_nome(funcao_executando, ctx=ctx)
         return [v for v in funcao.variaveis.items() if v[0] == nome_variavel][0]
     return [v for v in memoria_global['variaveis'].items() if v[0] == nome_variavel][0]
 
 
-def busca_funcao_por_nome(nome_funcao: str):
+def busca_funcao_por_nome(nome_funcao: str, ctx):
     '''
         Verifica se a função passada por parâmetro já foi instanciada.
     '''
     
     if nome_funcao not in [f.nome for f in memoria_global['funcoes']]:
-        lanca_excecao(f'A função `{nome_funcao}` não foi definida.')
+        lanca_excecao(f'A função `{nome_funcao}` não foi definida.', ctx=ctx)
         
     return [f for f in memoria_global['funcoes'] if f.nome == nome_funcao][0]
 
 
-def verifica_existencia_id(ID):
+def verifica_existencia_id(ID, ctx):
     '''
         Verifica se já existe o nome de uma variável ou funcão já instanciada com o ID do parâmetro.
         Essa verificação é feita de acordo com o escopo: primeiro verifica dentro da função,
@@ -369,25 +369,25 @@ def verifica_existencia_id(ID):
     '''
     
     if funcao_executando:
-        funcao_atual = busca_funcao_por_nome(funcao_executando)
+        funcao_atual = busca_funcao_por_nome(funcao_executando, ctx=ctx)
         variaveis_escopo = list(funcao_atual.variaveis.keys())
         
         for v in variaveis_escopo:
             if v == ID:
                 if not salvando_variavel:
                     return True
-                lanca_excecao(f'A variável "{ID}" já existe em `{funcao_executando}`.')
+                lanca_excecao(f'A variável "{ID}" já existe em `{funcao_executando}`.', ctx=ctx)
                 return False
 
-    elif ID in visivel_no_escopo():
+    elif ID in visivel_no_escopo(ctx=ctx):
         if not salvando_variavel:
             return True
         
-        lanca_excecao(f'O nome "{ID}" já está sendo usado.')
+        lanca_excecao(f'O nome "{ID}" já está sendo usado.', ctx=ctx)
         return False
 
     elif ID in palavras_reservadas:
-        lanca_excecao(f'"{ID}" é uma palavra reservada, não pode ser utilizada.')
+        lanca_excecao(f'"{ID}" é uma palavra reservada, não pode ser utilizada.', ctx=ctx)
         return False
 
     return False
