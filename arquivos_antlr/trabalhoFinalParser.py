@@ -12,7 +12,7 @@ else:
 def serializedATN():
     with StringIO() as buf:
         buf.write("\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3*")
-        buf.write("\u0188\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write("\u0184\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write("\4\b\t\b\4\t\t\t\4\n\t\n\4\13\t\13\4\f\t\f\4\r\t\r\4\16")
         buf.write("\t\16\4\17\t\17\4\20\t\20\4\21\t\21\4\22\t\22\4\23\t\23")
         buf.write("\4\24\t\24\4\25\t\25\4\26\t\26\4\27\t\27\4\30\t\30\4\31")
@@ -27,168 +27,166 @@ def serializedATN():
         buf.write("\n\t\3\t\3\t\3\t\7\t\u0095\n\t\f\t\16\t\u0098\13\t\3\t")
         buf.write("\3\t\3\t\5\t\u009d\n\t\3\n\3\n\3\n\5\n\u00a2\n\n\3\n\3")
         buf.write("\n\3\13\3\13\3\13\3\13\5\13\u00aa\n\13\3\f\3\f\3\f\3\f")
-        buf.write("\3\f\3\f\3\f\3\f\5\f\u00b4\n\f\3\r\3\r\3\r\3\r\3\16\3")
-        buf.write("\16\3\16\3\16\3\16\7\16\u00bf\n\16\f\16\16\16\u00c2\13")
-        buf.write("\16\3\16\3\16\3\16\3\17\3\17\3\17\3\17\3\17\3\17\3\17")
+        buf.write("\3\f\3\f\3\r\3\r\3\r\3\r\3\16\3\16\3\16\3\16\3\16\7\16")
+        buf.write("\u00bb\n\16\f\16\16\16\u00be\13\16\3\16\3\16\3\16\3\17")
         buf.write("\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17")
-        buf.write("\3\17\3\17\3\17\3\17\5\17\u00dd\n\17\3\20\3\20\3\20\3")
+        buf.write("\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\3\17\5\17")
+        buf.write("\u00d9\n\17\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3")
         buf.write("\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20")
-        buf.write("\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20\3\20")
-        buf.write("\5\20\u00f8\n\20\3\21\3\21\3\21\5\21\u00fd\n\21\3\21\3")
-        buf.write("\21\3\21\3\22\3\22\3\22\3\22\3\22\3\22\3\23\3\23\3\23")
-        buf.write("\3\23\3\23\5\23\u010d\n\23\3\24\3\24\3\24\5\24\u0112\n")
-        buf.write("\24\3\25\3\25\3\25\3\25\3\25\5\25\u0119\n\25\3\26\3\26")
-        buf.write("\3\26\5\26\u011e\n\26\3\26\3\26\3\26\3\26\3\26\3\26\3")
-        buf.write("\26\3\26\3\26\3\27\3\27\3\27\3\27\3\27\3\27\3\27\3\27")
+        buf.write("\3\20\3\20\3\20\3\20\3\20\3\20\5\20\u00f4\n\20\3\21\3")
+        buf.write("\21\3\21\5\21\u00f9\n\21\3\21\3\21\3\21\3\22\3\22\3\22")
+        buf.write("\3\22\3\22\3\22\3\23\3\23\3\23\3\23\3\23\5\23\u0109\n")
+        buf.write("\23\3\24\3\24\3\24\5\24\u010e\n\24\3\25\3\25\3\25\3\25")
+        buf.write("\3\25\5\25\u0115\n\25\3\26\3\26\3\26\5\26\u011a\n\26\3")
+        buf.write("\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\26\3\27\3\27")
+        buf.write("\3\27\3\27\3\27\3\27\3\27\3\27\3\30\3\30\3\30\3\30\3\30")
         buf.write("\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30")
-        buf.write("\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\3\30\5\30\u0145")
-        buf.write("\n\30\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31")
-        buf.write("\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\5\31")
-        buf.write("\u015b\n\31\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3")
-        buf.write("\32\3\32\5\32\u0167\n\32\3\32\3\32\3\32\3\32\3\32\3\32")
-        buf.write("\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32")
-        buf.write("\3\32\7\32\u017b\n\32\f\32\16\32\u017e\13\32\3\33\3\33")
-        buf.write("\5\33\u0182\n\33\3\34\3\34\3\35\3\35\3\35\2\3\62\36\2")
-        buf.write("\4\6\b\n\f\16\20\22\24\26\30\32\34\36 \"$&(*,.\60\62\64")
-        buf.write("\668\2\b\3\2\'*\3\2\7\n\3\2\37\"\3\2\35\36\3\2\32\33\3")
-        buf.write("\2\30\31\2\u019e\2=\3\2\2\2\4O\3\2\2\2\6W\3\2\2\2\b`\3")
-        buf.write("\2\2\2\ni\3\2\2\2\ft\3\2\2\2\16v\3\2\2\2\20\u009c\3\2")
-        buf.write("\2\2\22\u009e\3\2\2\2\24\u00a9\3\2\2\2\26\u00b3\3\2\2")
-        buf.write("\2\30\u00b5\3\2\2\2\32\u00b9\3\2\2\2\34\u00dc\3\2\2\2")
-        buf.write("\36\u00f7\3\2\2\2 \u00f9\3\2\2\2\"\u0101\3\2\2\2$\u010c")
-        buf.write("\3\2\2\2&\u0111\3\2\2\2(\u0118\3\2\2\2*\u011a\3\2\2\2")
-        buf.write(",\u0128\3\2\2\2.\u0144\3\2\2\2\60\u015a\3\2\2\2\62\u0166")
-        buf.write("\3\2\2\2\64\u0181\3\2\2\2\66\u0183\3\2\2\28\u0185\3\2")
-        buf.write("\2\2:<\5\4\3\2;:\3\2\2\2<?\3\2\2\2=;\3\2\2\2=>\3\2\2\2")
-        buf.write(">C\3\2\2\2?=\3\2\2\2@B\5\20\t\2A@\3\2\2\2BE\3\2\2\2CA")
-        buf.write("\3\2\2\2CD\3\2\2\2DF\3\2\2\2EC\3\2\2\2FG\5\32\16\2G\3")
-        buf.write("\3\2\2\2HI\5\16\b\2IJ\5\b\5\2JP\3\2\2\2KL\7\3\2\2LM\5")
-        buf.write("\16\b\2MN\5\n\6\2NP\3\2\2\2OH\3\2\2\2OK\3\2\2\2P\5\3\2")
-        buf.write("\2\2QR\5\16\b\2RS\5\b\5\2SX\3\2\2\2TU\5\16\b\2UV\5\n\6")
-        buf.write("\2VX\3\2\2\2WQ\3\2\2\2WT\3\2\2\2X\7\3\2\2\2YZ\58\35\2")
-        buf.write("Z[\7\4\2\2[\\\5\b\5\2\\a\3\2\2\2]^\58\35\2^_\7\5\2\2_")
-        buf.write("a\3\2\2\2`Y\3\2\2\2`]\3\2\2\2a\t\3\2\2\2bc\5\f\7\2cd\7")
-        buf.write("\4\2\2de\5\n\6\2ej\3\2\2\2fg\5\f\7\2gh\7\5\2\2hj\3\2\2")
-        buf.write("\2ib\3\2\2\2if\3\2\2\2j\13\3\2\2\2kl\7%\2\2lm\7\6\2\2")
-        buf.write("mu\t\2\2\2no\7%\2\2op\7\6\2\2pu\5\66\34\2qr\7%\2\2rs\7")
-        buf.write("\6\2\2su\5\62\32\2tk\3\2\2\2tn\3\2\2\2tq\3\2\2\2u\r\3")
-        buf.write("\2\2\2vw\t\3\2\2w\17\3\2\2\2xy\5\16\b\2yz\7%\2\2z|\7\13")
-        buf.write("\2\2{}\5\26\f\2|{\3\2\2\2|}\3\2\2\2}~\3\2\2\2~\177\7\f")
-        buf.write("\2\2\177\u0088\7\r\2\2\u0080\u0082\5\6\4\2\u0081\u0080")
-        buf.write("\3\2\2\2\u0082\u0085\3\2\2\2\u0083\u0081\3\2\2\2\u0083")
-        buf.write("\u0084\3\2\2\2\u0084\u0086\3\2\2\2\u0085\u0083\3\2\2\2")
-        buf.write("\u0086\u0089\5\34\17\2\u0087\u0089\5\30\r\2\u0088\u0083")
-        buf.write("\3\2\2\2\u0088\u0087\3\2\2\2\u0089\u008a\3\2\2\2\u008a")
-        buf.write("\u008b\7\16\2\2\u008b\u009d\3\2\2\2\u008c\u008d\7%\2\2")
-        buf.write("\u008d\u008f\7\13\2\2\u008e\u0090\5\26\f\2\u008f\u008e")
-        buf.write("\3\2\2\2\u008f\u0090\3\2\2\2\u0090\u0091\3\2\2\2\u0091")
-        buf.write("\u0092\7\f\2\2\u0092\u0096\7\r\2\2\u0093\u0095\5\6\4\2")
-        buf.write("\u0094\u0093\3\2\2\2\u0095\u0098\3\2\2\2\u0096\u0094\3")
-        buf.write("\2\2\2\u0096\u0097\3\2\2\2\u0097\u0099\3\2\2\2\u0098\u0096")
-        buf.write("\3\2\2\2\u0099\u009a\5\34\17\2\u009a\u009b\7\16\2\2\u009b")
-        buf.write("\u009d\3\2\2\2\u009cx\3\2\2\2\u009c\u008c\3\2\2\2\u009d")
-        buf.write("\21\3\2\2\2\u009e\u009f\7%\2\2\u009f\u00a1\7\13\2\2\u00a0")
-        buf.write("\u00a2\5\24\13\2\u00a1\u00a0\3\2\2\2\u00a1\u00a2\3\2\2")
-        buf.write("\2\u00a2\u00a3\3\2\2\2\u00a3\u00a4\7\f\2\2\u00a4\23\3")
-        buf.write("\2\2\2\u00a5\u00a6\7%\2\2\u00a6\u00a7\7\4\2\2\u00a7\u00aa")
-        buf.write("\5\24\13\2\u00a8\u00aa\7%\2\2\u00a9\u00a5\3\2\2\2\u00a9")
-        buf.write("\u00a8\3\2\2\2\u00aa\25\3\2\2\2\u00ab\u00ac\5\16\b\2\u00ac")
-        buf.write("\u00ad\7%\2\2\u00ad\u00ae\7\4\2\2\u00ae\u00af\5\26\f\2")
-        buf.write("\u00af\u00b4\3\2\2\2\u00b0\u00b1\5\16\b\2\u00b1\u00b2")
-        buf.write("\7%\2\2\u00b2\u00b4\3\2\2\2\u00b3\u00ab\3\2\2\2\u00b3")
-        buf.write("\u00b0\3\2\2\2\u00b4\27\3\2\2\2\u00b5\u00b6\7\17\2\2\u00b6")
-        buf.write("\u00b7\5\62\32\2\u00b7\u00b8\7\5\2\2\u00b8\31\3\2\2\2")
-        buf.write("\u00b9\u00ba\7\20\2\2\u00ba\u00bb\7\13\2\2\u00bb\u00bc")
-        buf.write("\7\f\2\2\u00bc\u00c0\7\r\2\2\u00bd\u00bf\5\6\4\2\u00be")
-        buf.write("\u00bd\3\2\2\2\u00bf\u00c2\3\2\2\2\u00c0\u00be\3\2\2\2")
-        buf.write("\u00c0\u00c1\3\2\2\2\u00c1\u00c3\3\2\2\2\u00c2\u00c0\3")
-        buf.write("\2\2\2\u00c3\u00c4\5\34\17\2\u00c4\u00c5\7\16\2\2\u00c5")
-        buf.write("\33\3\2\2\2\u00c6\u00c7\5*\26\2\u00c7\u00c8\5\34\17\2")
-        buf.write("\u00c8\u00dd\3\2\2\2\u00c9\u00ca\5.\30\2\u00ca\u00cb\5")
-        buf.write("\34\17\2\u00cb\u00dd\3\2\2\2\u00cc\u00cd\5\"\22\2\u00cd")
-        buf.write("\u00ce\5\34\17\2\u00ce\u00dd\3\2\2\2\u00cf\u00d0\5 \21")
-        buf.write("\2\u00d0\u00d1\5\34\17\2\u00d1\u00dd\3\2\2\2\u00d2\u00d3")
-        buf.write("\5,\27\2\u00d3\u00d4\5\34\17\2\u00d4\u00dd\3\2\2\2\u00d5")
-        buf.write("\u00d6\5\30\r\2\u00d6\u00d7\5\34\17\2\u00d7\u00dd\3\2")
-        buf.write("\2\2\u00d8\u00d9\5\n\6\2\u00d9\u00da\5\34\17\2\u00da\u00dd")
-        buf.write("\3\2\2\2\u00db\u00dd\3\2\2\2\u00dc\u00c6\3\2\2\2\u00dc")
-        buf.write("\u00c9\3\2\2\2\u00dc\u00cc\3\2\2\2\u00dc\u00cf\3\2\2\2")
-        buf.write("\u00dc\u00d2\3\2\2\2\u00dc\u00d5\3\2\2\2\u00dc\u00d8\3")
-        buf.write("\2\2\2\u00dc\u00db\3\2\2\2\u00dd\35\3\2\2\2\u00de\u00df")
-        buf.write("\5*\26\2\u00df\u00e0\5\36\20\2\u00e0\u00f8\3\2\2\2\u00e1")
-        buf.write("\u00e2\5\60\31\2\u00e2\u00e3\5\36\20\2\u00e3\u00f8\3\2")
-        buf.write("\2\2\u00e4\u00e5\5\"\22\2\u00e5\u00e6\5\36\20\2\u00e6")
-        buf.write("\u00f8\3\2\2\2\u00e7\u00e8\5 \21\2\u00e8\u00e9\5\36\20")
-        buf.write("\2\u00e9\u00f8\3\2\2\2\u00ea\u00eb\5,\27\2\u00eb\u00ec")
-        buf.write("\5\36\20\2\u00ec\u00f8\3\2\2\2\u00ed\u00ee\5\30\r\2\u00ee")
-        buf.write("\u00ef\5\36\20\2\u00ef\u00f8\3\2\2\2\u00f0\u00f1\5\n\6")
-        buf.write("\2\u00f1\u00f2\5\36\20\2\u00f2\u00f8\3\2\2\2\u00f3\u00f4")
-        buf.write("\7\21\2\2\u00f4\u00f5\7\5\2\2\u00f5\u00f8\5\36\20\2\u00f6")
-        buf.write("\u00f8\3\2\2\2\u00f7\u00de\3\2\2\2\u00f7\u00e1\3\2\2\2")
-        buf.write("\u00f7\u00e4\3\2\2\2\u00f7\u00e7\3\2\2\2\u00f7\u00ea\3")
-        buf.write("\2\2\2\u00f7\u00ed\3\2\2\2\u00f7\u00f0\3\2\2\2\u00f7\u00f3")
-        buf.write("\3\2\2\2\u00f7\u00f6\3\2\2\2\u00f8\37\3\2\2\2\u00f9\u00fa")
-        buf.write("\7\22\2\2\u00fa\u00fc\7\13\2\2\u00fb\u00fd\5\24\13\2\u00fc")
-        buf.write("\u00fb\3\2\2\2\u00fc\u00fd\3\2\2\2\u00fd\u00fe\3\2\2\2")
-        buf.write("\u00fe\u00ff\7\f\2\2\u00ff\u0100\7\5\2\2\u0100!\3\2\2")
-        buf.write("\2\u0101\u0102\7\23\2\2\u0102\u0103\7\13\2\2\u0103\u0104")
-        buf.write("\5$\23\2\u0104\u0105\7\f\2\2\u0105\u0106\7\5\2\2\u0106")
-        buf.write("#\3\2\2\2\u0107\u0108\5&\24\2\u0108\u0109\7\4\2\2\u0109")
-        buf.write("\u010a\5$\23\2\u010a\u010d\3\2\2\2\u010b\u010d\5&\24\2")
-        buf.write("\u010c\u0107\3\2\2\2\u010c\u010b\3\2\2\2\u010d%\3\2\2")
-        buf.write("\2\u010e\u0112\5\64\33\2\u010f\u0112\5\22\n\2\u0110\u0112")
-        buf.write("\5\62\32\2\u0111\u010e\3\2\2\2\u0111\u010f\3\2\2\2\u0111")
-        buf.write("\u0110\3\2\2\2\u0112\'\3\2\2\2\u0113\u0114\5\f\7\2\u0114")
-        buf.write("\u0115\7\4\2\2\u0115\u0116\5(\25\2\u0116\u0119\3\2\2\2")
-        buf.write("\u0117\u0119\5\f\7\2\u0118\u0113\3\2\2\2\u0118\u0117\3")
-        buf.write("\2\2\2\u0119)\3\2\2\2\u011a\u011b\7\24\2\2\u011b\u011d")
-        buf.write("\7\13\2\2\u011c\u011e\5(\25\2\u011d\u011c\3\2\2\2\u011d")
-        buf.write("\u011e\3\2\2\2\u011e\u011f\3\2\2\2\u011f\u0120\7\5\2\2")
-        buf.write("\u0120\u0121\5\62\32\2\u0121\u0122\7\5\2\2\u0122\u0123")
-        buf.write("\5(\25\2\u0123\u0124\7\f\2\2\u0124\u0125\7\r\2\2\u0125")
-        buf.write("\u0126\5\36\20\2\u0126\u0127\7\16\2\2\u0127+\3\2\2\2\u0128")
-        buf.write("\u0129\7\25\2\2\u0129\u012a\7\13\2\2\u012a\u012b\5\62")
-        buf.write("\32\2\u012b\u012c\7\f\2\2\u012c\u012d\7\r\2\2\u012d\u012e")
-        buf.write("\5\36\20\2\u012e\u012f\7\16\2\2\u012f-\3\2\2\2\u0130\u0131")
-        buf.write("\7\26\2\2\u0131\u0132\7\13\2\2\u0132\u0133\5\62\32\2\u0133")
-        buf.write("\u0134\7\f\2\2\u0134\u0135\7\r\2\2\u0135\u0136\5\34\17")
-        buf.write("\2\u0136\u0137\7\16\2\2\u0137\u0145\3\2\2\2\u0138\u0139")
-        buf.write("\7\26\2\2\u0139\u013a\7\13\2\2\u013a\u013b\5\62\32\2\u013b")
-        buf.write("\u013c\7\f\2\2\u013c\u013d\7\r\2\2\u013d\u013e\5\34\17")
-        buf.write("\2\u013e\u013f\7\16\2\2\u013f\u0140\7\27\2\2\u0140\u0141")
-        buf.write("\7\r\2\2\u0141\u0142\5\34\17\2\u0142\u0143\7\16\2\2\u0143")
-        buf.write("\u0145\3\2\2\2\u0144\u0130\3\2\2\2\u0144\u0138\3\2\2\2")
-        buf.write("\u0145/\3\2\2\2\u0146\u0147\7\26\2\2\u0147\u0148\7\13")
-        buf.write("\2\2\u0148\u0149\5\62\32\2\u0149\u014a\7\f\2\2\u014a\u014b")
-        buf.write("\7\r\2\2\u014b\u014c\5\36\20\2\u014c\u014d\7\16\2\2\u014d")
-        buf.write("\u015b\3\2\2\2\u014e\u014f\7\26\2\2\u014f\u0150\7\13\2")
-        buf.write("\2\u0150\u0151\5\62\32\2\u0151\u0152\7\f\2\2\u0152\u0153")
-        buf.write("\7\r\2\2\u0153\u0154\5\36\20\2\u0154\u0155\7\16\2\2\u0155")
-        buf.write("\u0156\7\27\2\2\u0156\u0157\7\r\2\2\u0157\u0158\5\36\20")
-        buf.write("\2\u0158\u0159\7\16\2\2\u0159\u015b\3\2\2\2\u015a\u0146")
-        buf.write("\3\2\2\2\u015a\u014e\3\2\2\2\u015b\61\3\2\2\2\u015c\u015d")
-        buf.write("\b\32\1\2\u015d\u015e\7\33\2\2\u015e\u0167\5\62\32\6\u015f")
-        buf.write("\u0160\7\34\2\2\u0160\u0167\5\62\32\5\u0161\u0162\7\13")
-        buf.write("\2\2\u0162\u0163\5\62\32\2\u0163\u0164\7\f\2\2\u0164\u0167")
-        buf.write("\3\2\2\2\u0165\u0167\5\64\33\2\u0166\u015c\3\2\2\2\u0166")
-        buf.write("\u015f\3\2\2\2\u0166\u0161\3\2\2\2\u0166\u0165\3\2\2\2")
-        buf.write("\u0167\u017c\3\2\2\2\u0168\u0169\f\f\2\2\u0169\u016a\7")
-        buf.write("#\2\2\u016a\u017b\5\62\32\r\u016b\u016c\f\13\2\2\u016c")
-        buf.write("\u016d\7$\2\2\u016d\u017b\5\62\32\f\u016e\u016f\f\n\2")
-        buf.write("\2\u016f\u0170\t\4\2\2\u0170\u017b\5\62\32\13\u0171\u0172")
-        buf.write("\f\t\2\2\u0172\u0173\t\5\2\2\u0173\u017b\5\62\32\n\u0174")
-        buf.write("\u0175\f\b\2\2\u0175\u0176\t\6\2\2\u0176\u017b\5\62\32")
-        buf.write("\t\u0177\u0178\f\7\2\2\u0178\u0179\t\7\2\2\u0179\u017b")
-        buf.write("\5\62\32\b\u017a\u0168\3\2\2\2\u017a\u016b\3\2\2\2\u017a")
-        buf.write("\u016e\3\2\2\2\u017a\u0171\3\2\2\2\u017a\u0174\3\2\2\2")
-        buf.write("\u017a\u0177\3\2\2\2\u017b\u017e\3\2\2\2\u017c\u017a\3")
-        buf.write("\2\2\2\u017c\u017d\3\2\2\2\u017d\63\3\2\2\2\u017e\u017c")
-        buf.write("\3\2\2\2\u017f\u0182\t\2\2\2\u0180\u0182\5\66\34\2\u0181")
-        buf.write("\u017f\3\2\2\2\u0181\u0180\3\2\2\2\u0182\65\3\2\2\2\u0183")
-        buf.write("\u0184\7%\2\2\u0184\67\3\2\2\2\u0185\u0186\7%\2\2\u0186")
-        buf.write("9\3\2\2\2 =COW`it|\u0083\u0088\u008f\u0096\u009c\u00a1")
-        buf.write("\u00a9\u00b3\u00c0\u00dc\u00f7\u00fc\u010c\u0111\u0118")
-        buf.write("\u011d\u0144\u015a\u0166\u017a\u017c\u0181")
+        buf.write("\3\30\3\30\3\30\3\30\5\30\u0141\n\30\3\31\3\31\3\31\3")
+        buf.write("\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31\3\31")
+        buf.write("\3\31\3\31\3\31\3\31\3\31\3\31\5\31\u0157\n\31\3\32\3")
+        buf.write("\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\5\32\u0163")
+        buf.write("\n\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32")
+        buf.write("\3\32\3\32\3\32\3\32\3\32\3\32\3\32\3\32\7\32\u0177\n")
+        buf.write("\32\f\32\16\32\u017a\13\32\3\33\3\33\5\33\u017e\n\33\3")
+        buf.write("\34\3\34\3\35\3\35\3\35\2\3\62\36\2\4\6\b\n\f\16\20\22")
+        buf.write("\24\26\30\32\34\36 \"$&(*,.\60\62\64\668\2\b\3\2\'*\3")
+        buf.write("\2\7\n\3\2\37\"\3\2\35\36\3\2\32\33\3\2\30\31\2\u0199")
+        buf.write("\2=\3\2\2\2\4O\3\2\2\2\6W\3\2\2\2\b`\3\2\2\2\ni\3\2\2")
+        buf.write("\2\ft\3\2\2\2\16v\3\2\2\2\20\u009c\3\2\2\2\22\u009e\3")
+        buf.write("\2\2\2\24\u00a9\3\2\2\2\26\u00ab\3\2\2\2\30\u00b1\3\2")
+        buf.write("\2\2\32\u00b5\3\2\2\2\34\u00d8\3\2\2\2\36\u00f3\3\2\2")
+        buf.write("\2 \u00f5\3\2\2\2\"\u00fd\3\2\2\2$\u0108\3\2\2\2&\u010d")
+        buf.write("\3\2\2\2(\u0114\3\2\2\2*\u0116\3\2\2\2,\u0124\3\2\2\2")
+        buf.write(".\u0140\3\2\2\2\60\u0156\3\2\2\2\62\u0162\3\2\2\2\64\u017d")
+        buf.write("\3\2\2\2\66\u017f\3\2\2\28\u0181\3\2\2\2:<\5\4\3\2;:\3")
+        buf.write("\2\2\2<?\3\2\2\2=;\3\2\2\2=>\3\2\2\2>C\3\2\2\2?=\3\2\2")
+        buf.write("\2@B\5\20\t\2A@\3\2\2\2BE\3\2\2\2CA\3\2\2\2CD\3\2\2\2")
+        buf.write("DF\3\2\2\2EC\3\2\2\2FG\5\32\16\2G\3\3\2\2\2HI\5\16\b\2")
+        buf.write("IJ\5\b\5\2JP\3\2\2\2KL\7\3\2\2LM\5\16\b\2MN\5\n\6\2NP")
+        buf.write("\3\2\2\2OH\3\2\2\2OK\3\2\2\2P\5\3\2\2\2QR\5\16\b\2RS\5")
+        buf.write("\b\5\2SX\3\2\2\2TU\5\16\b\2UV\5\n\6\2VX\3\2\2\2WQ\3\2")
+        buf.write("\2\2WT\3\2\2\2X\7\3\2\2\2YZ\58\35\2Z[\7\4\2\2[\\\5\b\5")
+        buf.write("\2\\a\3\2\2\2]^\58\35\2^_\7\5\2\2_a\3\2\2\2`Y\3\2\2\2")
+        buf.write("`]\3\2\2\2a\t\3\2\2\2bc\5\f\7\2cd\7\4\2\2de\5\n\6\2ej")
+        buf.write("\3\2\2\2fg\5\f\7\2gh\7\5\2\2hj\3\2\2\2ib\3\2\2\2if\3\2")
+        buf.write("\2\2j\13\3\2\2\2kl\7%\2\2lm\7\6\2\2mu\t\2\2\2no\7%\2\2")
+        buf.write("op\7\6\2\2pu\5\66\34\2qr\7%\2\2rs\7\6\2\2su\5\62\32\2")
+        buf.write("tk\3\2\2\2tn\3\2\2\2tq\3\2\2\2u\r\3\2\2\2vw\t\3\2\2w\17")
+        buf.write("\3\2\2\2xy\5\16\b\2yz\7%\2\2z|\7\13\2\2{}\5\26\f\2|{\3")
+        buf.write("\2\2\2|}\3\2\2\2}~\3\2\2\2~\177\7\f\2\2\177\u0088\7\r")
+        buf.write("\2\2\u0080\u0082\5\6\4\2\u0081\u0080\3\2\2\2\u0082\u0085")
+        buf.write("\3\2\2\2\u0083\u0081\3\2\2\2\u0083\u0084\3\2\2\2\u0084")
+        buf.write("\u0086\3\2\2\2\u0085\u0083\3\2\2\2\u0086\u0089\5\34\17")
+        buf.write("\2\u0087\u0089\5\30\r\2\u0088\u0083\3\2\2\2\u0088\u0087")
+        buf.write("\3\2\2\2\u0089\u008a\3\2\2\2\u008a\u008b\7\16\2\2\u008b")
+        buf.write("\u009d\3\2\2\2\u008c\u008d\7%\2\2\u008d\u008f\7\13\2\2")
+        buf.write("\u008e\u0090\5\26\f\2\u008f\u008e\3\2\2\2\u008f\u0090")
+        buf.write("\3\2\2\2\u0090\u0091\3\2\2\2\u0091\u0092\7\f\2\2\u0092")
+        buf.write("\u0096\7\r\2\2\u0093\u0095\5\6\4\2\u0094\u0093\3\2\2\2")
+        buf.write("\u0095\u0098\3\2\2\2\u0096\u0094\3\2\2\2\u0096\u0097\3")
+        buf.write("\2\2\2\u0097\u0099\3\2\2\2\u0098\u0096\3\2\2\2\u0099\u009a")
+        buf.write("\5\34\17\2\u009a\u009b\7\16\2\2\u009b\u009d\3\2\2\2\u009c")
+        buf.write("x\3\2\2\2\u009c\u008c\3\2\2\2\u009d\21\3\2\2\2\u009e\u009f")
+        buf.write("\7%\2\2\u009f\u00a1\7\13\2\2\u00a0\u00a2\5\24\13\2\u00a1")
+        buf.write("\u00a0\3\2\2\2\u00a1\u00a2\3\2\2\2\u00a2\u00a3\3\2\2\2")
+        buf.write("\u00a3\u00a4\7\f\2\2\u00a4\23\3\2\2\2\u00a5\u00a6\7%\2")
+        buf.write("\2\u00a6\u00a7\7\4\2\2\u00a7\u00aa\5\24\13\2\u00a8\u00aa")
+        buf.write("\7%\2\2\u00a9\u00a5\3\2\2\2\u00a9\u00a8\3\2\2\2\u00aa")
+        buf.write("\25\3\2\2\2\u00ab\u00ac\5\16\b\2\u00ac\u00ad\7%\2\2\u00ad")
+        buf.write("\u00ae\7\4\2\2\u00ae\u00af\5\16\b\2\u00af\u00b0\7%\2\2")
+        buf.write("\u00b0\27\3\2\2\2\u00b1\u00b2\7\17\2\2\u00b2\u00b3\5\62")
+        buf.write("\32\2\u00b3\u00b4\7\5\2\2\u00b4\31\3\2\2\2\u00b5\u00b6")
+        buf.write("\7\20\2\2\u00b6\u00b7\7\13\2\2\u00b7\u00b8\7\f\2\2\u00b8")
+        buf.write("\u00bc\7\r\2\2\u00b9\u00bb\5\6\4\2\u00ba\u00b9\3\2\2\2")
+        buf.write("\u00bb\u00be\3\2\2\2\u00bc\u00ba\3\2\2\2\u00bc\u00bd\3")
+        buf.write("\2\2\2\u00bd\u00bf\3\2\2\2\u00be\u00bc\3\2\2\2\u00bf\u00c0")
+        buf.write("\5\34\17\2\u00c0\u00c1\7\16\2\2\u00c1\33\3\2\2\2\u00c2")
+        buf.write("\u00c3\5*\26\2\u00c3\u00c4\5\34\17\2\u00c4\u00d9\3\2\2")
+        buf.write("\2\u00c5\u00c6\5.\30\2\u00c6\u00c7\5\34\17\2\u00c7\u00d9")
+        buf.write("\3\2\2\2\u00c8\u00c9\5\"\22\2\u00c9\u00ca\5\34\17\2\u00ca")
+        buf.write("\u00d9\3\2\2\2\u00cb\u00cc\5 \21\2\u00cc\u00cd\5\34\17")
+        buf.write("\2\u00cd\u00d9\3\2\2\2\u00ce\u00cf\5,\27\2\u00cf\u00d0")
+        buf.write("\5\34\17\2\u00d0\u00d9\3\2\2\2\u00d1\u00d2\5\30\r\2\u00d2")
+        buf.write("\u00d3\5\34\17\2\u00d3\u00d9\3\2\2\2\u00d4\u00d5\5\n\6")
+        buf.write("\2\u00d5\u00d6\5\34\17\2\u00d6\u00d9\3\2\2\2\u00d7\u00d9")
+        buf.write("\3\2\2\2\u00d8\u00c2\3\2\2\2\u00d8\u00c5\3\2\2\2\u00d8")
+        buf.write("\u00c8\3\2\2\2\u00d8\u00cb\3\2\2\2\u00d8\u00ce\3\2\2\2")
+        buf.write("\u00d8\u00d1\3\2\2\2\u00d8\u00d4\3\2\2\2\u00d8\u00d7\3")
+        buf.write("\2\2\2\u00d9\35\3\2\2\2\u00da\u00db\5*\26\2\u00db\u00dc")
+        buf.write("\5\36\20\2\u00dc\u00f4\3\2\2\2\u00dd\u00de\5\60\31\2\u00de")
+        buf.write("\u00df\5\36\20\2\u00df\u00f4\3\2\2\2\u00e0\u00e1\5\"\22")
+        buf.write("\2\u00e1\u00e2\5\36\20\2\u00e2\u00f4\3\2\2\2\u00e3\u00e4")
+        buf.write("\5 \21\2\u00e4\u00e5\5\36\20\2\u00e5\u00f4\3\2\2\2\u00e6")
+        buf.write("\u00e7\5,\27\2\u00e7\u00e8\5\36\20\2\u00e8\u00f4\3\2\2")
+        buf.write("\2\u00e9\u00ea\5\30\r\2\u00ea\u00eb\5\36\20\2\u00eb\u00f4")
+        buf.write("\3\2\2\2\u00ec\u00ed\5\n\6\2\u00ed\u00ee\5\36\20\2\u00ee")
+        buf.write("\u00f4\3\2\2\2\u00ef\u00f0\7\21\2\2\u00f0\u00f1\7\5\2")
+        buf.write("\2\u00f1\u00f4\5\36\20\2\u00f2\u00f4\3\2\2\2\u00f3\u00da")
+        buf.write("\3\2\2\2\u00f3\u00dd\3\2\2\2\u00f3\u00e0\3\2\2\2\u00f3")
+        buf.write("\u00e3\3\2\2\2\u00f3\u00e6\3\2\2\2\u00f3\u00e9\3\2\2\2")
+        buf.write("\u00f3\u00ec\3\2\2\2\u00f3\u00ef\3\2\2\2\u00f3\u00f2\3")
+        buf.write("\2\2\2\u00f4\37\3\2\2\2\u00f5\u00f6\7\22\2\2\u00f6\u00f8")
+        buf.write("\7\13\2\2\u00f7\u00f9\5\24\13\2\u00f8\u00f7\3\2\2\2\u00f8")
+        buf.write("\u00f9\3\2\2\2\u00f9\u00fa\3\2\2\2\u00fa\u00fb\7\f\2\2")
+        buf.write("\u00fb\u00fc\7\5\2\2\u00fc!\3\2\2\2\u00fd\u00fe\7\23\2")
+        buf.write("\2\u00fe\u00ff\7\13\2\2\u00ff\u0100\5$\23\2\u0100\u0101")
+        buf.write("\7\f\2\2\u0101\u0102\7\5\2\2\u0102#\3\2\2\2\u0103\u0104")
+        buf.write("\5&\24\2\u0104\u0105\7\4\2\2\u0105\u0106\5$\23\2\u0106")
+        buf.write("\u0109\3\2\2\2\u0107\u0109\5&\24\2\u0108\u0103\3\2\2\2")
+        buf.write("\u0108\u0107\3\2\2\2\u0109%\3\2\2\2\u010a\u010e\5\64\33")
+        buf.write("\2\u010b\u010e\5\22\n\2\u010c\u010e\5\62\32\2\u010d\u010a")
+        buf.write("\3\2\2\2\u010d\u010b\3\2\2\2\u010d\u010c\3\2\2\2\u010e")
+        buf.write("\'\3\2\2\2\u010f\u0110\5\f\7\2\u0110\u0111\7\4\2\2\u0111")
+        buf.write("\u0112\5(\25\2\u0112\u0115\3\2\2\2\u0113\u0115\5\f\7\2")
+        buf.write("\u0114\u010f\3\2\2\2\u0114\u0113\3\2\2\2\u0115)\3\2\2")
+        buf.write("\2\u0116\u0117\7\24\2\2\u0117\u0119\7\13\2\2\u0118\u011a")
+        buf.write("\5(\25\2\u0119\u0118\3\2\2\2\u0119\u011a\3\2\2\2\u011a")
+        buf.write("\u011b\3\2\2\2\u011b\u011c\7\5\2\2\u011c\u011d\5\62\32")
+        buf.write("\2\u011d\u011e\7\5\2\2\u011e\u011f\5(\25\2\u011f\u0120")
+        buf.write("\7\f\2\2\u0120\u0121\7\r\2\2\u0121\u0122\5\36\20\2\u0122")
+        buf.write("\u0123\7\16\2\2\u0123+\3\2\2\2\u0124\u0125\7\25\2\2\u0125")
+        buf.write("\u0126\7\13\2\2\u0126\u0127\5\62\32\2\u0127\u0128\7\f")
+        buf.write("\2\2\u0128\u0129\7\r\2\2\u0129\u012a\5\36\20\2\u012a\u012b")
+        buf.write("\7\16\2\2\u012b-\3\2\2\2\u012c\u012d\7\26\2\2\u012d\u012e")
+        buf.write("\7\13\2\2\u012e\u012f\5\62\32\2\u012f\u0130\7\f\2\2\u0130")
+        buf.write("\u0131\7\r\2\2\u0131\u0132\5\34\17\2\u0132\u0133\7\16")
+        buf.write("\2\2\u0133\u0141\3\2\2\2\u0134\u0135\7\26\2\2\u0135\u0136")
+        buf.write("\7\13\2\2\u0136\u0137\5\62\32\2\u0137\u0138\7\f\2\2\u0138")
+        buf.write("\u0139\7\r\2\2\u0139\u013a\5\34\17\2\u013a\u013b\7\16")
+        buf.write("\2\2\u013b\u013c\7\27\2\2\u013c\u013d\7\r\2\2\u013d\u013e")
+        buf.write("\5\34\17\2\u013e\u013f\7\16\2\2\u013f\u0141\3\2\2\2\u0140")
+        buf.write("\u012c\3\2\2\2\u0140\u0134\3\2\2\2\u0141/\3\2\2\2\u0142")
+        buf.write("\u0143\7\26\2\2\u0143\u0144\7\13\2\2\u0144\u0145\5\62")
+        buf.write("\32\2\u0145\u0146\7\f\2\2\u0146\u0147\7\r\2\2\u0147\u0148")
+        buf.write("\5\36\20\2\u0148\u0149\7\16\2\2\u0149\u0157\3\2\2\2\u014a")
+        buf.write("\u014b\7\26\2\2\u014b\u014c\7\13\2\2\u014c\u014d\5\62")
+        buf.write("\32\2\u014d\u014e\7\f\2\2\u014e\u014f\7\r\2\2\u014f\u0150")
+        buf.write("\5\36\20\2\u0150\u0151\7\16\2\2\u0151\u0152\7\27\2\2\u0152")
+        buf.write("\u0153\7\r\2\2\u0153\u0154\5\36\20\2\u0154\u0155\7\16")
+        buf.write("\2\2\u0155\u0157\3\2\2\2\u0156\u0142\3\2\2\2\u0156\u014a")
+        buf.write("\3\2\2\2\u0157\61\3\2\2\2\u0158\u0159\b\32\1\2\u0159\u015a")
+        buf.write("\7\33\2\2\u015a\u0163\5\62\32\6\u015b\u015c\7\34\2\2\u015c")
+        buf.write("\u0163\5\62\32\5\u015d\u015e\7\13\2\2\u015e\u015f\5\62")
+        buf.write("\32\2\u015f\u0160\7\f\2\2\u0160\u0163\3\2\2\2\u0161\u0163")
+        buf.write("\5\64\33\2\u0162\u0158\3\2\2\2\u0162\u015b\3\2\2\2\u0162")
+        buf.write("\u015d\3\2\2\2\u0162\u0161\3\2\2\2\u0163\u0178\3\2\2\2")
+        buf.write("\u0164\u0165\f\f\2\2\u0165\u0166\7#\2\2\u0166\u0177\5")
+        buf.write("\62\32\r\u0167\u0168\f\13\2\2\u0168\u0169\7$\2\2\u0169")
+        buf.write("\u0177\5\62\32\f\u016a\u016b\f\n\2\2\u016b\u016c\t\4\2")
+        buf.write("\2\u016c\u0177\5\62\32\13\u016d\u016e\f\t\2\2\u016e\u016f")
+        buf.write("\t\5\2\2\u016f\u0177\5\62\32\n\u0170\u0171\f\b\2\2\u0171")
+        buf.write("\u0172\t\6\2\2\u0172\u0177\5\62\32\t\u0173\u0174\f\7\2")
+        buf.write("\2\u0174\u0175\t\7\2\2\u0175\u0177\5\62\32\b\u0176\u0164")
+        buf.write("\3\2\2\2\u0176\u0167\3\2\2\2\u0176\u016a\3\2\2\2\u0176")
+        buf.write("\u016d\3\2\2\2\u0176\u0170\3\2\2\2\u0176\u0173\3\2\2\2")
+        buf.write("\u0177\u017a\3\2\2\2\u0178\u0176\3\2\2\2\u0178\u0179\3")
+        buf.write("\2\2\2\u0179\63\3\2\2\2\u017a\u0178\3\2\2\2\u017b\u017e")
+        buf.write("\t\2\2\2\u017c\u017e\5\66\34\2\u017d\u017b\3\2\2\2\u017d")
+        buf.write("\u017c\3\2\2\2\u017e\65\3\2\2\2\u017f\u0180\7%\2\2\u0180")
+        buf.write("\67\3\2\2\2\u0181\u0182\7%\2\2\u01829\3\2\2\2\37=COW`")
+        buf.write("it|\u0083\u0088\u008f\u0096\u009c\u00a1\u00a9\u00bc\u00d8")
+        buf.write("\u00f3\u00f8\u0108\u010d\u0114\u0119\u0140\u0156\u0162")
+        buf.write("\u0176\u0178\u017d")
         return buf.getvalue()
 
 
@@ -1223,16 +1221,18 @@ class trabalhoFinalParser ( Parser ):
             super().__init__(parent, invokingState)
             self.parser = parser
 
-        def tipo(self):
-            return self.getTypedRuleContext(trabalhoFinalParser.TipoContext,0)
+        def tipo(self, i:int=None):
+            if i is None:
+                return self.getTypedRuleContexts(trabalhoFinalParser.TipoContext)
+            else:
+                return self.getTypedRuleContext(trabalhoFinalParser.TipoContext,i)
 
 
-        def ID(self):
-            return self.getToken(trabalhoFinalParser.ID, 0)
-
-        def parametros(self):
-            return self.getTypedRuleContext(trabalhoFinalParser.ParametrosContext,0)
-
+        def ID(self, i:int=None):
+            if i is None:
+                return self.getTokens(trabalhoFinalParser.ID)
+            else:
+                return self.getToken(trabalhoFinalParser.ID, i)
 
         def getRuleIndex(self):
             return trabalhoFinalParser.RULE_parametros
@@ -1259,30 +1259,18 @@ class trabalhoFinalParser ( Parser ):
         localctx = trabalhoFinalParser.ParametrosContext(self, self._ctx, self.state)
         self.enterRule(localctx, 20, self.RULE_parametros)
         try:
-            self.state = 177
-            self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,15,self._ctx)
-            if la_ == 1:
-                self.enterOuterAlt(localctx, 1)
-                self.state = 169
-                self.tipo()
-                self.state = 170
-                self.match(trabalhoFinalParser.ID)
-                self.state = 171
-                self.match(trabalhoFinalParser.T__1)
-                self.state = 172
-                self.parametros()
-                pass
+            self.enterOuterAlt(localctx, 1)
+            self.state = 169
+            self.tipo()
+            self.state = 170
+            self.match(trabalhoFinalParser.ID)
 
-            elif la_ == 2:
-                self.enterOuterAlt(localctx, 2)
-                self.state = 174
-                self.tipo()
-                self.state = 175
-                self.match(trabalhoFinalParser.ID)
-                pass
-
-
+            self.state = 171
+            self.match(trabalhoFinalParser.T__1)
+            self.state = 172
+            self.tipo()
+            self.state = 173
+            self.match(trabalhoFinalParser.ID)
         except RecognitionException as re:
             localctx.exception = re
             self._errHandler.reportError(self, re)
@@ -1330,11 +1318,11 @@ class trabalhoFinalParser ( Parser ):
         self.enterRule(localctx, 22, self.RULE_retornoFuncao)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 179
+            self.state = 175
             self.match(trabalhoFinalParser.T__12)
-            self.state = 180
+            self.state = 176
             self.expressao(0)
-            self.state = 181
+            self.state = 177
             self.match(trabalhoFinalParser.T__2)
         except RecognitionException as re:
             localctx.exception = re
@@ -1389,27 +1377,27 @@ class trabalhoFinalParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 183
+            self.state = 179
             self.match(trabalhoFinalParser.T__13)
-            self.state = 184
+            self.state = 180
             self.match(trabalhoFinalParser.T__8)
-            self.state = 185
+            self.state = 181
             self.match(trabalhoFinalParser.T__9)
-            self.state = 186
+            self.state = 182
             self.match(trabalhoFinalParser.T__10)
-            self.state = 190
+            self.state = 186
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             while (((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << trabalhoFinalParser.T__4) | (1 << trabalhoFinalParser.T__5) | (1 << trabalhoFinalParser.T__6) | (1 << trabalhoFinalParser.T__7))) != 0):
-                self.state = 187
+                self.state = 183
                 self.decVariaveis()
-                self.state = 192
+                self.state = 188
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
 
-            self.state = 193
+            self.state = 189
             self.comandos()
-            self.state = 194
+            self.state = 190
             self.match(trabalhoFinalParser.T__11)
         except RecognitionException as re:
             localctx.exception = re
@@ -1483,56 +1471,56 @@ class trabalhoFinalParser ( Parser ):
         localctx = trabalhoFinalParser.ComandosContext(self, self._ctx, self.state)
         self.enterRule(localctx, 26, self.RULE_comandos)
         try:
-            self.state = 218
+            self.state = 214
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [trabalhoFinalParser.T__17]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 196
+                self.state = 192
                 self.forLoop()
-                self.state = 197
+                self.state = 193
                 self.comandos()
                 pass
             elif token in [trabalhoFinalParser.T__19]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 199
+                self.state = 195
                 self.ifElse()
-                self.state = 200
+                self.state = 196
                 self.comandos()
                 pass
             elif token in [trabalhoFinalParser.T__16]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 202
+                self.state = 198
                 self.printe()
-                self.state = 203
+                self.state = 199
                 self.comandos()
                 pass
             elif token in [trabalhoFinalParser.T__15]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 205
+                self.state = 201
                 self.entrada()
-                self.state = 206
+                self.state = 202
                 self.comandos()
                 pass
             elif token in [trabalhoFinalParser.T__18]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 208
+                self.state = 204
                 self.whileLoop()
-                self.state = 209
+                self.state = 205
                 self.comandos()
                 pass
             elif token in [trabalhoFinalParser.T__12]:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 211
+                self.state = 207
                 self.retornoFuncao()
-                self.state = 212
+                self.state = 208
                 self.comandos()
                 pass
             elif token in [trabalhoFinalParser.ID]:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 214
+                self.state = 210
                 self.listaAtrib()
-                self.state = 215
+                self.state = 211
                 self.comandos()
                 pass
             elif token in [trabalhoFinalParser.T__11]:
@@ -1614,65 +1602,65 @@ class trabalhoFinalParser ( Parser ):
         localctx = trabalhoFinalParser.ComandosLoopContext(self, self._ctx, self.state)
         self.enterRule(localctx, 28, self.RULE_comandosLoop)
         try:
-            self.state = 245
+            self.state = 241
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [trabalhoFinalParser.T__17]:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 220
+                self.state = 216
                 self.forLoop()
-                self.state = 221
+                self.state = 217
                 self.comandosLoop()
                 pass
             elif token in [trabalhoFinalParser.T__19]:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 223
+                self.state = 219
                 self.ifElseLoop()
-                self.state = 224
+                self.state = 220
                 self.comandosLoop()
                 pass
             elif token in [trabalhoFinalParser.T__16]:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 226
+                self.state = 222
                 self.printe()
-                self.state = 227
+                self.state = 223
                 self.comandosLoop()
                 pass
             elif token in [trabalhoFinalParser.T__15]:
                 self.enterOuterAlt(localctx, 4)
-                self.state = 229
+                self.state = 225
                 self.entrada()
-                self.state = 230
+                self.state = 226
                 self.comandosLoop()
                 pass
             elif token in [trabalhoFinalParser.T__18]:
                 self.enterOuterAlt(localctx, 5)
-                self.state = 232
+                self.state = 228
                 self.whileLoop()
-                self.state = 233
+                self.state = 229
                 self.comandosLoop()
                 pass
             elif token in [trabalhoFinalParser.T__12]:
                 self.enterOuterAlt(localctx, 6)
-                self.state = 235
+                self.state = 231
                 self.retornoFuncao()
-                self.state = 236
+                self.state = 232
                 self.comandosLoop()
                 pass
             elif token in [trabalhoFinalParser.ID]:
                 self.enterOuterAlt(localctx, 7)
-                self.state = 238
+                self.state = 234
                 self.listaAtrib()
-                self.state = 239
+                self.state = 235
                 self.comandosLoop()
                 pass
             elif token in [trabalhoFinalParser.T__14]:
                 self.enterOuterAlt(localctx, 8)
-                self.state = 241
+                self.state = 237
                 self.match(trabalhoFinalParser.T__14)
-                self.state = 242
+                self.state = 238
                 self.match(trabalhoFinalParser.T__2)
-                self.state = 243
+                self.state = 239
                 self.comandosLoop()
                 pass
             elif token in [trabalhoFinalParser.T__11]:
@@ -1728,21 +1716,21 @@ class trabalhoFinalParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 247
+            self.state = 243
             self.match(trabalhoFinalParser.T__15)
-            self.state = 248
+            self.state = 244
             self.match(trabalhoFinalParser.T__8)
-            self.state = 250
+            self.state = 246
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==trabalhoFinalParser.ID:
-                self.state = 249
+                self.state = 245
                 self.passagemParametros()
 
 
-            self.state = 252
+            self.state = 248
             self.match(trabalhoFinalParser.T__9)
-            self.state = 253
+            self.state = 249
             self.match(trabalhoFinalParser.T__2)
         except RecognitionException as re:
             localctx.exception = re
@@ -1789,15 +1777,15 @@ class trabalhoFinalParser ( Parser ):
         self.enterRule(localctx, 32, self.RULE_printe)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 255
+            self.state = 251
             self.match(trabalhoFinalParser.T__16)
-            self.state = 256
+            self.state = 252
             self.match(trabalhoFinalParser.T__8)
-            self.state = 257
+            self.state = 253
             self.imprime()
-            self.state = 258
+            self.state = 254
             self.match(trabalhoFinalParser.T__9)
-            self.state = 259
+            self.state = 255
             self.match(trabalhoFinalParser.T__2)
         except RecognitionException as re:
             localctx.exception = re
@@ -1848,22 +1836,22 @@ class trabalhoFinalParser ( Parser ):
         localctx = trabalhoFinalParser.ImprimeContext(self, self._ctx, self.state)
         self.enterRule(localctx, 34, self.RULE_imprime)
         try:
-            self.state = 266
+            self.state = 262
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,19,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 261
+                self.state = 257
                 self.impressao()
-                self.state = 262
+                self.state = 258
                 self.match(trabalhoFinalParser.T__1)
-                self.state = 263
+                self.state = 259
                 self.imprime()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 265
+                self.state = 261
                 self.impressao()
                 pass
 
@@ -1921,24 +1909,24 @@ class trabalhoFinalParser ( Parser ):
         localctx = trabalhoFinalParser.ImpressaoContext(self, self._ctx, self.state)
         self.enterRule(localctx, 36, self.RULE_impressao)
         try:
-            self.state = 271
+            self.state = 267
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,20,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 268
+                self.state = 264
                 self.chamaTerminal()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 269
+                self.state = 265
                 self.chamaFuncao()
                 pass
 
             elif la_ == 3:
                 self.enterOuterAlt(localctx, 3)
-                self.state = 270
+                self.state = 266
                 self.expressao(0)
                 pass
 
@@ -1991,22 +1979,22 @@ class trabalhoFinalParser ( Parser ):
         localctx = trabalhoFinalParser.ListaAtribForContext(self, self._ctx, self.state)
         self.enterRule(localctx, 38, self.RULE_listaAtribFor)
         try:
-            self.state = 278
+            self.state = 274
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,22,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,21,self._ctx)
             if la_ == 1:
                 self.enterOuterAlt(localctx, 1)
-                self.state = 273
+                self.state = 269
                 self.atribuicao()
-                self.state = 274
+                self.state = 270
                 self.match(trabalhoFinalParser.T__1)
-                self.state = 275
+                self.state = 271
                 self.listaAtribFor()
                 pass
 
             elif la_ == 2:
                 self.enterOuterAlt(localctx, 2)
-                self.state = 277
+                self.state = 273
                 self.atribuicao()
                 pass
 
@@ -2069,33 +2057,33 @@ class trabalhoFinalParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 280
+            self.state = 276
             self.match(trabalhoFinalParser.T__17)
-            self.state = 281
+            self.state = 277
             self.match(trabalhoFinalParser.T__8)
-            self.state = 283
+            self.state = 279
             self._errHandler.sync(self)
             _la = self._input.LA(1)
             if _la==trabalhoFinalParser.ID:
-                self.state = 282
+                self.state = 278
                 self.listaAtribFor()
 
 
-            self.state = 285
+            self.state = 281
             self.match(trabalhoFinalParser.T__2)
-            self.state = 286
+            self.state = 282
             localctx.verif = self.expressao(0)
-            self.state = 287
+            self.state = 283
             self.match(trabalhoFinalParser.T__2)
-            self.state = 288
+            self.state = 284
             self.listaAtribFor()
-            self.state = 289
+            self.state = 285
             self.match(trabalhoFinalParser.T__9)
-            self.state = 290
+            self.state = 286
             self.match(trabalhoFinalParser.T__10)
-            self.state = 291
+            self.state = 287
             self.comandosLoop()
-            self.state = 292
+            self.state = 288
             self.match(trabalhoFinalParser.T__11)
         except RecognitionException as re:
             localctx.exception = re
@@ -2146,19 +2134,19 @@ class trabalhoFinalParser ( Parser ):
         self.enterRule(localctx, 42, self.RULE_whileLoop)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 294
+            self.state = 290
             self.match(trabalhoFinalParser.T__18)
-            self.state = 295
+            self.state = 291
             self.match(trabalhoFinalParser.T__8)
-            self.state = 296
+            self.state = 292
             self.expressao(0)
-            self.state = 297
+            self.state = 293
             self.match(trabalhoFinalParser.T__9)
-            self.state = 298
+            self.state = 294
             self.match(trabalhoFinalParser.T__10)
-            self.state = 299
+            self.state = 295
             self.comandosLoop()
-            self.state = 300
+            self.state = 296
             self.match(trabalhoFinalParser.T__11)
         except RecognitionException as re:
             localctx.exception = re
@@ -2250,52 +2238,52 @@ class trabalhoFinalParser ( Parser ):
         localctx = trabalhoFinalParser.IfElseContext(self, self._ctx, self.state)
         self.enterRule(localctx, 44, self.RULE_ifElse)
         try:
-            self.state = 322
+            self.state = 318
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,24,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,23,self._ctx)
             if la_ == 1:
                 localctx = trabalhoFinalParser.IFContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 302
+                self.state = 298
                 self.match(trabalhoFinalParser.T__19)
-                self.state = 303
+                self.state = 299
                 self.match(trabalhoFinalParser.T__8)
-                self.state = 304
+                self.state = 300
                 self.expressao(0)
-                self.state = 305
+                self.state = 301
                 self.match(trabalhoFinalParser.T__9)
-                self.state = 306
+                self.state = 302
                 self.match(trabalhoFinalParser.T__10)
-                self.state = 307
+                self.state = 303
                 self.comandos()
-                self.state = 308
+                self.state = 304
                 self.match(trabalhoFinalParser.T__11)
                 pass
 
             elif la_ == 2:
                 localctx = trabalhoFinalParser.IFElseContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 310
+                self.state = 306
                 self.match(trabalhoFinalParser.T__19)
-                self.state = 311
+                self.state = 307
                 self.match(trabalhoFinalParser.T__8)
-                self.state = 312
+                self.state = 308
                 self.expressao(0)
-                self.state = 313
+                self.state = 309
                 self.match(trabalhoFinalParser.T__9)
+                self.state = 310
+                self.match(trabalhoFinalParser.T__10)
+                self.state = 311
+                self.comandos()
+                self.state = 312
+                self.match(trabalhoFinalParser.T__11)
+                self.state = 313
+                self.match(trabalhoFinalParser.T__20)
                 self.state = 314
                 self.match(trabalhoFinalParser.T__10)
                 self.state = 315
                 self.comandos()
                 self.state = 316
-                self.match(trabalhoFinalParser.T__11)
-                self.state = 317
-                self.match(trabalhoFinalParser.T__20)
-                self.state = 318
-                self.match(trabalhoFinalParser.T__10)
-                self.state = 319
-                self.comandos()
-                self.state = 320
                 self.match(trabalhoFinalParser.T__11)
                 pass
 
@@ -2390,52 +2378,52 @@ class trabalhoFinalParser ( Parser ):
         localctx = trabalhoFinalParser.IfElseLoopContext(self, self._ctx, self.state)
         self.enterRule(localctx, 46, self.RULE_ifElseLoop)
         try:
-            self.state = 344
+            self.state = 340
             self._errHandler.sync(self)
-            la_ = self._interp.adaptivePredict(self._input,25,self._ctx)
+            la_ = self._interp.adaptivePredict(self._input,24,self._ctx)
             if la_ == 1:
                 localctx = trabalhoFinalParser.IFLoopContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 324
+                self.state = 320
                 self.match(trabalhoFinalParser.T__19)
-                self.state = 325
+                self.state = 321
                 self.match(trabalhoFinalParser.T__8)
-                self.state = 326
+                self.state = 322
                 self.expressao(0)
-                self.state = 327
+                self.state = 323
                 self.match(trabalhoFinalParser.T__9)
-                self.state = 328
+                self.state = 324
                 self.match(trabalhoFinalParser.T__10)
-                self.state = 329
+                self.state = 325
                 self.comandosLoop()
-                self.state = 330
+                self.state = 326
                 self.match(trabalhoFinalParser.T__11)
                 pass
 
             elif la_ == 2:
                 localctx = trabalhoFinalParser.IFElseLoopContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 332
+                self.state = 328
                 self.match(trabalhoFinalParser.T__19)
-                self.state = 333
+                self.state = 329
                 self.match(trabalhoFinalParser.T__8)
-                self.state = 334
+                self.state = 330
                 self.expressao(0)
-                self.state = 335
+                self.state = 331
                 self.match(trabalhoFinalParser.T__9)
+                self.state = 332
+                self.match(trabalhoFinalParser.T__10)
+                self.state = 333
+                self.comandosLoop()
+                self.state = 334
+                self.match(trabalhoFinalParser.T__11)
+                self.state = 335
+                self.match(trabalhoFinalParser.T__20)
                 self.state = 336
                 self.match(trabalhoFinalParser.T__10)
                 self.state = 337
                 self.comandosLoop()
                 self.state = 338
-                self.match(trabalhoFinalParser.T__11)
-                self.state = 339
-                self.match(trabalhoFinalParser.T__20)
-                self.state = 340
-                self.match(trabalhoFinalParser.T__10)
-                self.state = 341
-                self.comandosLoop()
-                self.state = 342
                 self.match(trabalhoFinalParser.T__11)
                 pass
 
@@ -2797,7 +2785,7 @@ class trabalhoFinalParser ( Parser ):
         self._la = 0 # Token type
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 356
+            self.state = 352
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [trabalhoFinalParser.SUB]:
@@ -2805,64 +2793,64 @@ class trabalhoFinalParser ( Parser ):
                 self._ctx = localctx
                 _prevctx = localctx
 
-                self.state = 347
+                self.state = 343
                 localctx.op = self.match(trabalhoFinalParser.SUB)
-                self.state = 348
+                self.state = 344
                 localctx.op_dir = self.expressao(4)
                 pass
             elif token in [trabalhoFinalParser.NEG]:
                 localctx = trabalhoFinalParser.OperacaoNegacaoContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 349
+                self.state = 345
                 localctx.op = self.match(trabalhoFinalParser.NEG)
-                self.state = 350
+                self.state = 346
                 localctx.op_dir = self.expressao(3)
                 pass
             elif token in [trabalhoFinalParser.T__8]:
                 localctx = trabalhoFinalParser.ExprParentesesContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 351
+                self.state = 347
                 self.match(trabalhoFinalParser.T__8)
-                self.state = 352
+                self.state = 348
                 self.expressao(0)
-                self.state = 353
+                self.state = 349
                 self.match(trabalhoFinalParser.T__9)
                 pass
             elif token in [trabalhoFinalParser.ID, trabalhoFinalParser.BOOL, trabalhoFinalParser.REAL, trabalhoFinalParser.STRING, trabalhoFinalParser.INT]:
                 localctx = trabalhoFinalParser.TerminalContext(self, localctx)
                 self._ctx = localctx
                 _prevctx = localctx
-                self.state = 355
+                self.state = 351
                 self.chamaTerminal()
                 pass
             else:
                 raise NoViableAltException(self)
 
             self._ctx.stop = self._input.LT(-1)
-            self.state = 378
+            self.state = 374
             self._errHandler.sync(self)
-            _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
+            _alt = self._interp.adaptivePredict(self._input,27,self._ctx)
             while _alt!=2 and _alt!=ATN.INVALID_ALT_NUMBER:
                 if _alt==1:
                     if self._parseListeners is not None:
                         self.triggerExitRuleEvent()
                     _prevctx = localctx
-                    self.state = 376
+                    self.state = 372
                     self._errHandler.sync(self)
-                    la_ = self._interp.adaptivePredict(self._input,27,self._ctx)
+                    la_ = self._interp.adaptivePredict(self._input,26,self._ctx)
                     if la_ == 1:
                         localctx = trabalhoFinalParser.OperacaoORContext(self, trabalhoFinalParser.ExpressaoContext(self, _parentctx, _parentState))
                         localctx.op_esq = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expressao)
-                        self.state = 358
+                        self.state = 354
                         if not self.precpred(self._ctx, 10):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 10)")
-                        self.state = 359
+                        self.state = 355
                         localctx.op = self.match(trabalhoFinalParser.OR)
-                        self.state = 360
+                        self.state = 356
                         localctx.op_dir = self.expressao(11)
                         pass
 
@@ -2870,13 +2858,13 @@ class trabalhoFinalParser ( Parser ):
                         localctx = trabalhoFinalParser.OperacaoANDContext(self, trabalhoFinalParser.ExpressaoContext(self, _parentctx, _parentState))
                         localctx.op_esq = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expressao)
-                        self.state = 361
+                        self.state = 357
                         if not self.precpred(self._ctx, 9):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 9)")
-                        self.state = 362
+                        self.state = 358
                         localctx.op = self.match(trabalhoFinalParser.AND)
-                        self.state = 363
+                        self.state = 359
                         localctx.op_dir = self.expressao(10)
                         pass
 
@@ -2884,11 +2872,11 @@ class trabalhoFinalParser ( Parser ):
                         localctx = trabalhoFinalParser.OperacaoMaiorMenorContext(self, trabalhoFinalParser.ExpressaoContext(self, _parentctx, _parentState))
                         localctx.op_esq = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expressao)
-                        self.state = 364
+                        self.state = 360
                         if not self.precpred(self._ctx, 8):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 8)")
-                        self.state = 365
+                        self.state = 361
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << trabalhoFinalParser.MAIOR_Q) | (1 << trabalhoFinalParser.MENOR_Q) | (1 << trabalhoFinalParser.MAIOR_IGUAL) | (1 << trabalhoFinalParser.MENOR_IGUAL))) != 0)):
@@ -2896,7 +2884,7 @@ class trabalhoFinalParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 366
+                        self.state = 362
                         localctx.op_dir = self.expressao(9)
                         pass
 
@@ -2904,11 +2892,11 @@ class trabalhoFinalParser ( Parser ):
                         localctx = trabalhoFinalParser.OperacaoIgualDifContext(self, trabalhoFinalParser.ExpressaoContext(self, _parentctx, _parentState))
                         localctx.op_esq = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expressao)
-                        self.state = 367
+                        self.state = 363
                         if not self.precpred(self._ctx, 7):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 7)")
-                        self.state = 368
+                        self.state = 364
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==trabalhoFinalParser.IGUAL or _la==trabalhoFinalParser.DIFERENTE):
@@ -2916,7 +2904,7 @@ class trabalhoFinalParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 369
+                        self.state = 365
                         localctx.op_dir = self.expressao(8)
                         pass
 
@@ -2924,11 +2912,11 @@ class trabalhoFinalParser ( Parser ):
                         localctx = trabalhoFinalParser.OperacaoAddSubContext(self, trabalhoFinalParser.ExpressaoContext(self, _parentctx, _parentState))
                         localctx.op_esq = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expressao)
-                        self.state = 370
+                        self.state = 366
                         if not self.precpred(self._ctx, 6):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 6)")
-                        self.state = 371
+                        self.state = 367
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==trabalhoFinalParser.ADD or _la==trabalhoFinalParser.SUB):
@@ -2936,7 +2924,7 @@ class trabalhoFinalParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 372
+                        self.state = 368
                         localctx.op_dir = self.expressao(7)
                         pass
 
@@ -2944,11 +2932,11 @@ class trabalhoFinalParser ( Parser ):
                         localctx = trabalhoFinalParser.OperacaoMulDivContext(self, trabalhoFinalParser.ExpressaoContext(self, _parentctx, _parentState))
                         localctx.op_esq = _prevctx
                         self.pushNewRecursionContext(localctx, _startState, self.RULE_expressao)
-                        self.state = 373
+                        self.state = 369
                         if not self.precpred(self._ctx, 5):
                             from antlr4.error.Errors import FailedPredicateException
                             raise FailedPredicateException(self, "self.precpred(self._ctx, 5)")
-                        self.state = 374
+                        self.state = 370
                         localctx.op = self._input.LT(1)
                         _la = self._input.LA(1)
                         if not(_la==trabalhoFinalParser.MUL or _la==trabalhoFinalParser.DIV):
@@ -2956,14 +2944,14 @@ class trabalhoFinalParser ( Parser ):
                         else:
                             self._errHandler.reportMatch(self)
                             self.consume()
-                        self.state = 375
+                        self.state = 371
                         localctx.op_dir = self.expressao(6)
                         pass
 
              
-                self.state = 380
+                self.state = 376
                 self._errHandler.sync(self)
-                _alt = self._interp.adaptivePredict(self._input,28,self._ctx)
+                _alt = self._interp.adaptivePredict(self._input,27,self._ctx)
 
         except RecognitionException as re:
             localctx.exception = re
@@ -3056,13 +3044,13 @@ class trabalhoFinalParser ( Parser ):
         self.enterRule(localctx, 50, self.RULE_chamaTerminal)
         self._la = 0 # Token type
         try:
-            self.state = 383
+            self.state = 379
             self._errHandler.sync(self)
             token = self._input.LA(1)
             if token in [trabalhoFinalParser.BOOL, trabalhoFinalParser.REAL, trabalhoFinalParser.STRING, trabalhoFinalParser.INT]:
                 localctx = trabalhoFinalParser.ValorTerminalContext(self, localctx)
                 self.enterOuterAlt(localctx, 1)
-                self.state = 381
+                self.state = 377
                 _la = self._input.LA(1)
                 if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << trabalhoFinalParser.BOOL) | (1 << trabalhoFinalParser.REAL) | (1 << trabalhoFinalParser.STRING) | (1 << trabalhoFinalParser.INT))) != 0)):
                     self._errHandler.recoverInline(self)
@@ -3073,7 +3061,7 @@ class trabalhoFinalParser ( Parser ):
             elif token in [trabalhoFinalParser.ID]:
                 localctx = trabalhoFinalParser.ValorVariavelContext(self, localctx)
                 self.enterOuterAlt(localctx, 2)
-                self.state = 382
+                self.state = 378
                 self.chamaID()
                 pass
             else:
@@ -3125,7 +3113,7 @@ class trabalhoFinalParser ( Parser ):
         self.enterRule(localctx, 52, self.RULE_chamaID)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 385
+            self.state = 381
             self.match(trabalhoFinalParser.ID)
         except RecognitionException as re:
             localctx.exception = re
@@ -3171,7 +3159,7 @@ class trabalhoFinalParser ( Parser ):
         self.enterRule(localctx, 54, self.RULE_salvaID)
         try:
             self.enterOuterAlt(localctx, 1)
-            self.state = 387
+            self.state = 383
             self.match(trabalhoFinalParser.ID)
         except RecognitionException as re:
             localctx.exception = re

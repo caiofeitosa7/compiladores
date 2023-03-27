@@ -43,8 +43,7 @@ passagemParametros: ID ',' passagemParametros
     | ID
     ;
 
-parametros: tipo ID ',' parametros
-    | tipo ID
+parametros: tipo ID (',' tipo ID)
     ;
 
 retornoFuncao returns [type, valor]

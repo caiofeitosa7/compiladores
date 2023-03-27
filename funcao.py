@@ -1,10 +1,24 @@
 class Funcao():
-    def __init__(self, nome, tipo_retorno, parametros):
+    def __init__(self, nome: str, tipo_retorno: str, parametros: dict):
         self.nome = nome
         self.parametros = parametros
-        self.variaveis = self.parametros
+        self.variaveis = self.parametros.copy()
         self.tipo_retorno = tipo_retorno
-
+    
+    def salva_parametro(self, nome: str, tipo: str):
+        def define_valor(tipo):
+            if tipo == 'real':
+                return float()
+            elif tipo == 'int':
+                return int()
+            elif tipo == 'bool':
+                return bool()
+            elif tipo== 'String':
+                return str()
+            
+        self.parametros[nome] = define_valor(tipo)
+        self.variaveis[nome] = define_valor(tipo)
+    
     def verifica_tipo_retorno(self, t: str):
         '''
             Verifica se o retorno utilizado é o tipo especificado quando a função foi instanciada.

@@ -125,12 +125,29 @@ class MyListener(ParseTreeListener):
     def exitDecFuncaoVoid(self, ctx):
         global funcao_executando
         funcao_executando = ''
-
+        
+    def exitParametros(self, ctx):
+        def parametro_invalido(tipo):
+            return tipo not in ('int', 'real', 'String', 'bool')
+        
+        nomes = ctx.ID()
+        tipos = ctx.tipo()
+        
+        for i in range(len(nomes)):
+            nome = nomes[i].getText()
+            tipo = tipos[i].getText()
+            
+            if parametro_invalido(tipo):
+                lanca_excecao(f'O parâmetro `{nome}` foi definido com um tipo inválido na função `{funcao_executando}`.', ctx=ctx)
+            else:
+                funcao = busca_funcao_por_nome(funcao_executando, ctx=ctx)
+                funcao.salva_parametro(nome, tipo)
+        
     def exitRetornoFuncao(self, ctx):
         funcao = busca_funcao_por_nome(funcao_executando, ctx=ctx)
         tipo_retorno_passado = converte_tipo_variavel(ctx.expressao().type)
         
-#         print(ctx.expressao().valor)
+#         print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].parametros)
 #         print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].variaveis)
         
         if funcao.tipo_retorno == 'void':
@@ -275,7 +292,6 @@ def converte_tipo_variavel(tipo):
     '''
         Converte um tipo python em um tipo da nova linguagem criada
     '''
-    
     for tipo_real, tipo_python in mapa_tipos.items():
         if tipo == tipo_python:
             return tipo_real
