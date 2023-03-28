@@ -54,6 +54,11 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by trabalhoFinalParser#recursaoDecFunc.
+    def visitRecursaoDecFunc(self, ctx:trabalhoFinalParser.RecursaoDecFuncContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by trabalhoFinalParser#decFuncaoRetorno.
     def visitDecFuncaoRetorno(self, ctx:trabalhoFinalParser.DecFuncaoRetornoContext):
         return self.visitChildren(ctx)
@@ -64,18 +69,23 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by trabalhoFinalParser#parametros.
+    def visitParametros(self, ctx:trabalhoFinalParser.ParametrosContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by trabalhoFinalParser#chamaFuncao.
     def visitChamaFuncao(self, ctx:trabalhoFinalParser.ChamaFuncaoContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#passagemParametros.
-    def visitPassagemParametros(self, ctx:trabalhoFinalParser.PassagemParametrosContext):
+    # Visit a parse tree produced by trabalhoFinalParser#chamaFuncaoInterno.
+    def visitChamaFuncaoInterno(self, ctx:trabalhoFinalParser.ChamaFuncaoInternoContext):
         return self.visitChildren(ctx)
 
 
-    # Visit a parse tree produced by trabalhoFinalParser#parametros.
-    def visitParametros(self, ctx:trabalhoFinalParser.ParametrosContext):
+    # Visit a parse tree produced by trabalhoFinalParser#passagemParametros.
+    def visitPassagemParametros(self, ctx:trabalhoFinalParser.PassagemParametrosContext):
         return self.visitChildren(ctx)
 
 
@@ -176,6 +186,11 @@ class trabalhoFinalVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by trabalhoFinalParser#OperacaoMulDiv.
     def visitOperacaoMulDiv(self, ctx:trabalhoFinalParser.OperacaoMulDivContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by trabalhoFinalParser#chamaFuncExpressao.
+    def visitChamaFuncExpressao(self, ctx:trabalhoFinalParser.ChamaFuncExpressaoContext):
         return self.visitChildren(ctx)
 
 

@@ -89,6 +89,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#recursaoDecFunc.
+    def enterRecursaoDecFunc(self, ctx:trabalhoFinalParser.RecursaoDecFuncContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#recursaoDecFunc.
+    def exitRecursaoDecFunc(self, ctx:trabalhoFinalParser.RecursaoDecFuncContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#decFuncaoRetorno.
     def enterDecFuncaoRetorno(self, ctx:trabalhoFinalParser.DecFuncaoRetornoContext):
         pass
@@ -107,6 +116,15 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#parametros.
+    def enterParametros(self, ctx:trabalhoFinalParser.ParametrosContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#parametros.
+    def exitParametros(self, ctx:trabalhoFinalParser.ParametrosContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#chamaFuncao.
     def enterChamaFuncao(self, ctx:trabalhoFinalParser.ChamaFuncaoContext):
         pass
@@ -116,21 +134,21 @@ class trabalhoFinalListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by trabalhoFinalParser#chamaFuncaoInterno.
+    def enterChamaFuncaoInterno(self, ctx:trabalhoFinalParser.ChamaFuncaoInternoContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#chamaFuncaoInterno.
+    def exitChamaFuncaoInterno(self, ctx:trabalhoFinalParser.ChamaFuncaoInternoContext):
+        pass
+
+
     # Enter a parse tree produced by trabalhoFinalParser#passagemParametros.
     def enterPassagemParametros(self, ctx:trabalhoFinalParser.PassagemParametrosContext):
         pass
 
     # Exit a parse tree produced by trabalhoFinalParser#passagemParametros.
     def exitPassagemParametros(self, ctx:trabalhoFinalParser.PassagemParametrosContext):
-        pass
-
-
-    # Enter a parse tree produced by trabalhoFinalParser#parametros.
-    def enterParametros(self, ctx:trabalhoFinalParser.ParametrosContext):
-        pass
-
-    # Exit a parse tree produced by trabalhoFinalParser#parametros.
-    def exitParametros(self, ctx:trabalhoFinalParser.ParametrosContext):
         pass
 
 
@@ -311,6 +329,15 @@ class trabalhoFinalListener(ParseTreeListener):
 
     # Exit a parse tree produced by trabalhoFinalParser#OperacaoMulDiv.
     def exitOperacaoMulDiv(self, ctx:trabalhoFinalParser.OperacaoMulDivContext):
+        pass
+
+
+    # Enter a parse tree produced by trabalhoFinalParser#chamaFuncExpressao.
+    def enterChamaFuncExpressao(self, ctx:trabalhoFinalParser.ChamaFuncExpressaoContext):
+        pass
+
+    # Exit a parse tree produced by trabalhoFinalParser#chamaFuncExpressao.
+    def exitChamaFuncExpressao(self, ctx:trabalhoFinalParser.ChamaFuncExpressaoContext):
         pass
 
 

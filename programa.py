@@ -11,9 +11,20 @@ bool soma(int v1, real v2){
     return (-ab) > 23.0;
 }
 
+real media (real n1, real n2){
+    real m;
+    m = (n1 + n2)/2.0;
+    return m;
+}
+
+mostrarMedia (int v1, int v2, real x){
+    x = (v1+v2)/2;
+    print ("Resultado: ", x);
+}
+
 main(){
     real aaa = 2.2, bbb = aaa;
-    int ccc = aaa;
+    int ccc = ab;
     caio = "lbksld";
     ccc = 2 * 25;
     aaa = 223467.2;
@@ -22,6 +33,7 @@ main(){
     print("Hello world", aaa, 100 + 25);
     
     input(n1, n2);
+    soma(23, 54.3);
     
     if (caio != "feitosa"){
         if (caio == "lbksld"){
@@ -53,4 +65,11 @@ main(){
     for(ccc = 1; ccc <= 2; ccc = ccc + 1) {
         
     }
+    
+    print ("Programa Fatorial. Digite o valor?");
+    input(numero);
+    print(fatorial(numero));
+    print ("Programa Media. Digite o valores?");
+    input(n1, n2);
+    print(mostrarMedia(n1, n2, m));
 }

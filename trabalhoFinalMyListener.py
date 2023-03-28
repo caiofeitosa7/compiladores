@@ -173,14 +173,10 @@ class MyListener(ParseTreeListener):
     def exitIFElseLoop(self, ctx):
         tipo_verificacao('if', ctx)
         
-        
+    def enterMain(self, ctx):
+        if ctx.invalido.getText():
+            lanca_excecao('Não são permitidos comandos após o main.', ctx=ctx)
             
-        
-    
-    
-
-    
-    
     
     # ------------------------------- EXPRESSOES ----------------------------- #
     
