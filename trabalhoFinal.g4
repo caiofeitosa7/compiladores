@@ -1,6 +1,6 @@
 grammar trabalhoFinal;
 
-prog: decVarConst* decFunc* main
+prog: decVarConst* recursaoDecFunc* main
     ;
 
 decVarConst: t=tipo listaIds
@@ -32,25 +32,31 @@ tipo: 'int'
     | 'String'
     ;
 
+recursaoDecFunc: decFunc recursaoDecFunc
+    | decFunc
+    ;
+
 decFunc: tipo ID '(' parametros? ')' '{' (decVariaveis* comandos | retornoFuncao) '}'       #decFuncaoRetorno
     | ID '(' parametros? ')' '{' decVariaveis* comandos '}'                                 #decFuncaoVoid
     ;
 
-chamaFuncao: ID '(' passagemParametros? ')'
+parametros: tipo ID (',' tipo ID)*
     ;
 
-passagemParametros: ID ',' passagemParametros
-    | ID
+chamaFuncao: ID '(' passagemParametros? ')' ';'
     ;
 
-parametros: tipo ID (',' tipo ID)
+chamaFuncaoInterno: ID '(' passagemParametros? ')'
+    ;
+
+passagemParametros: expressao (',' expressao)*
     ;
 
 retornoFuncao returns [type, valor]
     : 'return' expressao ';'
     ;
 
-main: 'main' '(' ')' '{' decVariaveis* comandos '}'
+main: 'main' '(' ')' '{' decVariaveis* comandos '}' invalido=comandos
     ;
 
 comandos: forLoop comandos
@@ -59,6 +65,7 @@ comandos: forLoop comandos
     | entrada comandos
     | whileLoop comandos
     | retornoFuncao comandos
+    | chamaFuncao comandos
     | listaAtrib comandos
     | 
     ;
@@ -69,6 +76,7 @@ comandosLoop: forLoop comandosLoop
     | entrada comandosLoop
     | whileLoop comandosLoop
     | retornoFuncao comandosLoop
+    | chamaFuncao comandos
     | listaAtrib comandosLoop
     | 'break' ';' comandosLoop
     |
@@ -78,7 +86,7 @@ entrada: 'input' '(' passagemParametros? ')' ';'
     ;
 
 printe: 'print' '(' imprime ')' ';'
-	;
+    ;
 
 imprime returns [valor]
     : impressao ',' imprime
@@ -87,9 +95,9 @@ imprime returns [valor]
 
 impressao returns [valor]
     : chamaTerminal
-    | chamaFuncao
-	| expressao
-	;
+    | chamaFuncaoInterno
+    | expressao
+    ;
 
 listaAtribFor
     : atribuicao ',' listaAtribFor
@@ -120,6 +128,7 @@ expressao returns [type, valor]
     |                   op=SUB                   op_dir=expressao                                   #OperacaoMenosUn
     |                   op=NEG                   op_dir=expressao                                   #OperacaoNegacao
     | '(' expressao ')'                                                                             #ExprParenteses
+    | chamaFuncaoInterno                                                                            #chamaFuncExpressao             
     | chamaTerminal                                                                                 #Terminal
     ;
 
