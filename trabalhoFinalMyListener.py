@@ -30,7 +30,6 @@ mapa_tipos = {
 '''
 funcao_executando = ''
 tipo_declaracao = ''
-controla_comparacoes = 0
 salvando_variavel = False
 
 
@@ -85,12 +84,11 @@ class MyListener(ParseTreeListener):
             variavel = busca_variavel_por_nome(nome_variavel, ctx=ctx)
             ctx.type = type(variavel[1])
             ctx.valor = variavel[1]
-            
+    
     def exitValorTerminal(self, ctx):
         """
             Todos os valores retornados são de tipos do python
         """
-        
         if ctx.BOOL():
              ctx.valor = True if ctx.BOOL().getText() == 'True' else False
         elif ctx.INT():
@@ -147,9 +145,6 @@ class MyListener(ParseTreeListener):
         funcao = busca_funcao_por_nome(funcao_executando, ctx=ctx)
         tipo_retorno_passado = converte_tipo_variavel(ctx.expressao().type)
         
-#         print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].parametros)
-#         print(memoria_global['funcoes'][0].nome, memoria_global['funcoes'][0].variaveis)
-        
         if funcao.tipo_retorno == 'void':
             lanca_excecao(f'A funcao `{funcao_executando}` não aceita return. É necessário definir um tipo de retorno no cabeçalho da função.', ctx=ctx)
         elif funcao.tipo_retorno != tipo_retorno_passado:
@@ -180,9 +175,6 @@ class MyListener(ParseTreeListener):
     
     # ------------------------------- EXPRESSOES ----------------------------- #
     
-#     def gerenciador_comparacoes():
-#         global controla_comparacoes
-
     def exitOperacaoOR(self, ctx):
         expr_dual(ctx.op_esq.valor, ctx.op.text, ctx.op_dir.valor, contexto=ctx)
         
@@ -226,6 +218,15 @@ class MyListener(ParseTreeListener):
     # ------------------------------------------------------------------------ #
 
 
+# def op_logicas_seguidas(ctx):
+#     tokens = ctx.getTokens(ParserRuleContext().EMPTY)
+# 
+#     # Verifica se há duas operações lógicas seguidas
+#     for i in range(len(tokens)-1):
+#         if tokens[i].type in ['&&', '||'] and tokens[i+1].type in ['&&', '||']:
+#             lanca_excecao('Duas operações lógicas seguidas não são permitidas.')
+                
+                
 def tipo_verificacao(nome_verificacao, ctx):
     """
         Verifica se o retorno da expressao é do tipo bool
@@ -398,7 +399,8 @@ def busca_variavel_por_nome(nome_variavel, somente_escopo_local=False, ctx=None)
     
     if funcao_executando:
         funcao = busca_funcao_por_nome(funcao_executando, ctx=ctx)
-        return [v for v in funcao.variaveis.items() if v[0] == nome_variavel][0]
+        variaveis = list(funcao.variaveis.items()) + list(memoria_global['variaveis'].items())
+        return [v for v in variaveis if v[0] == nome_variavel][0]
     return [v for v in memoria_global['variaveis'].items() if v[0] == nome_variavel][0]
 
 

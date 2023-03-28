@@ -4,7 +4,7 @@ const real ab = 23.4, c = 12.1;
 
 bool soma(int v1, real v2){
     int aux = v2;
-    String a = "teste";
+    String a = caio;
     bool caio = True;
     real ab, aaa;
     ab = 2222, aaa = 3454.7;
